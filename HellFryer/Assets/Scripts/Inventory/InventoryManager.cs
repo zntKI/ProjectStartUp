@@ -10,15 +10,20 @@ public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager instance { get; private set; }
     public Dictionary<Item, GameObject> items = new Dictionary<Item, GameObject>();
+    Dictionary<int, Item> itemSlots = new Dictionary<int, Item>(){
+        { 0, null},
+        { 1, null},
+        { 2, null},
+        { 3, null},
+        { 4, null}
+    };
 
     public Transform ItemContent;
     public GameObject InventoryItem;
 
     public System.Action onPickup;
 
-    Item selectedItem;
-
-    //Ensure singleton
+    public int selectedItem = 0;
     void Awake()
     {
         if (instance != null && instance != this)
@@ -35,34 +40,37 @@ public class InventoryManager : MonoBehaviour
     public void Add(Item item, GameObject itemObejct)
     {
         items.Add(item, itemObejct);
-        selectedItem = item;
+        AddItemToItemSlot(item);
+        UpdateItems();
+    }
+
+    public void PickupItem(Item item, GameObject itemObejct)
+    {
+        Add(item, itemObejct);
+        UpdateItems();
+
+        itemObejct.SetActive(false);
     }
 
     public void Remove(Item item)
     {
-        if(selectedItem == item)
+        if (itemSlots[selectedItem] == item)
         {
-            selectedItem = null;
+            itemSlots[selectedItem] = null;
         }
         items.Remove(item);
-    }
-
-    void Drop(Item item)
-    {
-        items[item].SetActive(true);
-        Remove(item);
         UpdateItems();
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            if (selectedItem != null)
-            {
-                Drop(selectedItem);
-            }
-        }
+        //if (Input.GetKeyDown(KeyCode.Q))
+        //{
+        //    if (selectedItem != null)
+        //    {
+        //        Drop(selectedItem);
+        //    }
+        //}
     }
 
     public void UpdateItems()
@@ -86,5 +94,27 @@ public class InventoryManager : MonoBehaviour
         {
             Destroy(item.gameObject);
         }
+    }
+
+    void AddItemToItemSlot(Item item)
+    {
+        foreach(int slot in itemSlots.Keys)
+        {
+            if(itemSlots[slot] == null)
+            {
+                itemSlots[slot] = item;
+                break;
+            }
+        }
+    }
+
+    public void SetSelectedItemSlot(int slot)
+    {
+        selectedItem = slot;
+    }
+
+    public Item GetSelectedItem()
+    {
+        return itemSlots[selectedItem];
     }
 }
