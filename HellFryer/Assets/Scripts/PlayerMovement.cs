@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     Rigidbody rb;
-    [SerializeField] float speed = 100;
+    [SerializeField] float speed = 2f;
 
     private Vector2 inputVector = Vector2.zero;
 
@@ -17,13 +17,11 @@ public class PlayerMovement : MonoBehaviour
     public void SetInputVector(Vector2 direction)
     {
         inputVector = direction;
+        inputVector *= speed;
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        Vector3 velocity = Vector3.Normalize(new Vector3(inputVector.x, 0, inputVector.y));
-        velocity *= Time.deltaTime * speed;
-
-        rb.velocity = velocity;
+        rb.velocity = new Vector3(inputVector.x, rb.velocity.y, inputVector.y);
     }
 }
