@@ -5,21 +5,23 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     Rigidbody rb;
-    [SerializeField] float speed = 100;
+    [SerializeField] float speed = 2f;
+
+    private Vector2 inputVector = Vector2.zero;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-    void Update()
+    public void SetInputVector(Vector2 direction)
     {
-        float verticalMovement = Input.GetAxis("Vertical");
-        float horizontalMovement = Input.GetAxis("Horizontal");
+        inputVector = direction;
+        inputVector *= speed;
+    }
 
-        Vector3 velocity = Vector3.Normalize(new Vector3(horizontalMovement, 0, verticalMovement));
-        velocity *= Time.deltaTime * speed;
-
-        rb.velocity = velocity;
+    void FixedUpdate()
+    {
+        rb.velocity = new Vector3(inputVector.x, rb.velocity.y, inputVector.y);
     }
 }
