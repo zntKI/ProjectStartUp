@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float speed = 2f;
 
     private Vector2 inputVector = Vector2.zero;
+    private Vector3 modifiableVector = Vector3.zero;
 
     private void Start()
     {
@@ -20,8 +21,14 @@ public class PlayerMovement : MonoBehaviour
         inputVector *= speed;
     }
 
+    public void SetModifiableVector(Vector3 modifiableVector)
+    {
+        this.modifiableVector = modifiableVector;
+    }
+
     void FixedUpdate()
     {
-        rb.velocity = new Vector3(inputVector.x, rb.velocity.y, inputVector.y);
+        Vector3 finalVector = new Vector3(inputVector.x, 0f, inputVector.y) + modifiableVector;
+        rb.velocity = finalVector;
     }
 }
