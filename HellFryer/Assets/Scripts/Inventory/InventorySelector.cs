@@ -7,20 +7,20 @@ public class InventorySelector : MonoBehaviour
 {
     public Transform SelectorContent;
 
-    List<Transform> inventorySlots = new List<Transform>();
+    List<Transform> inventorySelectorSlots = new List<Transform>();
     int selectedSlot;
 
     void Start()
     {
         foreach (Transform inventorySlot in SelectorContent)
         {
-            inventorySlots.Add(inventorySlot);
+            inventorySelectorSlots.Add(inventorySlot);
         }
 
-        if(inventorySlots.Count > 0)
+        if(inventorySelectorSlots.Count > 0)
         {
             selectedSlot = 0;
-            inventorySlots[selectedSlot].gameObject.SetActive(true);
+            inventorySelectorSlots[selectedSlot].gameObject.SetActive(true);
         }
     }
 
@@ -44,21 +44,21 @@ public class InventorySelector : MonoBehaviour
     {
         if(selectedSlot > 0)
         {
-            inventorySlots[selectedSlot].gameObject.SetActive(false);
+            inventorySelectorSlots[selectedSlot].gameObject.SetActive(false);
             selectedSlot--;
             InventoryManager.instance.SetSelectedItemSlot(selectedSlot);
-            inventorySlots[selectedSlot].gameObject.SetActive(true);
+            inventorySelectorSlots[selectedSlot].gameObject.SetActive(true);
         }
     }
 
     void SelectRight()
     {
-        if (selectedSlot < inventorySlots.Count - 1)
+        if (selectedSlot < inventorySelectorSlots.Count - 1)
         {
-            inventorySlots[selectedSlot].gameObject.SetActive(false);
+            inventorySelectorSlots[selectedSlot].gameObject.SetActive(false);
             selectedSlot++;
             InventoryManager.instance.SetSelectedItemSlot(selectedSlot);
-            inventorySlots[selectedSlot].gameObject.SetActive(true);
+            inventorySelectorSlots[selectedSlot].gameObject.SetActive(true);
         }
     }
 }

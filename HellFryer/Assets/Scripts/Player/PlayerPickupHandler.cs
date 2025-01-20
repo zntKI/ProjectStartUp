@@ -7,7 +7,7 @@ public class PlayerPickupHandler : MonoBehaviour
 {
     Collider[] hitColliders;
     public List<GameObject> itemsInRange = new List<GameObject>();
-    const int pickupRange = 2;
+    const float pickupRange = 1.5f;
 
     void UpdateItemsInRange()
     {
@@ -44,9 +44,9 @@ public class PlayerPickupHandler : MonoBehaviour
         GameObject itemObject = GetClosestItem();
         if (itemObject != null)
         {
-            Item item = itemObject.GetComponent<ItemController>().item;
+            ItemController item = itemObject.GetComponent<ItemController>();
 
-            InventoryManager.instance.PickupItem(item, itemObject);
+            InventoryManager.instance.PickupItem(item);
         }
     }
 

@@ -6,28 +6,52 @@ using static UnityEditor.Progress;
 
 public class PlayerHeldItemHandler : MonoBehaviour
 {
-    Item heldItem = null;
-    [SerializeField] GameObject heldItemObject = null;
+    ItemController heldItem = null;
     float holdDistance = 0.8f;
     float dropDistance = 1.2f;
 
-    void HoldItem(Item item, GameObject holder)
+    void HoldItem(ItemController item, GameObject holder)
     {
-        heldItem = item;
-        heldItemObject = InventoryManager.instance.items[item];
-        Vector3 holdPosition = holder.transform.position + holder.transform.forward.normalized * holdDistance;
-        heldItemObject.transform.position = holdPosition;
-        heldItemObject.transform.SetParent(holder.transform);
-        heldItemObject.GetComponent<Rigidbody>().isKinematic = true;
-        heldItemObject.GetComponent<SphereCollider>().isTrigger = true;
-        heldItemObject.SetActive(true);
+        if (heldItem == null)
+        {
+            GameObject curHeldItemObject = item.gameObject;
+            Vector3 holdPosition = holder.transform.position + holder.transform.forward.normalized * holdDistance;
+            curHeldItemObject.transform.position = holdPosition;
+            curHeldItemObject.transform.SetParent(holder.transform);
+            curHeldItemObject.GetComponent<Rigidbody>().isKinematic = true;
+            curHeldItemObject.GetComponent<Collider>().isTrigger = true;
+            curHeldItemObject.SetActive(true);
+            curHeldItemObject.tag = "Untagged";
 
-        InventoryManager.instance.Remove(heldItem);
+            heldItem = item;
+            InventoryManager.instance.Remove(heldItem);
+        }
+        else
+        {
+            //Store previosly held item
+            ItemController droppedItem = heldItem;
+
+            //Hold the new item
+            GameObject curHeldItemObject = item.gameObject;
+            Vector3 holdPosition = holder.transform.position + holder.transform.forward.normalized * holdDistance;
+            curHeldItemObject.transform.position = holdPosition;
+            curHeldItemObject.transform.SetParent(holder.transform);
+            curHeldItemObject.GetComponent<Rigidbody>().isKinematic = true;
+            curHeldItemObject.GetComponent<Collider>().isTrigger = true;
+            curHeldItemObject.SetActive(true);
+            curHeldItemObject.tag = "Untagged";
+
+            heldItem = item;
+            InventoryManager.instance.Remove(heldItem);
+
+            //Add the previous item to the inventory
+            InventoryManager.instance.PickupItem(droppedItem);
+        }
     }
 
     public void HoldSelectedItem(GameObject holder)
     {
-        Item selectedItem = InventoryManager.instance.GetSelectedItem();
+        ItemController selectedItem = InventoryManager.instance.GetSelectedItem();
         if (selectedItem != null)
         {
             HoldItem(selectedItem, holder);
@@ -39,12 +63,12 @@ public class PlayerHeldItemHandler : MonoBehaviour
         if (heldItem != null)
         {
             Vector3 dropPosition = holder.transform.position + holder.transform.forward.normalized * dropDistance;
-            heldItemObject.transform.position = dropPosition;
-            heldItemObject.transform.SetParent(null);
-            heldItemObject.GetComponent<Rigidbody>().isKinematic = false;
-            heldItemObject.GetComponent<SphereCollider>().isTrigger = false;
+            heldItem.gameObject.transform.position = dropPosition;
+            heldItem.gameObject.transform.SetParent(null);
+            heldItem.gameObject.GetComponent<Rigidbody>().isKinematic = false;
+            heldItem.gameObject.GetComponent<Collider>().isTrigger = false;
+            heldItem.gameObject.tag = "Item";
             heldItem = null;
-            heldItemObject = null;
         }
     }
 }
