@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     PlayerPickupHandler pickupHandler;
     PlayerHeldItemHandler heldItemHandler;
 
+    RoleController roleController;
+
     private Vector2 lookDir;
 
     void Start()
@@ -17,6 +19,8 @@ public class PlayerController : MonoBehaviour
         mover = GetComponent<PlayerMovement>();
         pickupHandler = GetComponent<PlayerPickupHandler>();
         heldItemHandler = GetComponent<PlayerHeldItemHandler>();
+
+        roleController = GetComponent<RoleController>();
     }
 
     public void OnMove(CallbackContext context)
@@ -55,6 +59,22 @@ public class PlayerController : MonoBehaviour
         // TODO: Move elsewhere:
         if (lookDir.magnitude > 0.1f)
             transform.LookAt(transform.position + new Vector3(lookDir.x, 0f, lookDir.y));
+    }
+
+    public void OnPerformTask(CallbackContext context)
+    {
+        if (context.performed)
+        {
+            roleController.PerformTask();
+        }
+    }
+
+    public void OnOpenBook(CallbackContext context)
+    {
+        if (context.performed)
+        {
+            roleController.OpenBook();
+        }
     }
 
     public void ShouldPull(Vector3 pullVector)
