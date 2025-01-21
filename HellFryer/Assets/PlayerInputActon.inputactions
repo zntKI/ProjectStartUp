@@ -149,12 +149,34 @@
                 },
                 {
                     "name": "",
+                    "id": "8fabfd3a-4da3-4c93-a8d2-0ac8e6464eb4",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Pick up",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "6293628a-8234-405d-b379-74c483f1aa6f",
                     "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Pick up",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "466a615e-33c7-488e-a175-be5baefb5772",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Drop",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -171,6 +193,17 @@
                 },
                 {
                     "name": "",
+                    "id": "f65196ad-9075-4321-b53e-652082d279b4",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Select left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "dde00e20-97eb-4d1f-9003-473e95595c24",
                     "path": "<Keyboard>/leftArrow",
                     "interactions": "",
@@ -182,12 +215,34 @@
                 },
                 {
                     "name": "",
+                    "id": "9e4ec36b-ba96-4806-87e3-8a2e014189b7",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Select right",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "ea58e034-daad-4276-a0c4-3a4e8508eeba",
                     "path": "<Keyboard>/rightArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Select right",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a3cd636b-5bf4-45b3-b645-57f14d5191c5",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Hold",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

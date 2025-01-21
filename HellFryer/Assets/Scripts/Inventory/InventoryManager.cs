@@ -25,8 +25,6 @@ public class InventoryManager : MonoBehaviour
     public System.Action onPickup;
 
     public int selectedSlot = 0;
-
-    int inventorySize = 5;
     void Awake()
     {
         if (instance != null && instance != this)
