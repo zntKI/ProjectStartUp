@@ -111,59 +111,15 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "Mouse Turning",
-                    "id": "378f9d77-1316-4a8e-9fc4-b0ed05f9df10",
-                    "path": "2DVector",
+                    "name": "",
+                    "id": "bacf1c09-ebea-4212-9657-e0284d8c09e6",
+                    "path": "<Mouse>/position",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard",
                     "action": "Turning",
-                    "isComposite": true,
+                    "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "Up",
-                    "id": "94564d2a-92eb-408e-8460-de611803c9fc",
-                    "path": "<Mouse>/position/y",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Turning",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "Down",
-                    "id": "04364e7f-846e-4e45-af08-498ca1bed406",
-                    "path": "<Mouse>/position/y",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Turning",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "Left",
-                    "id": "771681da-da59-4383-b1c5-a46b69a0fa7b",
-                    "path": "<Mouse>/position/x",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Turning",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "Right",
-                    "id": "576d6d2a-c72d-4795-94a6-42929f49a4b8",
-                    "path": "<Mouse>/position/x",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Turning",
-                    "isComposite": false,
-                    "isPartOfComposite": true
                 },
                 {
                     "name": "WASD Movement",
@@ -373,6 +329,11 @@
             "devices": [
                 {
                     "devicePath": "<Keyboard>",
+                    "isOptional": true,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Mouse>",
                     "isOptional": true,
                     "isOR": false
                 }

@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.HID;
 using UnityEngine.WSA;
 using static UnityEngine.InputSystem.InputAction;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] Camera playerCamera;
     PlayerMovement mover;
     PlayerPickupHandler pickupHandler;
     PlayerHeldItemHandler heldItemHandler;
@@ -55,6 +57,18 @@ public class PlayerController : MonoBehaviour
     public void OnTurn(CallbackContext context)
     {
         lookDir = context.ReadValue<Vector2>();
+        
+        if(context.control.device.name == "Mouse")
+        {
+            Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 100, LayerMask.GetMask("Ground")))
+            {
+                lookDir.x = hit.point.x;
+                lookDir.y = hit.point.z;
+            }
+        }
+        
 
         // TODO: Move elsewhere:
         if (lookDir.magnitude > 0.1f)
