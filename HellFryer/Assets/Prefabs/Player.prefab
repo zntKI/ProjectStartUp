@@ -13,6 +13,9 @@ GameObject:
   - component: {fileID: 3370607221409599186}
   - component: {fileID: 8367254804830462505}
   - component: {fileID: 4066436935674904813}
+  - component: {fileID: -2100768016008024880}
+  - component: {fileID: -1457961506043043749}
+  - component: {fileID: -1030673999114088488}
   - component: {fileID: 8734756742486941878}
   - component: {fileID: 2745137672649784981}
   - component: {fileID: -4574015664776280627}
@@ -85,10 +88,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.6725914
+  m_Radius: 0.5
   m_Height: 2.2893622
   m_Direction: 1
-  m_Center: {x: 0, y: 0.0052503347, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8367254804830462505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,6 +117,45 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+--- !u!114 &-2100768016008024880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7853022101827095678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03d1bbd876b01fc4290eb7a0764eb85f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemsInRange: []
+--- !u!114 &-1457961506043043749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7853022101827095678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe3229304e2138b449d4b5295dff2b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heldItemObject: {fileID: 0}
+--- !u!114 &-1030673999114088488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7853022101827095678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51e02c964b6190a4b844f449463cb972, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SelectorContent: {fileID: 0}
 --- !u!114 &8734756742486941878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,6 +213,86 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 03405207-aa57-4fb6-8589-f5de47df2db6
     m_ActionName: Player/Turning[/XInputControllerWindows/rightStick]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8367254804830462505}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnPickUp
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 75427585-df25-4b2e-a0eb-bf405dbe41e4
+    m_ActionName: Player/Interactions[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8367254804830462505}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnDrop
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 5713ae14-07d4-4260-ac45-9978a5d1278d
+    m_ActionName: Player/Drop[/Keyboard/q]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -1030673999114088488}
+        m_TargetAssemblyTypeName: InventorySelector, Assembly-CSharp
+        m_MethodName: OnSelectLeft
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: d0744796-80ec-4a6a-a3cd-7bce151c6b1e
+    m_ActionName: Player/Select left[/Keyboard/leftArrow]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -1030673999114088488}
+        m_TargetAssemblyTypeName: InventorySelector, Assembly-CSharp
+        m_MethodName: OnSelectRight
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 40e2a140-b3b8-4bc6-b421-7303946cb2fd
+    m_ActionName: Player/Select right[/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8367254804830462505}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnHold
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: de7ad6c7-4ce8-445c-b978-fa63204de750
+    m_ActionName: Player/Hold[/Keyboard/f]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Controller
   m_DefaultActionMap: Player
