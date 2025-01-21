@@ -19,6 +19,10 @@ GameObject:
   - component: {fileID: 8734756742486941878}
   - component: {fileID: 2745137672649784981}
   - component: {fileID: -4574015664776280627}
+  - component: {fileID: -4687191867893001420}
+  - component: {fileID: -4269358469398844445}
+  - component: {fileID: -7421381878379535891}
+  - component: {fileID: 6810977831408800008}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -142,7 +146,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe3229304e2138b449d4b5295dff2b6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heldItemObject: {fileID: 0}
 --- !u!114 &-1030673999114088488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -293,6 +296,38 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: de7ad6c7-4ce8-445c-b978-fa63204de750
     m_ActionName: Player/Hold[/Keyboard/f]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8367254804830462505}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnPerformTask
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: f321c65e-5da0-4710-af1b-eff79c22f1ab
+    m_ActionName: Player/PerformTask[/XInputControllerWindows/rightTrigger]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8367254804830462505}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnOpenBook
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 8bf6bee6-387a-4916-8794-4ac847e3cde5
+    m_ActionName: Player/OpenBook[/XInputControllerWindows/leftTrigger]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Controller
   m_DefaultActionMap: Player
@@ -348,6 +383,55 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &-4687191867893001420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7853022101827095678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d6155e833e472d4a95cd50c2bcce252, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-4269358469398844445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7853022101827095678}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eebc5d274695a440923aefbf5df8b1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-7421381878379535891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7853022101827095678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bac0b5a328e3e7d48ac8e6b6e1e97fb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentRoleStrategy: {fileID: -4687191867893001420}
+--- !u!114 &6810977831408800008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7853022101827095678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33bb8a4d770dda142995dc062f49b49c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8292515828515114024
 GameObject:
   m_ObjectHideFlags: 0
