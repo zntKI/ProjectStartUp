@@ -111,7 +111,18 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "Movement",
+                    "name": "",
+                    "id": "bacf1c09-ebea-4212-9657-e0284d8c09e6",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Turning",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "WASD Movement",
                     "id": "a4d22920-cee8-43a2-a224-5174496668ba",
                     "path": "2DVector",
                     "interactions": "",
@@ -318,6 +329,11 @@
             "devices": [
                 {
                     "devicePath": "<Keyboard>",
+                    "isOptional": true,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Mouse>",
                     "isOptional": true,
                     "isOR": false
                 }
