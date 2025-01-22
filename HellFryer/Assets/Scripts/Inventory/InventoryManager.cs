@@ -81,6 +81,7 @@ public class InventoryManager : MonoBehaviour
 
             //Disable gameObject of the item in the scene
             item.gameObject.SetActive(false);
+            item.gameObject.transform.SetParent(null);
         }
         else
         {
