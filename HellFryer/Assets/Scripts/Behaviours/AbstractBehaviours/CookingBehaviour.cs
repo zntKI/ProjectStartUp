@@ -4,5 +4,6 @@ using UnityEngine;
 
 public abstract class CookingBehaviour : MonoBehaviour
 {
-    public abstract void Cook(List<ItemController> ingredients);
+    public abstract void Cook(List<itemType> ingredients);
+    public System.Action<GameObject> onCooked;
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -10,11 +11,22 @@ public class OvenController : AbstractCookingDevice
     private void Start()
     {
         cookingBehaviour = GetComponent<OvenCookingBehaviour>();
+        cookingBehaviour.onCooked += SpawnCookedFood;
     }
+
     private void StartCooking()
     {
-        cookingBehaviour.Cook(GetIngredients());
-        removeIngredientsFromContainers();
+        List<itemType> ingredientList = GetIngredients();
+
+        if (RecipeManager.instance.ContainsRecipe(ingredientList))
+        {
+            cookingBehaviour.Cook(ingredientList);
+            removeIngredientsFromContainers();
+        }
+        else
+        {
+            Debug.Log("Incorrect recipe");
+        }
     }
 
     public override bool placeIngredient(ItemController ingredient)
@@ -60,15 +72,22 @@ public class OvenController : AbstractCookingDevice
         return true;
     }
 
-    List<ItemController> GetIngredients()
+    void SpawnCookedFood(GameObject cookedFood)
     {
-        List<ItemController> ingredients = new List<ItemController>();
+        cookedFood = Instantiate(cookedFood, gameObject.transform);
+        ingredientContainers[0].placeIngedient(cookedFood.GetComponent<ItemController>());
+        cookingBehaviour.onCooked -= SpawnCookedFood;
+    }
+
+    List<itemType> GetIngredients()
+    {
+        List<itemType> ingredients = new List<itemType>();
 
         foreach (IngredientContainer container in ingredientContainers)
         {
             if (!container.isEmpty())
             {
-                ingredients.Add(container.ingredient);
+                ingredients.Add(container.ingredient.item.itemType);
             }
         }
 
