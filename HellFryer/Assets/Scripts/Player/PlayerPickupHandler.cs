@@ -5,6 +5,7 @@ using static UnityEditor.Progress;
 
 public class PlayerPickupHandler : MonoBehaviour
 {
+    PlayerController playerController;
     Collider[] hitColliders;
     public List<GameObject> itemsInRange = new List<GameObject>();
     const float pickupRange = 1.5f;
@@ -46,7 +47,7 @@ public class PlayerPickupHandler : MonoBehaviour
         {
             ItemController item = itemObject.GetComponent<ItemController>();
 
-            InventoryManager.instance.PickupItem(item);
+            InventoryManager.instance.PickupItem(item, playerController.GetSelectedItemSlot());
         }
     }
 
@@ -54,5 +55,10 @@ public class PlayerPickupHandler : MonoBehaviour
     {
         UpdateItemsInRange();
         PickupClosestItem();
+    }
+
+    public void SetPlayerController(PlayerController controller)
+    {
+        playerController = controller;
     }
 }
