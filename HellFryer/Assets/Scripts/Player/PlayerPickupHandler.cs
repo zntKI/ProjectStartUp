@@ -8,13 +8,13 @@ public class PlayerPickupHandler : MonoBehaviour
     PlayerController playerController;
     Collider[] hitColliders;
     public List<GameObject> itemsInRange = new List<GameObject>();
-    const float pickupRange = 1.5f;
+    const float pickupRange = 0.5f;
 
     void UpdateItemsInRange()
     {
         itemsInRange.Clear();
 
-        hitColliders = Physics.OverlapSphere(transform.position, pickupRange);
+        hitColliders = Physics.OverlapSphere(transform.position + transform.forward * pickupRange * 2, pickupRange);
         foreach (Collider hitCollider in hitColliders)
         {
             if (hitCollider.gameObject.tag == "Item")
