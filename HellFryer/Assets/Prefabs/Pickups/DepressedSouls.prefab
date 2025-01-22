@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5907158350943913213
+--- !u!1 &2910134741701638720
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,50 +8,49 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1858027796392776030}
-  - component: {fileID: 4664255349616045569}
-  - component: {fileID: 7376756478583254170}
-  - component: {fileID: 7652863122012959063}
-  - component: {fileID: 7243572163691370103}
-  - component: {fileID: 8121618402480636384}
-  - component: {fileID: 9207090585107550586}
+  - component: {fileID: 916004618684702845}
+  - component: {fileID: 5372008335582130741}
+  - component: {fileID: 4804545278806273561}
+  - component: {fileID: 1837989346697301581}
+  - component: {fileID: 3872382146803490883}
+  - component: {fileID: 2383374253419788808}
   m_Layer: 0
-  m_Name: RiverMonster
-  m_TagString: Untagged
+  m_Name: DepressedSouls
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1858027796392776030
+--- !u!4 &916004618684702845
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5907158350943913213}
+  m_GameObject: {fileID: 2910134741701638720}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.59, y: 1.15, z: 6.48}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 3.53, y: 1.09, z: 0.4}
+  m_LocalScale: {x: 0.66059, y: 0.66059, z: 0.66059}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &4664255349616045569
+--- !u!33 &5372008335582130741
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5907158350943913213}
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &7376756478583254170
+  m_GameObject: {fileID: 2910134741701638720}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &4804545278806273561
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5907158350943913213}
+  m_GameObject: {fileID: 2910134741701638720}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -65,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: d93b4a25e5a9f2040847ea895059b2ce, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -87,13 +86,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &7652863122012959063
-CapsuleCollider:
+--- !u!65 &1837989346697301581
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5907158350943913213}
+  m_GameObject: {fileID: 2910134741701638720}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -105,60 +104,46 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!135 &7243572163691370103
-SphereCollider:
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &3872382146803490883
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5907158350943913213}
-  m_Material: {fileID: 0}
+  m_GameObject: {fileID: 2910134741701638720}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 10
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!114 &8121618402480636384
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &2383374253419788808
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5907158350943913213}
+  m_GameObject: {fileID: 2910134741701638720}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d747e3b03154de48a76cc789c65394b, type: 3}
+  m_Script: {fileID: 11500000, guid: 4be861ace130efd49b986f1199f22b2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pullAmount: 1
-  bloodPrefab: {fileID: 6410804639392518817, guid: 2ce0796c3b38bb74d97b8f1c69e34fbc, type: 3}
-  depressedSoulsPrefab: {fileID: 2910134741701638720, guid: 76b0d602bc96b2d40bb2af9ce49fd231, type: 3}
---- !u!114 &9207090585107550586
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5907158350943913213}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de5253700e32cfd41a2fdcedaa4f7581, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shouldDraw: 1
-  radius: 10
-  color: {r: 1, g: 0, b: 0, a: 1}
-  segments: 50
+  item: {fileID: 11400000, guid: b120e70a156962749a4f00bcabcd72c6, type: 2}

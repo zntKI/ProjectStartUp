@@ -9,6 +9,11 @@ public class RiverMonsterController : MonoBehaviour
     [SerializeField]
     private float pullAmount = 1f;
 
+    [SerializeField]
+    GameObject bloodPrefab;
+    [SerializeField]
+    GameObject depressedSoulsPrefab;
+
     private PlayerController currentPlayer;
 
     void Start()
@@ -27,6 +32,19 @@ public class RiverMonsterController : MonoBehaviour
         }
     }
 
+    public void Die(Vector3 spawnItemDir)
+    {
+        Destroy(gameObject);
+
+        StopPulling(); // Stop pulling the player
+
+        float distance = GetComponent<SphereCollider>().radius;
+        Vector3 spawnPos = transform.position + spawnItemDir * distance;
+
+        Instantiate(bloodPrefab, spawnPos, Quaternion.identity);
+        Instantiate(depressedSoulsPrefab, spawnPos, Quaternion.identity);
+    }
+
     void OnTriggerEnter(Collider other)
     {
         other.transform.TryGetComponent<PlayerController>(out currentPlayer);
@@ -36,8 +54,13 @@ public class RiverMonsterController : MonoBehaviour
     {
         if (other.transform.TryGetComponent<PlayerController>(out currentPlayer))
         {
-            currentPlayer.ShouldPull(Vector3.zero);
-            currentPlayer = null;
+            StopPulling();
         }
+    }
+
+    private void StopPulling()
+    {
+        currentPlayer.ShouldPull(Vector3.zero);
+        currentPlayer = null;
     }
 }
