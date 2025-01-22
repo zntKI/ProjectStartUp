@@ -58,21 +58,29 @@ public class PlayerController : MonoBehaviour
     {
         lookDir = context.ReadValue<Vector2>();
         
+        //Mouse turning
         if(context.control.device.name == "Mouse")
         {
-            Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
+            Ray ray = playerCamera.ScreenPointToRay(new Vector3(lookDir.x, lookDir.y, 0));
             RaycastHit hit;
+
             if (Physics.Raycast(ray, out hit, 100, LayerMask.GetMask("Ground")))
             {
                 lookDir.x = hit.point.x;
                 lookDir.y = hit.point.z;
+
+                transform.LookAt(new Vector3(lookDir.x, transform.position.y, lookDir.y));
             }
+        }
+        else //Controller turning
+        {
+            // TODO: Move elsewhere:
+            if (lookDir.magnitude > 0.1f)
+                transform.LookAt(transform.position + new Vector3(lookDir.x, 0f, lookDir.y));
         }
         
 
-        // TODO: Move elsewhere:
-        if (lookDir.magnitude > 0.1f)
-            transform.LookAt(transform.position + new Vector3(lookDir.x, 0f, lookDir.y));
+        
     }
 
     public void OnPerformTask(CallbackContext context)
