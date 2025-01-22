@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     PlayerMovement mover;
     PlayerPickupHandler pickupHandler;
     PlayerHeldItemHandler heldItemHandler;
+    InventorySelector inventorySelector;
 
     RoleController roleController;
 
@@ -20,7 +21,19 @@ public class PlayerController : MonoBehaviour
     {
         mover = GetComponent<PlayerMovement>();
         pickupHandler = GetComponent<PlayerPickupHandler>();
+        if (pickupHandler != null)
+        {
+            pickupHandler.SetPlayerController(this);
+        }
         heldItemHandler = GetComponent<PlayerHeldItemHandler>();
+        if(heldItemHandler != null)
+        {
+            heldItemHandler.SetPlayerController(this);
+        }
+
+        inventorySelector = GetComponent<InventorySelector>();
+
+
 
         roleController = GetComponent<RoleController>();
     }
@@ -102,5 +115,10 @@ public class PlayerController : MonoBehaviour
     public void ShouldPull(Vector3 pullVector)
     {
         mover.SetModifiableVector(pullVector);
+    }
+
+    public int GetSelectedItemSlot()
+    {
+        return inventorySelector.selectedSlot;
     }
 }

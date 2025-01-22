@@ -6,6 +6,8 @@ using static UnityEditor.Progress;
 
 public class PlayerHeldItemHandler : MonoBehaviour
 {
+    PlayerController playerController;
+
     ItemController heldItem = null;
     float holdDistance = 0.8f;
     float dropDistance = 1.2f;
@@ -45,13 +47,13 @@ public class PlayerHeldItemHandler : MonoBehaviour
             InventoryManager.instance.Remove(heldItem);
 
             //Add the previous item to the inventory
-            InventoryManager.instance.PickupItem(droppedItem);
+            InventoryManager.instance.PickupItem(droppedItem, playerController.GetSelectedItemSlot());
         }
     }
 
     public void HoldSelectedItem(GameObject holder)
     {
-        ItemController selectedItem = InventoryManager.instance.GetSelectedItem();
+        ItemController selectedItem = InventoryManager.instance.GetItem(playerController.GetSelectedItemSlot());
         if (selectedItem != null)
         {
             HoldItem(selectedItem, holder);
@@ -70,5 +72,10 @@ public class PlayerHeldItemHandler : MonoBehaviour
             heldItem.gameObject.tag = "Item";
             heldItem = null;
         }
+    }
+
+    public void SetPlayerController(PlayerController controller)
+    {
+        playerController = controller;
     }
 }
