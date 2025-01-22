@@ -8,12 +8,13 @@ public class HunterRoleStrategy : RoleStrategy
     {
         Debug.Log("Opening book does not do anything yet!!!");
     }
-    
-    // For now only throws a knife
-    // TODO: Abstract all types of equipment into different classes with base abstract class Equipment
-    // and call their methods (Perfrom f.ex.) according to the specific type of equipment it is.
-    public override void PerformTask()
+
+    public override void UpdateEquipmentType()
     {
-        Debug.Log("Throw knife");
+        base.UpdateEquipmentType();
+        if (equipmentController != null)
+        {
+            equipmentController.UpdateEquipmentType();
+        }
     }
 }
