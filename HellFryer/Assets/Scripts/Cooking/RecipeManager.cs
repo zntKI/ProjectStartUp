@@ -49,5 +49,3 @@ public class RecipeManager : MonoBehaviour
         return null;
     }
 }
-
-public enum itemType {Pasta, Beef, Spaghetti}
