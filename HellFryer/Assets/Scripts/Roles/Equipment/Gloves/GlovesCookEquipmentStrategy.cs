@@ -9,8 +9,8 @@ public class GlovesCookEquipmentStrategy : EquipmentStrategy
 
     public override void StartUp()
     {
-        Debug.Log("sdsadsad");
         ovenController = GetOven();
+
         if(ovenController == null)
         {
             return;
