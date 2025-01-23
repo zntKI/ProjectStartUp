@@ -344,7 +344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6915ad1ad8a4947439793b8cb4491b07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recipe: 000000000000000001000000
+  recipe: 050000000500000006000000
   cookedFood: {fileID: 5866375949798517017, guid: ed90a6100eefe6341aca7568f9048b52, type: 3}
 --- !u!1001 &621719944
 PrefabInstance:

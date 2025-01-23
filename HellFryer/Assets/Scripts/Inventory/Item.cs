@@ -9,3 +9,5 @@ public class Item : ScriptableObject
     public string itemName;
     public Sprite icon;
 }
+
+public enum itemType { Knife, Gloves, Pan, Blood, DepressedSoul, Pasta, Beef, Spaghetti }
