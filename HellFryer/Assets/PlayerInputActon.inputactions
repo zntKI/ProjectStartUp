@@ -43,12 +43,12 @@
                 },
                 {
                     "name": "Select left",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "d0744796-80ec-4a6a-a3cd-7bce151c6b1e",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Select right",
@@ -111,7 +111,18 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "Movement",
+                    "name": "",
+                    "id": "bacf1c09-ebea-4212-9657-e0284d8c09e6",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Turning",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "WASD Movement",
                     "id": "a4d22920-cee8-43a2-a224-5174496668ba",
                     "path": "2DVector",
                     "interactions": "",
@@ -288,12 +299,45 @@
                 },
                 {
                     "name": "",
+                    "id": "6cbe3fe8-061f-4e5d-becf-90f0f54a22c6",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "PerformTask",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "d0aedf65-d9f8-49a7-bbb1-4694795a5706",
                     "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "OpenBook",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7887ab6b-922e-44f0-934d-87a6295f95ef",
+                    "path": "<Mouse>/scroll/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Select right",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "174ec124-546c-4ff1-ba93-bb32c0ce26af",
+                    "path": "<Mouse>/scroll/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Select left",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -318,6 +362,16 @@
             "devices": [
                 {
                     "devicePath": "<Keyboard>",
+                    "isOptional": true,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Mouse>",
+                    "isOptional": true,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<VirtualMouse>",
                     "isOptional": true,
                     "isOR": false
                 }

@@ -8,7 +8,7 @@ public class InventorySelector : MonoBehaviour
     public Transform SelectorContent;
 
     List<Transform> inventorySelectorSlots = new List<Transform>();
-    int selectedSlot;
+    public int selectedSlot;
 
     void Start()
     {
@@ -46,7 +46,6 @@ public class InventorySelector : MonoBehaviour
         {
             inventorySelectorSlots[selectedSlot].gameObject.SetActive(false);
             selectedSlot--;
-            InventoryManager.instance.SetSelectedItemSlot(selectedSlot);
             inventorySelectorSlots[selectedSlot].gameObject.SetActive(true);
         }
     }
@@ -56,8 +55,7 @@ public class InventorySelector : MonoBehaviour
         if (selectedSlot < inventorySelectorSlots.Count - 1)
         {
             inventorySelectorSlots[selectedSlot].gameObject.SetActive(false);
-            selectedSlot++;
-            InventoryManager.instance.SetSelectedItemSlot(selectedSlot);
+            selectedSlot++; 
             inventorySelectorSlots[selectedSlot].gameObject.SetActive(true);
         }
     }

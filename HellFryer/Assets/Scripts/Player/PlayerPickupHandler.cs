@@ -5,15 +5,16 @@ using static UnityEditor.Progress;
 
 public class PlayerPickupHandler : MonoBehaviour
 {
-    Collider[] hitColliders;
+    PlayerController playerController;
+    public Collider[] hitColliders;
     public List<GameObject> itemsInRange = new List<GameObject>();
-    const float pickupRange = 1.5f;
+    [SerializeField] float pickupRange = 1f;
 
     void UpdateItemsInRange()
     {
         itemsInRange.Clear();
 
-        hitColliders = Physics.OverlapSphere(transform.position, pickupRange);
+        hitColliders = Physics.OverlapSphere(transform.position + transform.forward, pickupRange);
         foreach (Collider hitCollider in hitColliders)
         {
             if (hitCollider.gameObject.tag == "Item")
@@ -46,7 +47,7 @@ public class PlayerPickupHandler : MonoBehaviour
         {
             ItemController item = itemObject.GetComponent<ItemController>();
 
-            InventoryManager.instance.PickupItem(item);
+            InventoryManager.instance.PickupItem(item, playerController.GetSelectedItemSlot());
         }
     }
 
@@ -54,5 +55,10 @@ public class PlayerPickupHandler : MonoBehaviour
     {
         UpdateItemsInRange();
         PickupClosestItem();
+    }
+
+    public void SetPlayerController(PlayerController controller)
+    {
+        playerController = controller;
     }
 }

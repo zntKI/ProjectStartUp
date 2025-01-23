@@ -24,7 +24,6 @@ public class InventoryManager : MonoBehaviour
 
     public System.Action onPickup;
 
-    public int selectedSlot = 0;
     void Awake()
     {
         if (instance != null && instance != this)
@@ -43,7 +42,7 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public void Add(ItemController item)
+    public void Add(ItemController item, int selectedSlot)
     {
         if (items[selectedSlot] == null)
         {
@@ -73,15 +72,16 @@ public class InventoryManager : MonoBehaviour
         UpdateItems();
     }
 
-    public void PickupItem(ItemController item)
+    public void PickupItem(ItemController item, int selectedSlot)
     {
         if (isThereEmptySlot())
         {
             //Add item to inventory
-            Add(item);
+            Add(item, selectedSlot);
 
             //Disable gameObject of the item in the scene
             item.gameObject.SetActive(false);
+            item.gameObject.transform.SetParent(null);
         }
         else
         {
@@ -98,7 +98,7 @@ public class InventoryManager : MonoBehaviour
             Remove(items[selectedSlot]);
 
             //Add item to inventory
-            Add(item);
+            Add(item, selectedSlot);
 
             //Disable gameObject of the item in the scene
             item.gameObject.SetActive(false);
@@ -136,14 +136,9 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public void SetSelectedItemSlot(int slot)
+    public ItemController GetItem(int itemSlot)
     {
-        selectedSlot = slot;
-    }
-
-    public ItemController GetSelectedItem()
-    {
-        return items[selectedSlot];
+        return items[itemSlot];
     }
 
     bool isThereEmptySlot()

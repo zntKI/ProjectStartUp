@@ -2,22 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.WSA;
 using static UnityEditor.Progress;
 
 public class PlayerHeldItemHandler : MonoBehaviour
 {
-    ItemController heldItem = null;
-    float holdDistance = 0.8f;
-    float dropDistance = 1.2f;
+    [SerializeField]
+    PlayerController playerController;
 
-    void HoldItem(ItemController item, GameObject holder)
+    [SerializeField] ItemController heldItem = null;
+    [SerializeField] float holdDistance = 0.8f;
+    [SerializeField] float dropDistance = 1.2f;
+
+    float placeIngredientRange = 1;
+
+    public void SetPlayerController(PlayerController controller)
+    {
+        playerController = controller;
+    }
+
+    void HoldItem(ItemController item)
     {
         if (heldItem == null)
         {
             GameObject curHeldItemObject = item.gameObject;
-            Vector3 holdPosition = holder.transform.position + holder.transform.forward.normalized * holdDistance;
+            Vector3 holdPosition = gameObject.transform.position + gameObject.transform.forward.normalized * holdDistance;
             curHeldItemObject.transform.position = holdPosition;
-            curHeldItemObject.transform.SetParent(holder.transform);
+            curHeldItemObject.transform.SetParent(gameObject.transform);
             curHeldItemObject.GetComponent<Rigidbody>().isKinematic = true;
             curHeldItemObject.GetComponent<Collider>().isTrigger = true;
             curHeldItemObject.SetActive(true);
@@ -33,9 +44,9 @@ public class PlayerHeldItemHandler : MonoBehaviour
 
             //Hold the new item
             GameObject curHeldItemObject = item.gameObject;
-            Vector3 holdPosition = holder.transform.position + holder.transform.forward.normalized * holdDistance;
+            Vector3 holdPosition = gameObject.transform.position + gameObject.transform.forward.normalized * holdDistance;
             curHeldItemObject.transform.position = holdPosition;
-            curHeldItemObject.transform.SetParent(holder.transform);
+            curHeldItemObject.transform.SetParent(gameObject.transform);
             curHeldItemObject.GetComponent<Rigidbody>().isKinematic = true;
             curHeldItemObject.GetComponent<Collider>().isTrigger = true;
             curHeldItemObject.SetActive(true);
@@ -45,24 +56,24 @@ public class PlayerHeldItemHandler : MonoBehaviour
             InventoryManager.instance.Remove(heldItem);
 
             //Add the previous item to the inventory
-            InventoryManager.instance.PickupItem(droppedItem);
+            InventoryManager.instance.PickupItem(droppedItem, playerController.GetSelectedItemSlot());
         }
     }
 
-    public void HoldSelectedItem(GameObject holder)
+    public void HoldSelectedItem()
     {
-        ItemController selectedItem = InventoryManager.instance.GetSelectedItem();
+        ItemController selectedItem = InventoryManager.instance.GetItem(playerController.GetSelectedItemSlot());
         if (selectedItem != null)
         {
-            HoldItem(selectedItem, holder);
+            HoldItem(selectedItem);
         }
     }
 
-    public void DropHeldItem(GameObject holder)
+    public void DropHeldItem()
     {
         if (heldItem != null)
         {
-            Vector3 dropPosition = holder.transform.position + holder.transform.forward.normalized * dropDistance;
+            Vector3 dropPosition = gameObject.transform.position + gameObject.transform.forward.normalized * dropDistance;
             heldItem.gameObject.transform.position = dropPosition;
             heldItem.gameObject.transform.SetParent(null);
             heldItem.gameObject.GetComponent<Rigidbody>().isKinematic = false;
@@ -70,5 +81,54 @@ public class PlayerHeldItemHandler : MonoBehaviour
             heldItem.gameObject.tag = "Item";
             heldItem = null;
         }
+    }
+
+    public void PlaceIngredient()
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(gameObject.transform.position + gameObject.transform.forward, placeIngredientRange);
+        AbstractCookingDevice cookingDevice = GetClosestCookingDevice(hitColliders);
+
+        if (heldItem != null && heldItem.GetComponent<EquipmentController>() == null)
+        {
+            if (cookingDevice != null && cookingDevice.placeIngredient(heldItem))
+            {
+                heldItem = null;
+            }
+        }
+        else
+        {
+            if(cookingDevice != null)
+            {
+                cookingDevice.placeIngredient(null);
+            }
+        }
+    }
+
+    AbstractCookingDevice GetClosestCookingDevice(Collider[] collidersInRange)
+    {
+        float minDist = float.MaxValue;
+        AbstractCookingDevice closestCookingDevice = null;
+        foreach (Collider collider in collidersInRange)
+        {
+            GameObject curObject = collider.gameObject;
+            if (curObject.tag != "CookingDevice") {
+                continue;
+            }
+
+            AbstractCookingDevice cookingController = curObject.GetComponent<AbstractCookingDevice>();
+
+            if (cookingController == null)
+            {
+                continue;   
+            }
+
+            float dist = Vector3.Distance(transform.position, curObject.transform.position);
+            if (dist < minDist)
+            {
+                closestCookingDevice = cookingController;
+            }
+        }
+
+        return closestCookingDevice;
     }
 }

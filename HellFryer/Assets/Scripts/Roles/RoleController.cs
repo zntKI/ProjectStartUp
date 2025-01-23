@@ -19,10 +19,16 @@ public class RoleController : MonoBehaviour
     {
         roleStrategyController = GetComponent<RoleStrategyController>();
 
-        roleStrategyController.OnStrategyEnabled += CheckChangingRoleStrategy;
+        //roleStrategyController.OnStrategyEnabled += CheckChangingRoleStrategy;
 
         // Retrieves it from the Start so that when SetupSpawning is called it does not do an early return
+        UpdateCurrentRoleStrategy();
+    }
+
+    private void UpdateCurrentRoleStrategy()
+    {
         currentRoleStrategy = roleStrategyController.CurrentRoleStrategy;
+        currentRoleStrategy.UpdateEquipmentType();
     }
 
     public void PerformTask()
@@ -40,11 +46,11 @@ public class RoleController : MonoBehaviour
     /// </summary>
     void CheckChangingRoleStrategy()
     {
-        currentRoleStrategy = roleStrategyController.CurrentRoleStrategy;
+        UpdateCurrentRoleStrategy();
     }
 
     void OnDestroy()
     {
-        roleStrategyController.OnStrategyEnabled -= CheckChangingRoleStrategy;
+        //roleStrategyController.OnStrategyEnabled -= CheckChangingRoleStrategy;
     }
 }

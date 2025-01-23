@@ -8,16 +8,20 @@ using UnityEngine;
 /// </summary>
 public abstract class Strategy : MonoBehaviour
 {
-    public static event Action<Strategy> OnStrategyEnable;
-    public static event Action<Strategy> OnStrategyDisable;
+    //public static event Action<Strategy> OnStrategyEnable;
+    //public static event Action<Strategy> OnStrategyDisable;
+
+    protected virtual void Update()
+    {
+    }
 
     void OnEnable()
     {
-        OnStrategyEnable?.Invoke(this);
+        //OnStrategyEnable?.Invoke(this);
     }
 
     void OnDisable()
     {
-        OnStrategyDisable?.Invoke(this);
+        //OnStrategyDisable?.Invoke(this);
     }
 }

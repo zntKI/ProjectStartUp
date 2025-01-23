@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine;
 
 /// <summary>
-/// Responsible for the change in spawn order strategies
+/// Responsible for the change in role strategies
 /// </summary>
 [RequireComponent(typeof(RoleStrategy))]
 public class RoleStrategyController : StrategyController
@@ -34,13 +34,13 @@ public class RoleStrategyController : StrategyController
         if (newStrategy is not RoleStrategy) // Due to the event being static
             return;
 
-        var newSpawnOrderStrategy = (RoleStrategy)newStrategy;
+        var newRoleStrategy = (RoleStrategy)newStrategy;
 
-        if (newSpawnOrderStrategy == currentRoleStrategy) // Avoid Unity start-up calls
+        if (newRoleStrategy == currentRoleStrategy) // Avoid Unity start-up calls
             return;
 
         previousRoleStrategy = currentRoleStrategy;
-        currentRoleStrategy = newSpawnOrderStrategy;
+        currentRoleStrategy = newRoleStrategy;
 
         // Check if change of strategies happened while spawning takes place
         StrategyEnabled();
@@ -58,7 +58,7 @@ public class RoleStrategyController : StrategyController
         // Prohibit it - only switching strategies should be allowed because the player should have a role at all times
         if (strategy != previousRoleStrategy)
         {
-            Debug.LogWarning("Should not disable all strategies at once - try switching between them instead!");
+            //Debug.LogWarning("Should not disable all strategies at once - try switching between them instead!");
         }
     }
 }

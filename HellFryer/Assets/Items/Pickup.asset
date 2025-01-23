@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62a367110cea096449121faa4fc4bb48, type: 3}
   m_Name: Pickup
   m_EditorClassIdentifier: 
-  id: 1
+  itemType: 5
   itemName: Orange Ball
   icon: {fileID: 21300000, guid: e44113aec738f624d8de96ce55b4206e, type: 3}

@@ -8,13 +8,13 @@ using UnityEngine;
 /// </summary>
 public abstract class StrategyController : MonoBehaviour
 {
-    public event Action OnStrategyEnabled;
-    public event Action OnStrategyDisabled;
+    //public event Action OnStrategyEnabled;
+    //public event Action OnStrategyDisabled;
 
     void Awake()
     {
-        Strategy.OnStrategyEnable += EnableStrategy;
-        Strategy.OnStrategyDisable += DisableStrategy;
+        //Strategy.OnStrategyEnable += EnableStrategy;
+        //Strategy.OnStrategyDisable += DisableStrategy;
     }
 
     public abstract void EnableStrategy(Strategy strategy);
@@ -22,17 +22,17 @@ public abstract class StrategyController : MonoBehaviour
 
     protected void StrategyEnabled()
     {
-        OnStrategyEnabled?.Invoke();
+        //OnStrategyEnabled?.Invoke();
     }
 
     protected void StrategyDisabled()
     {
-        OnStrategyDisabled?.Invoke();
+        //OnStrategyDisabled?.Invoke();
     }
 
     void OnDestroy()
     {
-        Strategy.OnStrategyEnable -= EnableStrategy;
-        Strategy.OnStrategyDisable -= DisableStrategy;
+        //Strategy.OnStrategyEnable -= EnableStrategy;
+        //Strategy.OnStrategyDisable -= DisableStrategy;
     }
 }
