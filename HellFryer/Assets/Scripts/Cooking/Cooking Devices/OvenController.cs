@@ -29,13 +29,13 @@ public class OvenController : AbstractCookingDevice
         }
     }
 
-    public override bool placeIngredient(ItemController ingredient)
+    public override ItemController placeIngredient(ItemController ingredient)
     {
         if (AreAllIngredientsPlaced())
         {
             StartCooking();
 
-            return false;
+            return null;
         }
         else if(ingredient != null)
         {
@@ -43,12 +43,12 @@ public class OvenController : AbstractCookingDevice
             {
                 if (container.placeIngedient(ingredient))
                 {
-                    return true;
+                    return ingredient;
                 }
             }
         }
 
-        return false;
+        return null;
     }
 
     void removeIngredientsFromContainers()
