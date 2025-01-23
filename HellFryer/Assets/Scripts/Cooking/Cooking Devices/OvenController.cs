@@ -31,13 +31,7 @@ public class OvenController : AbstractCookingDevice
 
     public override ItemController placeIngredient(ItemController ingredient)
     {
-        if (AreAllIngredientsPlaced())
-        {
-            StartCooking();
-
-            return null;
-        }
-        else if(ingredient != null)
+        if(!AreAllIngredientsPlaced() && ingredient != null)
         {
             foreach (IngredientContainer container in ingredientContainers)
             {
@@ -49,6 +43,14 @@ public class OvenController : AbstractCookingDevice
         }
 
         return null;
+    }
+
+    public override void CheckCooking()
+    {
+        if (AreAllIngredientsPlaced())
+        {
+            StartCooking();
+        }
     }
 
     void removeIngredientsFromContainers()
@@ -77,7 +79,6 @@ public class OvenController : AbstractCookingDevice
         cookedFood = Instantiate(_cookedFood, gameObject.transform);
         cookedFood.SetActive(false);
         ingredientContainers[1].placeIngedient(cookedFood.GetComponent<ItemController>());
-        cookingBehaviour.onCooked -= MakeCookedFood;
     }
 
     public void TakeOutCookedFood()
@@ -102,5 +103,10 @@ public class OvenController : AbstractCookingDevice
         }
 
         return ingredients;
+    }
+
+    private void OnDestroy()
+    {
+        cookingBehaviour.onCooked -= MakeCookedFood;
     }
 }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3459738660470364757}
   - component: {fileID: 7120617260402059298}
   - component: {fileID: 3976281650234718008}
+  - component: {fileID: 5658890144052635621}
   m_Layer: 0
   m_Name: RecipeManager
   m_TagString: Untagged
@@ -60,3 +61,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   recipe: 050000000500000006000000
   cookedFood: {fileID: 5866375949798517017, guid: ed90a6100eefe6341aca7568f9048b52, type: 3}
+--- !u!114 &5658890144052635621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6503524168040982755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6915ad1ad8a4947439793b8cb4491b07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recipe: 050000000600000006000000
+  cookedFood: {fileID: 5866375949798517017, guid: bed2865876fefcb479ea0c282ad72643, type: 3}
