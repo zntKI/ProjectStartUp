@@ -53,7 +53,12 @@ public class PlayerController : MonoBehaviour
 
     public void OnDrop(CallbackContext context)
     {
-        if (context.performed)
+        if (!context.performed)
+        {
+            return;
+        }
+
+        if (heldItemHandler.PlaceIngredient() == null)
         {
             heldItemHandler.DropHeldItem();
         }
@@ -61,15 +66,10 @@ public class PlayerController : MonoBehaviour
 
     public void OnHold(CallbackContext context)
     {
-        if (!context.performed)
-        {
-            return;
-        }
-
-        if(heldItemHandler.PlaceIngredient() == null)
+        if (context.performed)
         {
             heldItemHandler.HoldSelectedItem();
-        }
+        }   
     }
 
     public void OnTurn(CallbackContext context)
