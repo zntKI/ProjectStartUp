@@ -34,9 +34,9 @@ public class RiverMonsterController : MonoBehaviour
 
     public void Die(Vector3 spawnItemDir)
     {
-        Destroy(gameObject);
-
         StopPulling(); // Stop pulling the player
+        
+        Destroy(gameObject);
 
         float distance = GetComponent<SphereCollider>().radius;
         Vector3 spawnPos = transform.position + spawnItemDir * distance;
@@ -47,12 +47,21 @@ public class RiverMonsterController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        other.transform.TryGetComponent<PlayerController>(out currentPlayer);
+        PlayerController player;
+        other.transform.TryGetComponent<PlayerController>(out player);
+
+        if (player != null)
+        {
+            currentPlayer = player;
+        }
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (other.transform.TryGetComponent<PlayerController>(out currentPlayer))
+        PlayerController player;
+        other.transform.TryGetComponent<PlayerController>(out player);
+
+        if (player != null)
         {
             StopPulling();
         }
@@ -60,6 +69,11 @@ public class RiverMonsterController : MonoBehaviour
 
     private void StopPulling()
     {
+        //if(currentPlayer == null)
+        //{
+        //    return;
+        //}
+
         currentPlayer.ShouldPull(Vector3.zero);
         currentPlayer = null;
     }

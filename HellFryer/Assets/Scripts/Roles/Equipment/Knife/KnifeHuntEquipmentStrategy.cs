@@ -139,6 +139,17 @@ public class KnifeHuntEquipmentStrategy : EquipmentStrategy
             SwitchThrowState(KnifeThrowState.None);
         }
         else if (other.transform.TryGetComponent<RiverMonsterController>(out RiverMonsterController riverMonster)
+            && !other.isTrigger && throwState != KnifeThrowState.None)
+        {
+            Vector3 dirV = (playerTransform.position - riverMonster.transform.position).normalized;
+            riverMonster.Die(dirV);
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (throwState == KnifeThrowState.Outgoing
+            && other.transform.TryGetComponent<RiverMonsterController>(out RiverMonsterController riverMonster)
             && !other.isTrigger)
         {
             Vector3 dirV = (playerTransform.position - riverMonster.transform.position).normalized;
