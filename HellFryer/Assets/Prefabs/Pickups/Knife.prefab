@@ -176,7 +176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialThrowForce: 10
-  throwForceModifier: 0.1
+  throwForceModifier: 20
 --- !u!114 &3158024541608944975
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -15,7 +15,7 @@ public class KnifeHuntEquipmentStrategy : EquipmentStrategy
     [SerializeField]
     private float initialThrowForce = 2f;
     [SerializeField, Tooltip("How much throw force should be modified after each time throw force is applied")]
-    private float throwForceModifier = 0.01f;
+    private float throwForceModifier = 20;
 
     private Vector3 localPosOffsetToParent;
 
@@ -113,7 +113,7 @@ public class KnifeHuntEquipmentStrategy : EquipmentStrategy
         Vector3 vectorBetweenPlayerAndKnife = transform.position - playerTransform.position;
         transform.LookAt(transform.position + vectorBetweenPlayerAndKnife); // Look at the opposite direction to the player
 
-        currentMoveForce -= throwForceModifier;
+        currentMoveForce -= throwForceModifier * Time.deltaTime;
         if (currentMoveForce <= 0f)
         {
             SwitchThrowState(KnifeThrowState.Incoming);
@@ -128,7 +128,7 @@ public class KnifeHuntEquipmentStrategy : EquipmentStrategy
 
         transform.position += moveDir * currentMoveForce * Time.deltaTime;
 
-        currentMoveForce += throwForceModifier;
+        currentMoveForce += throwForceModifier * Time.deltaTime;
     }
 
     void OnTriggerEnter(Collider other)

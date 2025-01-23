@@ -1270,6 +1270,10 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 116
       objectReference: {fileID: 0}
+    - target: {fileID: 2170033991766217522, guid: d72abfef033e34a4ca2ecd7a2f2177b0, type: 3}
+      propertyPath: pickupRange
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2423982867567543960, guid: d72abfef033e34a4ca2ecd7a2f2177b0, type: 3}
       propertyPath: m_LocalPosition.y
       value: 5.54
@@ -3201,6 +3205,10 @@ PrefabInstance:
     - target: {fileID: 305858215165095069, guid: 0f670533564963d47a160e2d958df3a8, type: 3}
       propertyPath: m_Name
       value: Knife
+      objectReference: {fileID: 0}
+    - target: {fileID: 3586263350485115109, guid: 0f670533564963d47a160e2d958df3a8, type: 3}
+      propertyPath: throwForceModifier
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4974373105884263311, guid: 0f670533564963d47a160e2d958df3a8, type: 3}
       propertyPath: m_LocalPosition.x

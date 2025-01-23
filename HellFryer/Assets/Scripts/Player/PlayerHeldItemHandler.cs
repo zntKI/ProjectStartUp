@@ -7,13 +7,11 @@ using static UnityEditor.Progress;
 
 public class PlayerHeldItemHandler : MonoBehaviour
 {
-    ItemController heldItem = null;
-
     [SerializeField]
     PlayerController playerController;
 
     [SerializeField] ItemController heldItem = null;
-    float holdDistance = 0.8f;
+    [SerializeField] float holdDistance = 0.8f;
     [SerializeField]
     float dropDistance = 1.2f;
 
