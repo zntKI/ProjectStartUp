@@ -1096,10 +1096,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: RecipeManager
       objectReference: {fileID: 0}
-    - target: {fileID: 6503524168040982755, guid: c90212a581160324e904bd373bd09f7c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1337,9 +1333,9 @@ SceneRoots:
   - {fileID: 9021829614466205049}
   - {fileID: 621719944}
   - {fileID: 7503640397574304661}
-  - {fileID: 3639572795844062784}
   - {fileID: 875006275}
   - {fileID: 1447824367}
   - {fileID: 56275610}
   - {fileID: 458369805}
   - {fileID: 1124531159}
+  - {fileID: 3639572795844062784}

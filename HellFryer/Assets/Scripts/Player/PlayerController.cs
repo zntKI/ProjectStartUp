@@ -113,6 +113,15 @@ public class PlayerController : MonoBehaviour
         if (context.performed)
         {
             roleController.PerformTask();
+
+            Collider[] hitColliders = Physics.OverlapSphere(gameObject.transform.position + gameObject.transform.forward, 1.1f);
+            AbstractCookingDevice cookingDevice = heldItemHandler.GetClosestCookingDevice(transform, hitColliders);
+            if (cookingDevice == null)
+            {
+                return;
+            }
+
+            cookingDevice.CheckCooking();
         }
     }
 
@@ -133,4 +142,6 @@ public class PlayerController : MonoBehaviour
     {
         return inventorySelector.selectedSlot;
     }
+
+    
 }

@@ -14,7 +14,7 @@ public class PlayerHeldItemHandler : MonoBehaviour
     [SerializeField] float holdDistance = 0.8f;
     [SerializeField] float dropDistance = 1.2f;
 
-    float placeIngredientRange = 1;
+    float placeIngredientRange = 1.1f;
 
     public void SetPlayerController(PlayerController controller)
     {
@@ -88,7 +88,7 @@ public class PlayerHeldItemHandler : MonoBehaviour
         ItemController placedIngredient = null;
 
         Collider[] hitColliders = Physics.OverlapSphere(gameObject.transform.position + gameObject.transform.forward, placeIngredientRange);
-        AbstractCookingDevice cookingDevice = GetClosestCookingDevice(hitColliders);
+        AbstractCookingDevice cookingDevice = GetClosestCookingDevice(transform, hitColliders);
 
         if (IsHoldingIngredient())
         {
@@ -114,7 +114,7 @@ public class PlayerHeldItemHandler : MonoBehaviour
         return heldItem != null && heldItem.GetComponent<EquipmentController>() == null;
     }
 
-    AbstractCookingDevice GetClosestCookingDevice(Collider[] collidersInRange)
+    public AbstractCookingDevice GetClosestCookingDevice(Transform player, Collider[] collidersInRange)
     {
         float minDist = float.MaxValue;
         AbstractCookingDevice closestCookingDevice = null;
@@ -132,7 +132,7 @@ public class PlayerHeldItemHandler : MonoBehaviour
                 continue;   
             }
 
-            float dist = Vector3.Distance(transform.position, curObject.transform.position);
+            float dist = Vector3.Distance(player.position, curObject.transform.position);
             if (dist < minDist)
             {
                 closestCookingDevice = cookingController;

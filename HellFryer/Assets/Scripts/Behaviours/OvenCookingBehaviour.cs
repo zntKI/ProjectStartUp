@@ -16,6 +16,10 @@ public class OvenCookingBehaviour : CookingBehaviour
     {
         yield return new WaitForSeconds(cookingTime);
 
-        onCooked.Invoke(RecipeManager.instance.GetCookedFood(ingredients));
+        if(onCooked != null)
+        {
+            onCooked.Invoke(RecipeManager.instance.GetCookedFood(ingredients));
+
+        }
     }
 }

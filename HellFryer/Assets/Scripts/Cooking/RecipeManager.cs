@@ -40,12 +40,19 @@ public class RecipeManager : MonoBehaviour
     {
         foreach (IngredientRecipe curRecipe in recipes)
         {
-            if (curRecipe.recipe.All(recipe.Contains))
+            if(CompareRecipes(curRecipe.recipe, recipe))
             {
                 return curRecipe.cookedFood;
             }
         }
 
         return null;
+    }
+
+    bool CompareRecipes(List<itemType> listA, List<itemType> listB)
+    {
+        listA = listA.OrderBy(x => x).ToList();
+
+        return listA.SequenceEqual(listB.OrderBy(x => x).ToList());
     }
 }

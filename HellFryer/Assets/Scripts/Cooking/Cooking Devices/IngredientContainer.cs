@@ -29,13 +29,14 @@ public class IngredientContainer : MonoBehaviour
 
     private void Update()
     {
-        if(ingredient == null)
+        if (ingredient == null)
         {
             return;
         }
 
-        if(ingredient.gameObject.transform.parent == null)
+        if (ingredient.gameObject.transform.parent == null)
         {
+            ingredient = null;
             return;
         }
 
@@ -44,16 +45,6 @@ public class IngredientContainer : MonoBehaviour
             ingredient = null;
         }
     }
-
-    //public void removeIngredient()
-    //{
-    //    if (ingredient != null) {
-    //        ingredient.gameObject.GetComponent<Rigidbody>().isKinematic = false;
-    //        Vector3 itemHeight = new Vector3(0, 1.2f, 0);
-    //        ingredient.gameObject.transform.position = gameObject.transform.position + itemHeight;
-    //        ingredient = null;
-    //    }
-    //}
 
     public void removeIngredient()
     {
