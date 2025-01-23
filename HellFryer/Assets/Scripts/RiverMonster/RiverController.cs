@@ -32,13 +32,18 @@ public class RiverController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        other.transform.TryGetComponent<PlayerController>(out currentPlayer);
+        PlayerController player;
+        if (other.transform.TryGetComponent<PlayerController>(out player))
+        {
+            currentPlayer = player;
+        }
     }
 
     void OnTriggerExit(Collider other)
     {
         if (other.transform.TryGetComponent<PlayerController>(out currentPlayer))
         {
+            currentPlayer = null;
             timeCounter = 0;
         }
     }

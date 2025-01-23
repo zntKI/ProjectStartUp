@@ -48,7 +48,7 @@ public class KnifeHuntEquipmentStrategy : EquipmentStrategy
                     transform.rotation = playerTransform.rotation;
                     transform.localPosition = localPosOffsetToParent;
 
-                    gameObject.GetComponent<BoxCollider>().isTrigger = false; // Set back to normal
+                    //gameObject.GetComponent<BoxCollider>().isTrigger = false; // Set back to normal
                 }
 
                 break;
@@ -56,7 +56,8 @@ public class KnifeHuntEquipmentStrategy : EquipmentStrategy
 
                 if (throwState == KnifeThrowState.None)
                 {
-                    gameObject.GetComponent<BoxCollider>().isTrigger = true; // Set to trigger for enemy and player collision detection
+                    // Comment out because when holding item, item is set to trigger
+                    //gameObject.GetComponent<BoxCollider>().isTrigger = true; // Set to trigger for enemy and player collision detection
 
                     localPosOffsetToParent = transform.localPosition;
                     playerTransform = transform.parent;
@@ -137,23 +138,6 @@ public class KnifeHuntEquipmentStrategy : EquipmentStrategy
             && throwState == KnifeThrowState.Incoming)
         {
             SwitchThrowState(KnifeThrowState.None);
-        }
-        else if (other.transform.TryGetComponent<RiverMonsterController>(out RiverMonsterController riverMonster)
-            && !other.isTrigger && throwState != KnifeThrowState.None)
-        {
-            Vector3 dirV = (playerTransform.position - riverMonster.transform.position).normalized;
-            riverMonster.Die(dirV);
-        }
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (throwState == KnifeThrowState.Outgoing
-            && other.transform.TryGetComponent<RiverMonsterController>(out RiverMonsterController riverMonster)
-            && !other.isTrigger)
-        {
-            Vector3 dirV = (playerTransform.position - riverMonster.transform.position).normalized;
-            riverMonster.Die(dirV);
         }
     }
 }
