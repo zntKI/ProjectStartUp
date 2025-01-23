@@ -83,15 +83,18 @@ public class PlayerHeldItemHandler : MonoBehaviour
         }
     }
 
-    public void PlaceIngredient()
+    public ItemController PlaceIngredient()
     {
+        ItemController placedIngredient = null;
+
         Collider[] hitColliders = Physics.OverlapSphere(gameObject.transform.position + gameObject.transform.forward, placeIngredientRange);
         AbstractCookingDevice cookingDevice = GetClosestCookingDevice(hitColliders);
 
-        if (heldItem != null && heldItem.GetComponent<EquipmentController>() == null)
+        if (IsHoldingIngredient())
         {
-            if (cookingDevice != null && cookingDevice.placeIngredient(heldItem))
+            if (cookingDevice != null && cookingDevice.placeIngredient(heldItem) != null)
             {
+                placedIngredient = heldItem;
                 heldItem = null;
             }
         }
@@ -102,6 +105,13 @@ public class PlayerHeldItemHandler : MonoBehaviour
                 cookingDevice.placeIngredient(null);
             }
         }
+
+        return placedIngredient;
+    }
+
+    bool IsHoldingIngredient()
+    {
+        return heldItem != null && heldItem.GetComponent<EquipmentController>() == null;
     }
 
     AbstractCookingDevice GetClosestCookingDevice(Collider[] collidersInRange)
