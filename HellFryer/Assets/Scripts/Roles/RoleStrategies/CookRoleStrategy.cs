@@ -9,8 +9,12 @@ public class CookRoleStrategy : RoleStrategy
         Debug.Log("Opening book does not do anything yet!!!");
     }
 
-    public override void PerformTask()
+    public override void UpdateEquipmentType()
     {
-        throw new System.NotImplementedException();
+        base.UpdateEquipmentType();
+        if (equipmentController != null)
+        {
+            equipmentController.UpdateEquipmentType();
+        }
     }
 }

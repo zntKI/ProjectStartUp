@@ -22,6 +22,6 @@ public class KnifeController : MonoBehaviour
         // Incoming direction: constantly update the player's position and increase the directional force accordingly:
         //      distanceToPlayer/distanceToPlayerFromTargetReach = initialDirForce/currentDirForce?
 
-        
+        Debug.Log("Launched knife");
     }
 }
