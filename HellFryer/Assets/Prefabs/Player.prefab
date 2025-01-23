@@ -134,7 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitColliders: []
   itemsInRange: []
-  pickupRange: 1
+  pickupRange: 1.2
 --- !u!114 &-1457961506043043749
 MonoBehaviour:
   m_ObjectHideFlags: 0

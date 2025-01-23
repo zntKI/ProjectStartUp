@@ -11,7 +11,7 @@ public class OvenController : AbstractCookingDevice
     private void Start()
     {
         cookingBehaviour = GetComponent<OvenCookingBehaviour>();
-        cookingBehaviour.onCooked += SpawnCookedFood;
+        cookingBehaviour.onCooked += MakeCookedFood;
     }
 
     private void StartCooking()
@@ -72,11 +72,21 @@ public class OvenController : AbstractCookingDevice
         return true;
     }
 
-    void SpawnCookedFood(GameObject cookedFood)
+    void MakeCookedFood(GameObject _cookedFood)
     {
-        cookedFood = Instantiate(cookedFood, gameObject.transform);
-        ingredientContainers[0].placeIngedient(cookedFood.GetComponent<ItemController>());
-        cookingBehaviour.onCooked -= SpawnCookedFood;
+        cookedFood = Instantiate(_cookedFood, gameObject.transform);
+        cookedFood.SetActive(false);
+        ingredientContainers[1].placeIngedient(cookedFood.GetComponent<ItemController>());
+        cookingBehaviour.onCooked -= MakeCookedFood;
+    }
+
+    public void TakeOutCookedFood()
+    {
+        if(cookedFood != null)
+        {
+            cookedFood.SetActive(true);
+            cookedFood = null;
+        }
     }
 
     List<itemType> GetIngredients()
