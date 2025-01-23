@@ -17,7 +17,7 @@ public class EquipmentController : MonoBehaviour
     {
         equipmentStrategyController = GetComponent<EquipmentStrategyController>();
 
-        equipmentStrategyController.OnStrategyEnabled += CheckChangingRoleStrategy;
+        //equipmentStrategyController.OnStrategyEnabled += CheckChangingRoleStrategy;
 
         // Retrieves it from the Start so that when SetupSpawning is called it does not do an early return
         currentEquipmentStrategy = equipmentStrategyController.CurrentEquipmentStrategy;
@@ -43,6 +43,6 @@ public class EquipmentController : MonoBehaviour
 
     void OnDestroy()
     {
-        equipmentStrategyController.OnStrategyEnabled -= CheckChangingRoleStrategy;
+        //equipmentStrategyController.OnStrategyEnabled -= CheckChangingRoleStrategy;
     }
 }

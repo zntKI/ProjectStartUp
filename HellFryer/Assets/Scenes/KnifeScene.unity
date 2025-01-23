@@ -1250,10 +1250,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 431507801404645204, guid: d72abfef033e34a4ca2ecd7a2f2177b0, type: 3}
-      propertyPath: m_DefaultControlScheme
-      value: Controller
-      objectReference: {fileID: 0}
     - target: {fileID: 970349251378524218, guid: d72abfef033e34a4ca2ecd7a2f2177b0, type: 3}
       propertyPath: SelectorContent
       value: 
@@ -1262,18 +1258,6 @@ PrefabInstance:
       propertyPath: InventorySelectorConent
       value: 
       objectReference: {fileID: 1035626376}
-    - target: {fileID: 1657702111174270905, guid: d72abfef033e34a4ca2ecd7a2f2177b0, type: 3}
-      propertyPath: holdDistance
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1888538840453365338, guid: d72abfef033e34a4ca2ecd7a2f2177b0, type: 3}
-      propertyPath: m_Constraints
-      value: 116
-      objectReference: {fileID: 0}
-    - target: {fileID: 2170033991766217522, guid: d72abfef033e34a4ca2ecd7a2f2177b0, type: 3}
-      propertyPath: pickupRange
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2423982867567543960, guid: d72abfef033e34a4ca2ecd7a2f2177b0, type: 3}
       propertyPath: m_LocalPosition.y
       value: 5.54
@@ -1320,10 +1304,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3054759055616197221, guid: d72abfef033e34a4ca2ecd7a2f2177b0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4036669896413959169, guid: d72abfef033e34a4ca2ecd7a2f2177b0, type: 3}
-      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5466216349235533903, guid: d72abfef033e34a4ca2ecd7a2f2177b0, type: 3}

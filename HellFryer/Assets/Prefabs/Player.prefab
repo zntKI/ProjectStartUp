@@ -149,7 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerController: {fileID: 0}
   heldItem: {fileID: 0}
-  holdDistance: 0.8
+  holdDistance: 1
   dropDistance: 1.2
 --- !u!114 &-1030673999114088488
 MonoBehaviour:
@@ -358,7 +358,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7853022101827095678}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8eebc5d274695a440923aefbf5df8b1d, type: 3}
   m_Name: 
