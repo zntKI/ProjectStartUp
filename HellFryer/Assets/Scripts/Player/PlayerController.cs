@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
     {
         if (context.performed)
         {
-            heldItemHandler.DropHeldItem(gameObject);
+            heldItemHandler.DropHeldItem();
         }
     }
 
@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour
     {
         if (context.performed)
         {
-            heldItemHandler.HoldSelectedItem(gameObject);
+            heldItemHandler.HoldSelectedItem();
         }
     }
 
@@ -91,9 +91,16 @@ public class PlayerController : MonoBehaviour
             if (lookDir.magnitude > 0.1f)
                 transform.LookAt(transform.position + new Vector3(lookDir.x, 0f, lookDir.y));
         }
-        
+    }
 
-        
+    public void OnSelectLeft(CallbackContext context)
+    {
+        inventorySelector.OnSelectLeft(context);
+    }
+
+    public void OnSelectRight(CallbackContext context)
+    {
+        inventorySelector.OnSelectRight(context);
     }
 
     public void OnPerformTask(CallbackContext context)
@@ -101,6 +108,7 @@ public class PlayerController : MonoBehaviour
         if (context.performed)
         {
             roleController.PerformTask();
+            heldItemHandler.PlaceIngredient();
         }
     }
 

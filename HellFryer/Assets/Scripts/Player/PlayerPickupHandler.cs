@@ -6,9 +6,9 @@ using static UnityEditor.Progress;
 public class PlayerPickupHandler : MonoBehaviour
 {
     PlayerController playerController;
-    Collider[] hitColliders;
+    public Collider[] hitColliders;
     public List<GameObject> itemsInRange = new List<GameObject>();
-    const float pickupRange = 0.5f;
+    [SerializeField] float pickupRange = 0.5f;
 
     void UpdateItemsInRange()
     {

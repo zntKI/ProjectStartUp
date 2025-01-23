@@ -55,7 +55,7 @@ public class InventorySelector : MonoBehaviour
         if (selectedSlot < inventorySelectorSlots.Count - 1)
         {
             inventorySelectorSlots[selectedSlot].gameObject.SetActive(false);
-            selectedSlot++;
+            selectedSlot++; 
             inventorySelectorSlots[selectedSlot].gameObject.SetActive(true);
         }
     }
