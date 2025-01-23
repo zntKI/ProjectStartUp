@@ -12,10 +12,9 @@ public class PlayerHeldItemHandler : MonoBehaviour
 
     [SerializeField] ItemController heldItem = null;
     [SerializeField] float holdDistance = 0.8f;
-    [SerializeField]
-    float dropDistance = 1.2f;
+    [SerializeField] float dropDistance = 1.2f;
 
-    float placeIngredientRange = 0.5f;
+    float placeIngredientRange = 1;
 
     public void SetPlayerController(PlayerController controller)
     {
@@ -86,12 +85,11 @@ public class PlayerHeldItemHandler : MonoBehaviour
 
     public void PlaceIngredient()
     {
-        Collider[] hitColliders = Physics.OverlapSphere(gameObject.transform.position + gameObject.transform.forward * placeIngredientRange * 2, placeIngredientRange);
+        Collider[] hitColliders = Physics.OverlapSphere(gameObject.transform.position + gameObject.transform.forward, placeIngredientRange);
         AbstractCookingDevice cookingDevice = GetClosestCookingDevice(hitColliders);
 
-        if (heldItem != null)
+        if (heldItem != null && heldItem.GetComponent<EquipmentController>() == null)
         {
-            //Check if heldItem is an ingredient
             if (cookingDevice != null && cookingDevice.placeIngredient(heldItem))
             {
                 heldItem = null;
@@ -132,31 +130,5 @@ public class PlayerHeldItemHandler : MonoBehaviour
         }
 
         return closestCookingDevice;
-    }
-
-    public void RemoveParentFromItem(GameObject parent, ItemController heldItem)
-    {
-        if (heldItem != null)
-        {
-            Vector3 dropPosition = parent.transform.position + parent.transform.forward.normalized * dropDistance;
-            heldItem.gameObject.transform.position = dropPosition;
-            heldItem.gameObject.transform.SetParent(null);
-            heldItem.gameObject.GetComponent<Rigidbody>().isKinematic = false;
-            heldItem.gameObject.GetComponent<Collider>().isTrigger = false;
-            heldItem.gameObject.tag = "Item";
-            heldItem = null;
-        }
-    }
-
-    public void SetParentToItem(GameObject parent, ItemController item)
-    {
-        GameObject itemObject = item.gameObject;
-        Vector3 holdPosition = parent.transform.position + parent.transform.forward.normalized * holdDistance;
-        itemObject.transform.position = holdPosition;
-        itemObject.transform.SetParent(parent.transform);
-        itemObject.GetComponent<Rigidbody>().isKinematic = true;
-        itemObject.GetComponent<Collider>().isTrigger = true;
-        itemObject.SetActive(true);
-        itemObject.tag = "Untagged";
     }
 }

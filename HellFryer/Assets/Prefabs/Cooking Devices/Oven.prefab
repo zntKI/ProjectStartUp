@@ -311,12 +311,9 @@ GameObject:
   - component: {fileID: 3663304129177563897}
   - component: {fileID: 1796695143706758888}
   - component: {fileID: 4990874768577862147}
-  - component: {fileID: 2459066895692119602}
-  - component: {fileID: 4650153432836536568}
-  - component: {fileID: 8875184318064135012}
   m_Layer: 0
   m_Name: Model
-  m_TagString: CookingDevice
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -390,55 +387,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2459066895692119602
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5707057774083855248}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4650153432836536568
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5707057774083855248}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1685fe5cfccf0ce4f9fd41787000481e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ingredientContainers:
-  - {fileID: 3186124652961520077}
-  - {fileID: 945508185072454379}
-  - {fileID: 5103571449751120248}
---- !u!114 &8875184318064135012
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5707057774083855248}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d164815e06d17d4692658f53f4456bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5981667063219236744
 GameObject:
   m_ObjectHideFlags: 0
@@ -703,9 +651,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6419063922142903116}
+  - component: {fileID: 7632074608210869878}
+  - component: {fileID: 3435874501795305067}
+  - component: {fileID: 4034584945864175946}
   m_Layer: 0
   m_Name: Oven
-  m_TagString: Untagged
+  m_TagString: CookingDevice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -729,3 +680,52 @@ Transform:
   - {fileID: 3663304129177563897}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7632074608210869878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9132940912614459102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d164815e06d17d4692658f53f4456bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3435874501795305067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9132940912614459102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1685fe5cfccf0ce4f9fd41787000481e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ingredientContainers:
+  - {fileID: 3186124652961520077}
+  - {fileID: 945508185072454379}
+  - {fileID: 5103571449751120248}
+--- !u!65 &4034584945864175946
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9132940912614459102}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
