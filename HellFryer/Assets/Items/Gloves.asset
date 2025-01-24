@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 1
   itemName: Gloves
-  icon: {fileID: 21300000, guid: 817e6e9cb6b7fd342903db9eb0aab997, type: 3}
+  icon: {fileID: 21300000, guid: 0beadff4623ab264eaa3adfe15ef49aa, type: 3}
