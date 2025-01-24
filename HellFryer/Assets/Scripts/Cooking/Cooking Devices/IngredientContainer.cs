@@ -19,6 +19,8 @@ public class IngredientContainer : MonoBehaviour
             ingredient.gameObject.tag = "Item";
             ingredient.gameObject.transform.position = gameObject.transform.position + itemHeight;
 
+            ActivateHostileIngredient();
+
             return true;
         }
         else
@@ -36,12 +38,14 @@ public class IngredientContainer : MonoBehaviour
 
         if (ingredient.gameObject.transform.parent == null)
         {
+            DeactivateHostileIngredient();
             ingredient = null;
             return;
         }
 
         if (ingredient.gameObject.transform.parent != gameObject.transform)
         {
+            DeactivateHostileIngredient();
             ingredient = null;
         }
     }
@@ -49,6 +53,7 @@ public class IngredientContainer : MonoBehaviour
     public void removeIngredient()
     {
         if (ingredient != null) {
+            DeactivateHostileIngredient();
             Destroy(ingredient.gameObject);
             ingredient = null;
         }
@@ -57,5 +62,23 @@ public class IngredientContainer : MonoBehaviour
     public bool isEmpty()
     {
         return ingredient == null;
+    }
+
+    void ActivateHostileIngredient()
+    {
+        HostileItemController hostileItemController = ingredient.gameObject.GetComponent<HostileItemController>();
+        if (hostileItemController != null)
+        {
+            hostileItemController.Activate();
+        }
+    }
+
+    void DeactivateHostileIngredient()
+    {
+        HostileItemController hostileItemController = ingredient.gameObject.GetComponent<HostileItemController>();
+        if (hostileItemController != null)
+        {
+            hostileItemController.Deactivate();
+        }
     }
 }
