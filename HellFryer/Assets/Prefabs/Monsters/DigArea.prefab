@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7010172412128249613}
   - component: {fileID: 384827525674545262}
   - component: {fileID: 6335317029285734682}
-  - component: {fileID: 1337834817077522257}
+  - component: {fileID: -8434125720225098495}
   m_Layer: 0
   m_Name: DigArea
   m_TagString: Untagged
@@ -129,7 +129,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 9.999997, y: 2, z: 9.999997}
   m_Center: {x: 0, y: 0.99, z: 0}
---- !u!114 &1337834817077522257
+--- !u!114 &-8434125720225098495
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
