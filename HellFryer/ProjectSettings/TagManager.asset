@@ -7,6 +7,8 @@ TagManager:
   - Item
   - CookingDevice
   - ZombieArm
+  - Projectile
+  - WingCreature
   layers:
   - Default
   - TransparentFX
