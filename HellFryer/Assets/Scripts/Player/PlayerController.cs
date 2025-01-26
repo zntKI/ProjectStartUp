@@ -8,7 +8,10 @@ using static UnityEngine.InputSystem.InputAction;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] Camera playerCamera;
+
     PlayerMovement mover;
+    bool isHeldByZombie = false;
+
     PlayerPickupHandler pickupHandler;
     PlayerHeldItemHandler heldItemHandler;
     InventorySelector inventorySelector;
@@ -26,7 +29,7 @@ public class PlayerController : MonoBehaviour
             pickupHandler.SetPlayerController(this);
         }
         heldItemHandler = GetComponent<PlayerHeldItemHandler>();
-        if(heldItemHandler != null)
+        if (heldItemHandler != null)
         {
             heldItemHandler.SetPlayerController(this);
         }
@@ -38,9 +41,21 @@ public class PlayerController : MonoBehaviour
         roleController = GetComponent<RoleController>();
     }
 
+    public void DisableMovement()
+    {
+        isHeldByZombie = true;
+        mover.ResetInputVector();
+    }
+
+    public void EnableMovement()
+    { 
+        isHeldByZombie = false;
+    }
+
     public void OnMove(CallbackContext context)
     {
-        mover.SetInputVector(context.ReadValue<Vector2>());
+        if (!isHeldByZombie)
+            mover.SetInputVector(context.ReadValue<Vector2>());
     }
 
     public void OnPickUp(CallbackContext context)
@@ -69,15 +84,15 @@ public class PlayerController : MonoBehaviour
         if (context.performed)
         {
             heldItemHandler.HoldSelectedItem();
-        }   
+        }
     }
 
     public void OnTurn(CallbackContext context)
     {
         lookDir = context.ReadValue<Vector2>();
-        
+
         //Mouse turning
-        if(context.control.device.name == "Mouse")
+        if (context.control.device.name == "Mouse")
         {
             Ray ray = playerCamera.ScreenPointToRay(new Vector3(lookDir.x, lookDir.y, 0));
             RaycastHit hit;
@@ -143,5 +158,5 @@ public class PlayerController : MonoBehaviour
         return inventorySelector.selectedSlot;
     }
 
-    
+
 }
