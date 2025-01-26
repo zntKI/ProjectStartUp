@@ -11,6 +11,26 @@ public class DigAreaController : MonoBehaviour
     [SerializeField]
     private GameObject zomnbiePrefab;
 
+    [SerializeField]
+    private float timeBetweenItemDestroy;
+    private float timeCounter;
+
+    // Keep a reference to the spawned zombie to check if killed by player
+    private GameObject spawnedZombie;
+
+    void Update()
+    {
+        if (spawnedZombie != null)
+        {
+            timeCounter += Time.deltaTime;
+            if (timeCounter > timeBetweenItemDestroy)
+            {
+                // TODO Nikola: Destroy an item that is NOT an equipment
+                timeCounter = 0f;
+            }
+        }
+    }
+
     void OnTriggerEnter(Collider other)
     {
         if (other.transform.TryGetComponent<PlayerController>(out PlayerController player))
@@ -20,12 +40,13 @@ public class DigAreaController : MonoBehaviour
             if (gameObjectSpawned == DigOutItem.Zombie)
             {
                 // Spawn zombie
-                GameObject zombie = Instantiate(zomnbiePrefab, player.transform.position, Quaternion.identity);
+                spawnedZombie = Instantiate(zomnbiePrefab, player.transform.position, Quaternion.identity);
                 Vector3 diffVec = (player.transform.position - transform.position).normalized;
                 Vector3 lookVec = new Vector3(diffVec.x, 0, diffVec.z);
-                zombie.transform.LookAt(player.transform.position + lookVec);
+                spawnedZombie.transform.LookAt(player.transform.position + lookVec);
 
                 player.DisableMovement();
+                timeCounter = 0f;
             }
             else
             {

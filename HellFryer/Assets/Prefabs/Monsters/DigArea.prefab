@@ -144,3 +144,4 @@ MonoBehaviour:
   limbsPrefab: {fileID: 2910134741701638720, guid: 46378d90b68ac524a9c84ee1aeb468f6, type: 3}
   heartPrefab: {fileID: 6410804639392518817, guid: 2ce0796c3b38bb74d97b8f1c69e34fbc, type: 3}
   zomnbiePrefab: {fileID: 2117610973991690704, guid: a37078d205be92e49a9b9718850b3f56, type: 3}
+  timeBetweenItemDestroy: 1
