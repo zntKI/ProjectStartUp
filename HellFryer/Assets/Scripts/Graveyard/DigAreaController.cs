@@ -25,7 +25,7 @@ public class DigAreaController : MonoBehaviour
             timeCounter += Time.deltaTime;
             if (timeCounter > timeBetweenItemDestroy)
             {
-                // TODO Nikola: Destroy an item that is NOT an equipment
+                InventoryManager.instance.LoseRandomItem();
                 timeCounter = 0f;
             }
         }
