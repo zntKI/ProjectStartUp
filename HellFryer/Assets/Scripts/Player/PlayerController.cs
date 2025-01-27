@@ -37,8 +37,6 @@ public class PlayerController : MonoBehaviour
 
         inventorySelector = GetComponent<InventorySelector>();
 
-
-
         roleController = GetComponent<RoleController>();
     }
 
@@ -173,6 +171,4 @@ public class PlayerController : MonoBehaviour
     {
         return inventorySelector.selectedSlot;
     }
-
-
 }
