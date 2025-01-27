@@ -36,6 +36,7 @@ public class RiverController : MonoBehaviour
                     // TODO Nikola: Destroy an item that is NOT an equipment
                     player.Value[0] = 0f;
                 }
+                InventoryManager.instance.LoseRandomItem();
             }
         }
     }

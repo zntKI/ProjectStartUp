@@ -88,7 +88,7 @@ public class ProjectileController : MonoBehaviour
         if (other.gameObject == currentTarget) // If hit target
         {
             Destroy(gameObject);
-            // TODO Nikola: Destroy an item that is NOT an equipment
+            InventoryManager.instance.LoseRandomItem();
         }
         else if (state == ProjectileFlyState.ToDirection &&
             other.CompareTag("WingCreature") && !other.isTrigger) // If hit creature
