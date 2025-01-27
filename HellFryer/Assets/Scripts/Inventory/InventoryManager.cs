@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -74,7 +76,7 @@ public class InventoryManager : MonoBehaviour
 
     public void PickupItem(ItemController item, int selectedSlot)
     {
-        if (isThereEmptySlot())
+        if (IsThereEmptySlot())
         {
             //Add item to inventory
             Add(item, selectedSlot);
@@ -83,26 +85,26 @@ public class InventoryManager : MonoBehaviour
             item.gameObject.SetActive(false);
             item.gameObject.transform.SetParent(null);
         }
-        else
-        {
-            //drop item on floor
-            ItemController dropItem = items[selectedSlot];
+        //else
+        //{
+        //    //drop item on floor
+        //    ItemController dropItem = items[selectedSlot];
 
-            dropItem.gameObject.transform.position = item.transform.position;
-            dropItem.gameObject.transform.SetParent(null);
-            dropItem.gameObject.GetComponent<Rigidbody>().isKinematic = false;
-            dropItem.gameObject.GetComponent<Collider>().isTrigger = false;
-            dropItem.gameObject.tag = "Item";
-            dropItem.gameObject.SetActive(true);
+        //    dropItem.gameObject.transform.position = item.transform.position;
+        //    dropItem.gameObject.transform.SetParent(null);
+        //    dropItem.gameObject.GetComponent<Rigidbody>().isKinematic = false;
+        //    dropItem.gameObject.GetComponent<Collider>().isTrigger = false;
+        //    dropItem.gameObject.tag = "Item";
+        //    dropItem.gameObject.SetActive(true);
 
-            Remove(items[selectedSlot]);
+        //    Remove(items[selectedSlot]);
 
-            //Add item to inventory
-            Add(item, selectedSlot);
+        //    //Add item to inventory
+        //    Add(item, selectedSlot);
 
-            //Disable gameObject of the item in the scene
-            item.gameObject.SetActive(false);
-        }
+        //    //Disable gameObject of the item in the scene
+        //    item.gameObject.SetActive(false);
+        //}
     }
 
     public void Remove(ItemController item)
@@ -113,6 +115,29 @@ public class InventoryManager : MonoBehaviour
             {
                 items[slot] = null;
                 inventorySlots[slot].gameObject.SetActive(false);
+                break;
+            }
+        }
+
+        UpdateItems();
+    }
+
+    public void LoseRandomItem()
+    {
+        System.Random r = new System.Random();
+        foreach (int i in Enumerable.Range(0, 5).OrderBy(x => r.Next()))
+        {
+            if (items[i] == null)
+            {
+                continue;
+            }
+
+            EquipmentController equipmentController = items[i].gameObject.GetComponent<EquipmentController>();
+            if (equipmentController == null)
+            {
+                Destroy(items[i].gameObject);
+                items[i] = null;
+                inventorySlots[i].gameObject.SetActive(false);
                 break;
             }
         }
@@ -141,7 +166,7 @@ public class InventoryManager : MonoBehaviour
         return items[itemSlot];
     }
 
-    bool isThereEmptySlot()
+    bool IsThereEmptySlot()
     {
         foreach(ItemController item in items.Values)
         {

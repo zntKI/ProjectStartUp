@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4066436935674904813}
   - component: {fileID: -2100768016008024880}
   - component: {fileID: -1457961506043043749}
+  - component: {fileID: 1902997579348719955}
   - component: {fileID: -1030673999114088488}
   - component: {fileID: 8734756742486941878}
   - component: {fileID: -4687191867893001420}
@@ -151,6 +152,19 @@ MonoBehaviour:
   heldItem: {fileID: 0}
   holdDistance: 1
   dropDistance: 1.2
+--- !u!114 &1902997579348719955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7853022101827095678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4d38af7e8560034dbcc633fd1406957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heldItemSlot: {fileID: 0}
 --- !u!114 &-1030673999114088488
 MonoBehaviour:
   m_ObjectHideFlags: 0

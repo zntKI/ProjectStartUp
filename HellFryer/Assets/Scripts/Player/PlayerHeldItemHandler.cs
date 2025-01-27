@@ -7,14 +7,20 @@ using static UnityEditor.Progress;
 
 public class PlayerHeldItemHandler : MonoBehaviour
 {
-    [SerializeField]
-    PlayerController playerController;
+    [SerializeField] PlayerController playerController;
+
+    [SerializeField] HeldItemDisplay heldItemDisplay;
 
     public ItemController heldItem = null;
     [SerializeField] float holdDistance = 0.8f;
     [SerializeField] float dropDistance = 1.2f;
 
     float placeIngredientRange = 1.1f;
+
+    private void Start()
+    {
+        heldItemDisplay = GetComponent<HeldItemDisplay>();
+    }
 
     public void SetPlayerController(PlayerController controller)
     {
@@ -36,6 +42,7 @@ public class PlayerHeldItemHandler : MonoBehaviour
 
             heldItem = item;
             InventoryManager.instance.Remove(heldItem);
+            heldItemDisplay.SetItem(heldItem);
         }
         else
         {
@@ -80,6 +87,7 @@ public class PlayerHeldItemHandler : MonoBehaviour
             heldItem.gameObject.GetComponent<Collider>().isTrigger = false;
             heldItem.gameObject.tag = "Item";
             heldItem = null;
+            heldItemDisplay.RemoveItem();
         }
     }
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class WingCreatureController : MonoBehaviour
 {
@@ -14,12 +15,18 @@ public class WingCreatureController : MonoBehaviour
     private WingCreatureState state = WingCreatureState.Roaming;
 
     private WaypointFollower waypointFollower;
+
+    private List<PlayerController> players;
+
     private PlayerController currentPlayer;
+    private int currentPlayerIndex;
 
     private float timeCounter;
 
     void Start()
     {
+        players = new List<PlayerController>();
+
         waypointFollower = GetComponent<WaypointFollower>();
 
         waypointFollower.OnWaypointChange += CheckForLookDir;
@@ -42,11 +49,15 @@ public class WingCreatureController : MonoBehaviour
             timeCounter += Time.deltaTime;
             if (timeCounter > timeBetweenProjectileLaunch)
             {
-                // Launch Projectile
-                ProjectileController projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity).GetComponent<ProjectileController>();
-                projectile.Init(currentPlayer.gameObject, GetComponent<SphereCollider>().radius);
+                currentPlayerIndex++;
+                if (currentPlayerIndex >= players.Count)
+                {
+                    currentPlayerIndex = 0;
+                }
 
-                timeCounter = 0f;
+                currentPlayer = players[currentPlayerIndex];
+
+                LaunchProjectile();
             }
         }
     }
@@ -67,8 +78,18 @@ public class WingCreatureController : MonoBehaviour
         PlayerController player;
         if (other.transform.TryGetComponent<PlayerController>(out player))
         {
-            currentPlayer = player;
-            state = WingCreatureState.Attacking;
+            if (players.Count == 0)
+            {
+                currentPlayerIndex = 0;
+                currentPlayer = player;
+                state = WingCreatureState.Attacking;
+
+                timeCounter = timeBetweenProjectileLaunch;
+
+                LaunchProjectile();
+            }
+
+            players.Add(player);
         }
     }
 
@@ -77,11 +98,23 @@ public class WingCreatureController : MonoBehaviour
         PlayerController player;
         if (other.transform.TryGetComponent<PlayerController>(out player))
         {
-            currentPlayer = null;
-            state = WingCreatureState.Roaming;
+            if (!players.Remove(player))
+                Debug.LogError("Player not in collection in WingCreatureController and cant be removed!!!");
 
-            timeCounter = timeBetweenProjectileLaunch;
+            if (players.Count == 0)
+            {
+                currentPlayer = null;
+                state = WingCreatureState.Roaming;
+            }
         }
+    }
+
+    private void LaunchProjectile()
+    {
+        ProjectileController projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity).GetComponent<ProjectileController>();
+        projectile.Init(currentPlayer.gameObject, GetComponent<SphereCollider>().radius);
+
+        timeCounter = 0f;
     }
 
     void OnDestroy()
