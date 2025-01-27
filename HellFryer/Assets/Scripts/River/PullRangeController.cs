@@ -7,10 +7,12 @@ public class PullRangeController : MonoBehaviour
     [SerializeField]
     private float pullAmount = 1f;
 
-    private PlayerController currentPlayer;
+    private List<PlayerController> currentPlayers;
 
     void Start()
     {
+        currentPlayers = new List<PlayerController>();
+
         // Automatically adjustable
         var collider = GetComponent<SphereCollider>();
         collider.radius = transform.parent.GetComponent<PullRange>().Radius;
@@ -18,10 +20,13 @@ public class PullRangeController : MonoBehaviour
 
     void Update()
     {
-        if (currentPlayer != null)
+        if (currentPlayers.Count > 0)
         {
-            Vector3 pullVector = (transform.position - currentPlayer.transform.position).normalized * pullAmount;
-            currentPlayer.ShouldPull(pullVector);
+            foreach (var player in currentPlayers)
+            {
+                Vector3 pullVector = (transform.position - player.transform.position).normalized * pullAmount;
+                player.ShouldPull(pullVector);
+            }
         }
     }
 
@@ -30,7 +35,7 @@ public class PullRangeController : MonoBehaviour
         PlayerController player;
         if (other.transform.TryGetComponent<PlayerController>(out player))
         {
-            currentPlayer = player;
+            currentPlayers.Add(player);
         }
     }
 
@@ -39,13 +44,30 @@ public class PullRangeController : MonoBehaviour
         PlayerController player;
         if (other.transform.TryGetComponent<PlayerController>(out player))
         {
-            StopPulling();
+            StopPulling(player);
         }
     }
 
+    /// <summary>
+    /// Called when an individual player goes out of gravity pull range
+    /// </summary>
+    private void StopPulling(PlayerController playerToStopPulling)
+    {
+        PlayerController player = currentPlayers.Find(p => p == playerToStopPulling);
+
+        player.ShouldPull(Vector3.zero);
+        currentPlayers.Remove(player);
+    }
+
+    /// <summary>
+    /// Called when the monster dies and should stop pulling all players
+    /// </summary>
     public void StopPulling()
     {
-        currentPlayer.ShouldPull(Vector3.zero);
-        currentPlayer = null;
+        foreach (var player in currentPlayers)
+        {
+            player.ShouldPull(Vector3.zero);
+        }
+        currentPlayers.Clear();
     }
 }
