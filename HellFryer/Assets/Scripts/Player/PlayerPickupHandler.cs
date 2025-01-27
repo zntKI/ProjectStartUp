@@ -61,4 +61,16 @@ public class PlayerPickupHandler : MonoBehaviour
     {
         playerController = controller;
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        ItemController item = collision.gameObject.GetComponent<ItemController>();
+
+        if(item == null)
+        {
+            return;
+        }
+
+        InventoryManager.instance.PickupItem(item, playerController.GetSelectedItemSlot());
+    }
 }

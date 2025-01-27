@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem.HID;
 using UnityEngine.WSA;
+using static UnityEditor.Timeline.TimelinePlaybackControls;
 using static UnityEngine.InputSystem.InputAction;
 
 public class PlayerController : MonoBehaviour
@@ -145,6 +146,21 @@ public class PlayerController : MonoBehaviour
         if (context.performed)
         {
             roleController.OpenBook();
+        }
+    }
+
+    public void OnReturnItem(CallbackContext context)
+    {
+        if (context.performed)
+        {
+
+            ItemController heldItem = heldItemHandler.heldItem;
+            if(heldItem == null) {
+                return; 
+            }
+
+            heldItemHandler.DropHeldItem();
+            InventoryManager.instance.PickupItem(heldItem, GetSelectedItemSlot());
         }
     }
 

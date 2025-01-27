@@ -334,6 +334,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 8bf6bee6-387a-4916-8794-4ac847e3cde5
     m_ActionName: Player/OpenBook[/XInputControllerWindows/leftTrigger]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8367254804830462505}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnReturnItem
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c53ceb42-42a5-4eea-9e39-4bfce5b77e41
+    m_ActionName: Player/ReturnToInventory[/Keyboard/v]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Controller
   m_DefaultActionMap: Player

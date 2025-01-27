@@ -89,4 +89,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recipe: 050000000600000003000000
-  cookedFood: {fileID: 5866375949798517017, guid: bed2865876fefcb479ea0c282ad72643, type: 3}
+  cookedFood: {fileID: 5866375949798517017, guid: 04e5dbc36908d464c89426cc4c47d298, type: 3}

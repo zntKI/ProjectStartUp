@@ -19,7 +19,6 @@ public class OvenCookingBehaviour : CookingBehaviour
         if(onCooked != null)
         {
             onCooked.Invoke(RecipeManager.instance.GetCookedFood(ingredients));
-
         }
     }
 }

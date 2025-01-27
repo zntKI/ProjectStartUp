@@ -10,7 +10,7 @@ public class PlayerHeldItemHandler : MonoBehaviour
     [SerializeField]
     PlayerController playerController;
 
-    [SerializeField] ItemController heldItem = null;
+    public ItemController heldItem = null;
     [SerializeField] float holdDistance = 0.8f;
     [SerializeField] float dropDistance = 1.2f;
 
