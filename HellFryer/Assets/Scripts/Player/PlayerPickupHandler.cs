@@ -48,6 +48,9 @@ public class PlayerPickupHandler : MonoBehaviour
             ItemController item = itemObject.GetComponent<ItemController>();
 
             InventoryManager.instance.PickupItem(item, playerController.GetSelectedItemSlot());
+
+            //ALEX
+            SoundManager.instance.PlayPickUpSound();
         }
     }
 
