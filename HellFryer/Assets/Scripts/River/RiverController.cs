@@ -55,9 +55,7 @@ public class RiverController : MonoBehaviour
         if (other.transform.TryGetComponent<PlayerController>(out player))
         {
             if (!currentPlayers.Remove(player))
-            {
                 Debug.LogError("Player not in collection in RiverController and cant be removed!!!");
-            }
         }
     }
 }
