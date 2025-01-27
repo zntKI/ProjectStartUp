@@ -9,6 +9,7 @@ TagManager:
   - ZombieArm
   - Projectile
   - WingCreature
+  - WingCreatureWaypoint
   layers:
   - Default
   - TransparentFX

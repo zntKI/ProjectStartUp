@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 2544069871628544137}
   m_Layer: 0
   m_Name: Waypoint
-  m_TagString: Untagged
+  m_TagString: WingCreatureWaypoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 3289188439922953064}
   m_Layer: 0
   m_Name: Waypoint (1)
-  m_TagString: Untagged
+  m_TagString: WingCreatureWaypoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -454,7 +454,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed74774868df9b14bbaa78aebd51ff6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypoints:
-  - {fileID: 1014857956097370689}
-  - {fileID: 1404722481350756395}
   speed: 2
