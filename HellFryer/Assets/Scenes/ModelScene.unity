@@ -1684,7 +1684,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.26666668, b: 0, a: 0.57254905}
+  m_Color: {r: 1, g: 0.26666668, b: 0, a: 0.58431375}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3719,7 +3719,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1910407026
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3796,7 +3796,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.56664944, b: 1, a: 0.57254905}
+  m_Color: {r: 0, g: 0.62352943, b: 1, a: 0.57254905}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3949,6 +3949,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 857119491624521754, guid: 2e00cea461a42b342b323b61028318a2, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 857119491624521754, guid: 2e00cea461a42b342b323b61028318a2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7c262df1b5826714787256575b7d9368, type: 2}
+    - target: {fileID: 857119491624521754, guid: 2e00cea461a42b342b323b61028318a2, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 36fd8a4df4c96d546ae99deed64ee0f7, type: 2}
     - target: {fileID: 4437491064858258222, guid: 2e00cea461a42b342b323b61028318a2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

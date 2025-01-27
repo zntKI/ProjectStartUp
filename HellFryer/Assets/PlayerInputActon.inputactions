@@ -85,6 +85,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ReturnItem",
+                    "type": "Button",
+                    "id": "c53ceb42-42a5-4eea-9e39-4bfce5b77e41",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -179,7 +188,7 @@
                 {
                     "name": "",
                     "id": "8fabfd3a-4da3-4c93-a8d2-0ac8e6464eb4",
-                    "path": "<Gamepad>/buttonEast",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
@@ -201,7 +210,7 @@
                 {
                     "name": "",
                     "id": "466a615e-33c7-488e-a175-be5baefb5772",
-                    "path": "<Gamepad>/buttonNorth",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
@@ -267,7 +276,7 @@
                 {
                     "name": "",
                     "id": "a3cd636b-5bf4-45b3-b645-57f14d5191c5",
-                    "path": "<Gamepad>/buttonSouth",
+                    "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
@@ -292,7 +301,7 @@
                     "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Controller",
                     "action": "PerformTask",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -310,11 +319,33 @@
                 },
                 {
                     "name": "",
+                    "id": "34051370-daab-4e1f-81be-5f77bb3ef68c",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "PerformTask",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "d0aedf65-d9f8-49a7-bbb1-4694795a5706",
                     "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Controller",
+                    "action": "OpenBook",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "108f0450-55a8-40a1-a33f-84f944cfa82c",
+                    "path": "<Keyboard>/o",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
                     "action": "OpenBook",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -338,6 +369,28 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Select left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "346e9832-a3c7-42cf-b54d-3d5ddf98c520",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "ReturnItem",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7bb46b9f-7b39-4884-9c8a-f46a4aedee81",
+                    "path": "<Keyboard>/v",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "ReturnItem",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

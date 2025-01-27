@@ -10,7 +10,7 @@ public class IngredientContainer : MonoBehaviour
     Vector3 itemHeight = new Vector3(0, 0.5f, 0);
     public bool placeIngedient(ItemController item)
     {
-        if (isEmpty())
+        if (isEmpty() && item != null)
         {
             ingredient = item;
             ingredient.gameObject.GetComponent<Rigidbody>().isKinematic = true;

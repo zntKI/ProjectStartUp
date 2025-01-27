@@ -78,7 +78,11 @@ public class OvenController : AbstractCookingDevice
     {
         cookedFood = Instantiate(_cookedFood, gameObject.transform);
         cookedFood.SetActive(false);
-        ingredientContainers[1].placeIngedient(cookedFood.GetComponent<ItemController>());
+
+        if(cookedFood.GetComponent<ItemController>() != null)
+        {
+            ingredientContainers[1].placeIngedient(cookedFood.GetComponent<ItemController>());
+        }
     }
 
     public void TakeOutCookedFood()
