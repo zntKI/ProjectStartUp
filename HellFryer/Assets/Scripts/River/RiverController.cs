@@ -33,10 +33,9 @@ public class RiverController : MonoBehaviour
                 player.Value[0] += Time.deltaTime;
                 if (player.Value[0] > timeBetweenItemDestroy)
                 {
-                    // TODO Nikola: Destroy an item that is NOT an equipment
+                    InventoryManager.instance.LoseRandomItem();
                     player.Value[0] = 0f;
                 }
-                InventoryManager.instance.LoseRandomItem();
             }
         }
     }
