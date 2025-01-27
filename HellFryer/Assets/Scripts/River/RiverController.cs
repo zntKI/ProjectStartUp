@@ -1,17 +1,24 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class RiverController : MonoBehaviour
 {
     [SerializeField]
     private float timeBetweenItemDestroy;
-    private float timeCounter;
 
-    private PlayerController currentPlayer;
+    /// <summary>
+    /// <playerInRange, timeCounterForGivenPlayer><br></br>
+    /// List because I cannot modify value typed values by themselves
+    /// </summary>
+    private Dictionary<PlayerController, List<float>> currentPlayers;
 
     void Start()
     {
+        currentPlayers = new Dictionary<PlayerController, List<float>>();
+
         var collider = GetComponent<SphereCollider>();
         collider.radius = transform.parent.GetComponent<PullRange>().Radius * 0.8f;
     }
@@ -19,13 +26,16 @@ public class RiverController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (currentPlayer != null)
+        if (currentPlayers.Count > 0)
         {
-            timeCounter += Time.deltaTime;
-            if (timeCounter > timeBetweenItemDestroy)
+            foreach (var player in currentPlayers)
             {
-                // TODO Nikola: Destroy an item that is NOT an equipment
-                timeCounter = 0;
+                player.Value[0] += Time.deltaTime;
+                if (player.Value[0] > timeBetweenItemDestroy)
+                {
+                    // TODO Nikola: Destroy an item that is NOT an equipment
+                    player.Value[0] = 0f;
+                }
             }
         }
     }
@@ -35,16 +45,19 @@ public class RiverController : MonoBehaviour
         PlayerController player;
         if (other.transform.TryGetComponent<PlayerController>(out player))
         {
-            currentPlayer = player;
+            currentPlayers.Add(player, new List<float>() { 0f });
         }
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (other.transform.TryGetComponent<PlayerController>(out currentPlayer))
+        PlayerController player;
+        if (other.transform.TryGetComponent<PlayerController>(out player))
         {
-            currentPlayer = null;
-            timeCounter = 0;
+            if (!currentPlayers.Remove(player))
+            {
+                Debug.LogError("Player not in collection in RiverController and cant be removed!!!");
+            }
         }
     }
 }

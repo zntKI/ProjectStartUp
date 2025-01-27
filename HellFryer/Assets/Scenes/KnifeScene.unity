@@ -1371,6 +1371,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2554936315681061982, guid: 447ecb370e7d22a42a8b2952fac1898d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3094065606669271016, guid: 447ecb370e7d22a42a8b2952fac1898d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5907158350943913213, guid: 447ecb370e7d22a42a8b2952fac1898d, type: 3}
       propertyPath: m_Name
       value: RiverMonster
