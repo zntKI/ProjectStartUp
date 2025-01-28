@@ -29,7 +29,7 @@ public class OrderCounterController : AbstractCookingDevice
 
     public override void CheckCooking(){}
 
-    void removeIngredientsFromContainers()
+    public void removeIngredientsFromContainers()
     {
         foreach (IngredientContainer container in ingredientContainers)
         {
@@ -37,7 +37,7 @@ public class OrderCounterController : AbstractCookingDevice
         }
     }
 
-    bool AreAllIngredientsPlaced()
+    public bool AreAllIngredientsPlaced()
     {
         foreach (IngredientContainer container in ingredientContainers)
         {
@@ -48,5 +48,22 @@ public class OrderCounterController : AbstractCookingDevice
         }
 
         return true;
+    }
+
+    public bool CompareFood(itemType food)
+    {
+        foreach (IngredientContainer container in ingredientContainers)
+        {
+            if (container.isEmpty())
+            {
+                return false;
+            }
+            else
+            {
+                return container.ingredient.item.itemType == food;
+            }
+        }
+
+        return false;
     }
 }

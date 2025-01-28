@@ -102,8 +102,6 @@ public class OvenController : AbstractCookingDevice
 
     public void TakeOutCookedFood()
     {
-        Debug.Log(cookedFood != null);
-
         if (cookedFood != null)
         {
             cookedFood.SetActive(true);

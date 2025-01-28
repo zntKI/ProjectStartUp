@@ -4,17 +4,41 @@ using UnityEngine;
 
 public class Order : MonoBehaviour
 {
-    itemType food;
+    public System.Action<Order> onTimeout;
+    
+    public itemType food;
 
-    public System.Action onTimeout;
+    float orderTime = 60.0f;
 
-    public void StartOrder()
+    bool hasStarted = false;
+
+    public void StartTimer()
     {
-
+        hasStarted = true;
     }
 
     void EndOrder()
     {
-        onTimeout.Invoke();
+        onTimeout.Invoke(this);
+    }
+
+    void Update()
+    {
+        if (!hasStarted)
+        {
+            return;
+        }
+
+        orderTime -= Time.deltaTime;
+
+        if (orderTime <= 0.0f)
+        {
+            timerEnded();
+        }
+    }
+
+    void timerEnded()
+    {
+        EndOrder();
     }
 }
