@@ -10,4 +10,4 @@ public class Item : ScriptableObject
     public Sprite icon;
 }
 
-public enum itemType { Knife, Gloves, Pan, Blood, DepressedSoul, Pasta, Beef, Spaghetti, Steak, VigorSalad }
+public enum itemType { Knife, Gloves, Pan, Blood, DepressedSoul, Pasta, Beef, Spaghetti, Steak, VigorSalad, Wings }
