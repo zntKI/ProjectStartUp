@@ -1,17 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 public class OrdersManager : MonoBehaviour
 {
     public static OrdersManager instance { get; private set; }
 
+    [Header("Required Components")]
     [SerializeField] OrderCounterController orderCounterController;
+    [SerializeField] Transform orderUIContent;
+    [SerializeField] OrderController orderControllerPrefab;
+    [SerializeField] GameObject orderUIItemPrefab;
 
-    [SerializeField] List<Order> orders = new List<Order>();
+    [Header("List of possible orders")]
+    [SerializeField] List<Item> cookedFoods = new List<Item>();
 
-    Order sampleOrder;
+    [Header("Current orders")]
+    [SerializeField] List<OrderController> orders = new List<OrderController>();
+
+    int maxOrderCount = 5;
+    int currentOrderCount = 0;
+
+    float orderInterval = 3.0f;
+
+    float totalScore = 0;
 
     void Awake()
     {
@@ -27,29 +41,57 @@ public class OrdersManager : MonoBehaviour
 
     private void Start()
     {
-        sampleOrder = GetComponent<Order>();
-
-        AddOrder(itemType.Spaghetti);
+        InvokeRepeating(nameof(AddRandomOrder), 0, orderInterval);
     }
 
-    void SpawnOrders()
+    public bool AreOrdersOver()
     {
-        //Add new order in intervals
+        return currentOrderCount >= maxOrderCount;
     }
-    void AddOrder(itemType food)
+
+    void AddRandomOrder()
     {
-        Order order = Instantiate(sampleOrder);
+        if (currentOrderCount >= maxOrderCount)
+        {
+            CancelInvoke(nameof(AddRandomOrder));
+            return;
+        }
+
+        if (cookedFoods.Count == 0) { return; }
+
+        int randIndex = Random.Range(0, cookedFoods.Count);
+        int randOrderDuration = Random.Range(30, 60);
+
+        AddOrder(cookedFoods[randIndex], randOrderDuration);
+
+        currentOrderCount++;
+    }
+
+    void AddOrder(Item food, float orderDuration)
+    {
+        GameObject orderUI = Instantiate(orderUIItemPrefab, orderUIContent);
+        UnityEngine.UI.Image orderIcon = orderUI.transform.Find("OrderIcon").GetComponent<UnityEngine.UI.Image>();
+        orderIcon.sprite = food.icon;
+
+        OrderController order = Instantiate(orderControllerPrefab, transform);
         order.food = food;
+        order.SetTimer(orderDuration);
+
+        UnityEngine.UI.Image orderTimer = orderUI.transform.Find("OrderTimer").GetComponent<UnityEngine.UI.Image>();
+
+        order.timerUIComponent = orderTimer;
         order.StartTimer();
         orders.Add(order);
 
         order.onTimeout += RemoveOrder;
     }
 
-    void RemoveOrder(Order order)
+    void RemoveOrder(OrderController order)
     {
+        order.onTimeout -= RemoveOrder;
+        totalScore += order.GetScore();
+        order.CompleteOrder();
         orders.Remove(order);
-        Destroy(order);
     }
 
     private void Update()
@@ -64,18 +106,20 @@ public class OrdersManager : MonoBehaviour
 
     void CheckOrders()
     {
-        foreach (Order order in orders)
+        foreach (OrderController order in orders)
         {
-            if (orderCounterController.CompareFood(order.food))
+            if (orderCounterController.CompareFood(order.food.itemType))
             {
-                Debug.Log("Completed order");
                 RemoveOrder(order);
                 orderCounterController.removeIngredientsFromContainers();
-                break;
+                Debug.Log(totalScore);
+                return;
             }
         }
 
         Debug.Log("Wrong order");
         orderCounterController.removeIngredientsFromContainers();
     }
+
+
 }
