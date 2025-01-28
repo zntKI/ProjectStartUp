@@ -120,7 +120,7 @@ public class SoundManager : MonoBehaviour
         if (clip != null && loopAudioSource.clip != clip)
         {
             loopAudioSource.clip = clip;
-            Debug.Log(loopAudioSource.clip);
+            //Debug.Log(loopAudioSource.clip);
             loopAudioSource.Play();
         }
     }
