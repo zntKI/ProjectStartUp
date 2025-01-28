@@ -99,7 +99,7 @@ public class PlayerHeldItemHandler : MonoBehaviour
         Collider[] hitColliders = Physics.OverlapSphere(gameObject.transform.position + gameObject.transform.forward, placeIngredientRange);
         AbstractCookingDevice cookingDevice = GetClosestCookingDevice(transform, hitColliders);
 
-        if (IsHoldingIngredient())
+        if (heldItem != null)
         {
             if (cookingDevice != null && cookingDevice.placeIngredient(heldItem) != null)
             {
@@ -117,11 +117,6 @@ public class PlayerHeldItemHandler : MonoBehaviour
         }
 
         return placedIngredient;
-    }
-
-    bool IsHoldingIngredient()
-    {
-        return heldItem != null && heldItem.GetComponent<EquipmentController>() == null;
     }
 
     public AbstractCookingDevice GetClosestCookingDevice(Transform player, Collider[] collidersInRange)

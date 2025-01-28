@@ -128,14 +128,7 @@ public class PlayerController : MonoBehaviour
         {
             roleController.PerformTask();
 
-            Collider[] hitColliders = Physics.OverlapSphere(gameObject.transform.position + gameObject.transform.forward, 1.1f);
-            AbstractCookingDevice cookingDevice = heldItemHandler.GetClosestCookingDevice(transform, hitColliders);
-            if (cookingDevice == null)
-            {
-                return;
-            }
-
-            cookingDevice.CheckCooking();
+            InteractWithCookingDevice();
         }
     }
 
@@ -170,5 +163,17 @@ public class PlayerController : MonoBehaviour
     public int GetSelectedItemSlot()
     {
         return inventorySelector.selectedSlot;
+    }
+
+    void InteractWithCookingDevice()
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(gameObject.transform.position + gameObject.transform.forward, 1.1f);
+        AbstractCookingDevice cookingDevice = heldItemHandler.GetClosestCookingDevice(transform, hitColliders);
+        if (cookingDevice == null)
+        {
+            return;
+        }
+
+        cookingDevice.CheckCooking();
     }
 }

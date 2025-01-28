@@ -24,10 +24,11 @@ public class RecipeManager : MonoBehaviour
         }
     }
 
-    public bool ContainsRecipe(List<itemType> recipe)
+    public bool ContainsRecipe(List<itemType> recipe, itemType cookingEquipment)
     {
-        foreach (IngredientRecipe curRecipe in recipes) {
-            if (curRecipe.recipe.All(recipe.Contains))
+        foreach (IngredientRecipe curRecipe in recipes)
+        {
+            if (CompareRecipes(curRecipe.recipe, recipe) && curRecipe.cookingEquipment == cookingEquipment)
             {
                 return true;
             }
@@ -36,11 +37,11 @@ public class RecipeManager : MonoBehaviour
         return false;
     }
 
-    public GameObject GetCookedFood(List<itemType> recipe)
+    public GameObject GetCookedFood(List<itemType> recipe, itemType cookingEquipment)
     {
         foreach (IngredientRecipe curRecipe in recipes)
         {
-            if(CompareRecipes(curRecipe.recipe, recipe))
+            if(CompareRecipes(curRecipe.recipe, recipe) && curRecipe.cookingEquipment == cookingEquipment)
             {
                 return curRecipe.cookedFood;
             }

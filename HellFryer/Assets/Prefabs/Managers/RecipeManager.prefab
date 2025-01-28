@@ -13,6 +13,12 @@ GameObject:
   - component: {fileID: 3976281650234718008}
   - component: {fileID: 5658890144052635621}
   - component: {fileID: 2517222239483889884}
+  - component: {fileID: 1749561625973708368}
+  - component: {fileID: 5151233723416013563}
+  - component: {fileID: 8592382077417433480}
+  - component: {fileID: 9081042064569694228}
+  - component: {fileID: 2965175331688355982}
+  - component: {fileID: 444210024154374470}
   m_Layer: 0
   m_Name: RecipeManager
   m_TagString: Untagged
@@ -61,6 +67,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recipe: 050000000500000006000000
+  cookingEquipment: 1
   cookedFood: {fileID: 5866375949798517017, guid: ed90a6100eefe6341aca7568f9048b52, type: 3}
 --- !u!114 &5658890144052635621
 MonoBehaviour:
@@ -75,6 +82,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recipe: 050000000600000006000000
+  cookingEquipment: 0
   cookedFood: {fileID: 5866375949798517017, guid: bed2865876fefcb479ea0c282ad72643, type: 3}
 --- !u!114 &2517222239483889884
 MonoBehaviour:
@@ -89,4 +97,95 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recipe: 050000000600000003000000
+  cookingEquipment: 2
   cookedFood: {fileID: 5866375949798517017, guid: 04e5dbc36908d464c89426cc4c47d298, type: 3}
+--- !u!114 &1749561625973708368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6503524168040982755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6915ad1ad8a4947439793b8cb4491b07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recipe: 060000000700000004000000
+  cookingEquipment: 1
+  cookedFood: {fileID: 5866375949798517017, guid: bed2865876fefcb479ea0c282ad72643, type: 3}
+--- !u!114 &5151233723416013563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6503524168040982755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6915ad1ad8a4947439793b8cb4491b07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recipe: 080000000600000007000000
+  cookingEquipment: 2
+  cookedFood: {fileID: 5866375949798517017, guid: bed2865876fefcb479ea0c282ad72643, type: 3}
+--- !u!114 &8592382077417433480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6503524168040982755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6915ad1ad8a4947439793b8cb4491b07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recipe: 050000000800000003000000
+  cookingEquipment: 5
+  cookedFood: {fileID: 5866375949798517017, guid: ed90a6100eefe6341aca7568f9048b52, type: 3}
+--- !u!114 &9081042064569694228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6503524168040982755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6915ad1ad8a4947439793b8cb4491b07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recipe: 040000000b00000007000000
+  cookingEquipment: 0
+  cookedFood: {fileID: 5866375949798517017, guid: 04e5dbc36908d464c89426cc4c47d298, type: 3}
+--- !u!114 &2965175331688355982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6503524168040982755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6915ad1ad8a4947439793b8cb4491b07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recipe: 050000000400000009000000
+  cookingEquipment: 1
+  cookedFood: {fileID: 5866375949798517017, guid: bed2865876fefcb479ea0c282ad72643, type: 3}
+--- !u!114 &444210024154374470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6503524168040982755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6915ad1ad8a4947439793b8cb4491b07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recipe: 090000000b0000000c000000
+  cookingEquipment: 0
+  cookedFood: {fileID: 5866375949798517017, guid: bed2865876fefcb479ea0c282ad72643, type: 3}

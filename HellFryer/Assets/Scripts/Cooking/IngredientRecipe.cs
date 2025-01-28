@@ -8,5 +8,7 @@ public class IngredientRecipe : MonoBehaviour
 {
     public List<itemType> recipe = new List<itemType>();
 
+    public itemType cookingEquipment;
+
     public GameObject cookedFood;
 }
