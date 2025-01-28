@@ -15,8 +15,12 @@ public class GlovesHuntEquipmentStrategy : EquipmentHuntStrategy
         {
             if (hitCollider.CompareTag("ZombieArm"))
             {
+                SoundManager.instance.PlayerHittingZombieWhileDigging();
+
                 Destroy(hitCollider.transform.parent.gameObject); // Destroy zombie arm parent
                 transform.parent.GetComponent<PlayerController>().EnableMovement(); // Assuming item is a child of the player
+
+                SoundManager.instance.ZombieDeath();
             }
         }
     }

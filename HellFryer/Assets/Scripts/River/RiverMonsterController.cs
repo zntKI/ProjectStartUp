@@ -24,6 +24,8 @@ public class RiverMonsterController : MonoBehaviour
 
         Instantiate(bloodPrefab, spawnPos, Quaternion.identity);
         Instantiate(depressedSoulsPrefab, spawnPos, Quaternion.identity);
+
+        SoundManager.instance.CharonRiverMonsterDeath();
     }
 
     void OnTriggerEnter(Collider other)
@@ -31,6 +33,8 @@ public class RiverMonsterController : MonoBehaviour
         if (other.transform.TryGetComponent<KnifeHuntEquipmentStrategy>(out KnifeHuntEquipmentStrategy knife))
         {
             Die(-other.transform.forward);
+
+            SoundManager.instance.KnifeHit();
         }
     }
 }

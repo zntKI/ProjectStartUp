@@ -44,17 +44,28 @@ public class PlayerController : MonoBehaviour
     {
         isHeldByZombie = true;
         mover.ResetInputVector();
+
+        roleController.OnPlayerStopWalkSound();
     }
 
     public void EnableMovement()
-    { 
+    {
         isHeldByZombie = false;
     }
 
     public void OnMove(CallbackContext context)
     {
         if (!isHeldByZombie)
-            mover.SetInputVector(context.ReadValue<Vector2>());
+        {
+            Vector2 value = context.ReadValue<Vector2>();
+
+            mover.SetInputVector(value);
+
+            if (value.x == 0 && value.y == 0)
+                roleController.OnPlayerStopWalkSound();
+            else
+                roleController.OnPlayerWalkSound();
+        }
     }
 
     public void OnPickUp(CallbackContext context)
@@ -146,8 +157,9 @@ public class PlayerController : MonoBehaviour
         {
 
             ItemController heldItem = heldItemHandler.heldItem;
-            if(heldItem == null) {
-                return; 
+            if (heldItem == null)
+            {
+                return;
             }
 
             heldItemHandler.DropHeldItem();
