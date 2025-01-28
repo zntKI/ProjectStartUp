@@ -33,7 +33,12 @@ public class StoveController : AbstractCookingDevice
 
     public override ItemController placeIngredient(ItemController ingredient)
     {
-        if(ingredient.item.itemType == itemType.Pan)
+        if (ingredient == null)
+        {
+            return null;
+        }
+
+        if (ingredient.item.itemType == itemType.Pan)
         {
             if (panContainer.placeIngedient(ingredient))
             {
@@ -46,7 +51,7 @@ public class StoveController : AbstractCookingDevice
             return null;
         }
 
-        if (!AreAllIngredientsPlaced() && ingredient != null && ingredient.item.itemType != itemType.Pan)
+        if (!AreAllIngredientsPlaced() && ingredient.item.itemType != itemType.Pan)
         {
             foreach (IngredientContainer container in ingredientContainers)
             {

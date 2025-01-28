@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62a367110cea096449121faa4fc4bb48, type: 3}
   m_Name: Wings
   m_EditorClassIdentifier: 
-  itemType: 10
+  itemType: 9
   itemName: Wings
   icon: {fileID: 21300000, guid: 20e861a2ccd38c3408ac20cb93f19e02, type: 3}

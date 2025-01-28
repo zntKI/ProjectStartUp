@@ -53,6 +53,11 @@ public class BeefHostileItemBehaviour : HostileItemBehaviour
 
     private void FollowWaypoints()
     {
+        if(waypointsToFollow.Length == 0)
+        {
+            return;
+        }
+
         if (Vector3.Distance(waypointsToFollow[currentWaypointIndex].transform.position, transform.position) < .1f)
         {
             currentWaypointIndex++;
