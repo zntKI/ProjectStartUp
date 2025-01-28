@@ -73,6 +73,7 @@ public class PlayerHeldItemHandler : MonoBehaviour
         if (selectedItem != null)
         {
             HoldItem(selectedItem);
+            heldItemDisplay.SetItem(selectedItem);
         }
     }
 
@@ -103,6 +104,7 @@ public class PlayerHeldItemHandler : MonoBehaviour
             if (cookingDevice != null && cookingDevice.placeIngredient(heldItem) != null)
             {
                 placedIngredient = heldItem;
+                heldItemDisplay.RemoveItem();
                 heldItem = null;
             }
         }
