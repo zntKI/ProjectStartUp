@@ -31,7 +31,12 @@ public class OvenController : AbstractCookingDevice
 
     public override ItemController placeIngredient(ItemController ingredient)
     {
-        if(ingredient.GetComponent<EquipmentController>() != null)
+        if(ingredient == null)
+        {
+            return null;
+        }
+
+        if (ingredient.GetComponent<EquipmentController>())
         {
             return null;
         }
@@ -81,7 +86,7 @@ public class OvenController : AbstractCookingDevice
 
     void MakeCookedFood(GameObject _cookedFood)
     {
-        if(cookedFood == null)
+        if (_cookedFood == null)
         {
             return;
         }
@@ -89,7 +94,7 @@ public class OvenController : AbstractCookingDevice
         cookedFood = Instantiate(_cookedFood, gameObject.transform);
         cookedFood.SetActive(false);
 
-        if(cookedFood.GetComponent<ItemController>() != null)
+        if (cookedFood.GetComponent<ItemController>() != null)
         {
             ingredientContainers[1].placeIngedient(cookedFood.GetComponent<ItemController>());
         }
@@ -97,7 +102,9 @@ public class OvenController : AbstractCookingDevice
 
     public void TakeOutCookedFood()
     {
-        if(cookedFood != null)
+        Debug.Log(cookedFood != null);
+
+        if (cookedFood != null)
         {
             cookedFood.SetActive(true);
             cookedFood = null;
