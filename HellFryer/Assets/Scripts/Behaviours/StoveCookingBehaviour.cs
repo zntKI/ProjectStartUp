@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.VFX;
 
-public class OvenCookingBehaviour : CookingBehaviour
+public class StoveCookingBehaviour : CookingBehaviour
 {
     float cookingTime = 1f;
 
     public override void Cook(List<itemType> ingredients)
     {
-        StartCoroutine(CookingCoroutine(ingredients, itemType.Gloves));
+        StartCoroutine(CookingCoroutine(ingredients, itemType.Pan));
     }
 
     IEnumerator CookingCoroutine(List<itemType> ingredients, itemType cookingEquipment)

@@ -1,16 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Xml.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class OvenController : AbstractCookingDevice
+public class StoveController : AbstractCookingDevice
 {
-    OvenCookingBehaviour cookingBehaviour;
+    StoveCookingBehaviour cookingBehaviour;
+    [SerializeField] IngredientContainer panContainer;
 
     private void Start()
     {
-        cookingBehaviour = GetComponent<OvenCookingBehaviour>();
+        cookingBehaviour = GetComponent<StoveCookingBehaviour>();
         cookingBehaviour.onCooked += MakeCookedFood;
     }
 
@@ -18,7 +20,7 @@ public class OvenController : AbstractCookingDevice
     {
         List<itemType> ingredientList = GetIngredients();
 
-        if (RecipeManager.instance.ContainsRecipe(ingredientList, itemType.Gloves))
+        if (RecipeManager.instance.ContainsRecipe(ingredientList, itemType.Pan))
         {
             cookingBehaviour.Cook(ingredientList);
             removeIngredientsFromContainers();
@@ -31,12 +33,20 @@ public class OvenController : AbstractCookingDevice
 
     public override ItemController placeIngredient(ItemController ingredient)
     {
-        if(ingredient.GetComponent<EquipmentController>() != null)
+        if(ingredient.item.itemType == itemType.Pan)
+        {
+            if (panContainer.placeIngedient(ingredient))
+            {
+                return ingredient;
+            }
+        }
+
+        if (ingredient.GetComponent<EquipmentController>() != null)
         {
             return null;
         }
 
-        if (!AreAllIngredientsPlaced() && ingredient != null)
+        if (!AreAllIngredientsPlaced() && ingredient != null && ingredient.item.itemType != itemType.Pan)
         {
             foreach (IngredientContainer container in ingredientContainers)
             {
@@ -52,7 +62,7 @@ public class OvenController : AbstractCookingDevice
 
     public override void CheckCooking()
     {
-        if (AreAllIngredientsPlaced())
+        if (AreAllIngredientsPlaced() && IsPanPlaced())
         {
             StartCooking();
         }
@@ -79,29 +89,31 @@ public class OvenController : AbstractCookingDevice
         return true;
     }
 
+    bool IsPanPlaced()
+    {
+        if (!panContainer.isEmpty())
+        {
+            return true;
+        }
+
+        return false;
+    }
+
     void MakeCookedFood(GameObject _cookedFood)
     {
-        if(cookedFood == null)
+        if(_cookedFood == null)
         {
             return;
         }
 
         cookedFood = Instantiate(_cookedFood, gameObject.transform);
-        cookedFood.SetActive(false);
 
         if(cookedFood.GetComponent<ItemController>() != null)
         {
             ingredientContainers[1].placeIngedient(cookedFood.GetComponent<ItemController>());
         }
-    }
-
-    public void TakeOutCookedFood()
-    {
-        if(cookedFood != null)
-        {
-            cookedFood.SetActive(true);
-            cookedFood = null;
-        }
+        cookedFood.SetActive(true);
+        cookedFood = null;
     }
 
     List<itemType> GetIngredients()

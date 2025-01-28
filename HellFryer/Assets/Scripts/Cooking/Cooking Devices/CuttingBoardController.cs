@@ -4,13 +4,13 @@ using System.ComponentModel;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class OvenController : AbstractCookingDevice
+public class CuttingBoardController : AbstractCookingDevice
 {
-    OvenCookingBehaviour cookingBehaviour;
+    CuttingBoardCookingBehaviour cookingBehaviour;
 
     private void Start()
     {
-        cookingBehaviour = GetComponent<OvenCookingBehaviour>();
+        cookingBehaviour = GetComponent<CuttingBoardCookingBehaviour>();
         cookingBehaviour.onCooked += MakeCookedFood;
     }
 
@@ -18,7 +18,7 @@ public class OvenController : AbstractCookingDevice
     {
         List<itemType> ingredientList = GetIngredients();
 
-        if (RecipeManager.instance.ContainsRecipe(ingredientList, itemType.Gloves))
+        if (RecipeManager.instance.ContainsRecipe(ingredientList, itemType.Knife))
         {
             cookingBehaviour.Cook(ingredientList);
             removeIngredientsFromContainers();
@@ -31,7 +31,7 @@ public class OvenController : AbstractCookingDevice
 
     public override ItemController placeIngredient(ItemController ingredient)
     {
-        if(ingredient.GetComponent<EquipmentController>() != null)
+        if (ingredient.GetComponent<EquipmentController>() != null)
         {
             return null;
         }
@@ -52,10 +52,10 @@ public class OvenController : AbstractCookingDevice
 
     public override void CheckCooking()
     {
-        if (AreAllIngredientsPlaced())
-        {
-            StartCooking();
-        }
+        //if (AreAllIngredientsPlaced())
+        //{
+        //    StartCooking();
+        //}
     }
 
     void removeIngredientsFromContainers()
@@ -81,7 +81,7 @@ public class OvenController : AbstractCookingDevice
 
     void MakeCookedFood(GameObject _cookedFood)
     {
-        if(cookedFood == null)
+        if(_cookedFood == null)
         {
             return;
         }
@@ -95,9 +95,14 @@ public class OvenController : AbstractCookingDevice
         }
     }
 
-    public void TakeOutCookedFood()
+    public void CookFood()
     {
-        if(cookedFood != null)
+        if (AreAllIngredientsPlaced())
+        {
+            StartCooking();
+        }
+
+        if (cookedFood != null)
         {
             cookedFood.SetActive(true);
             cookedFood = null;
