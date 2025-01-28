@@ -17,7 +17,6 @@ public class GlovesCookEquipmentStrategy : EquipmentStrategy
         }
 
         ovenController.TakeOutCookedFood();
-
     }
 
     OvenController GetOven()

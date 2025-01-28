@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 9174071143734347804}
   - component: {fileID: 3872382146803490883}
   - component: {fileID: 2383374253419788808}
+  - component: {fileID: 3458562911366903520}
+  - component: {fileID: 50143652319010592}
   m_Layer: 0
   m_Name: Beef
   m_TagString: Item
@@ -96,6 +98,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 7d9c3ddc7edf19749ad86d8a569ddeab, type: 2}
+--- !u!114 &3458562911366903520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2910134741701638720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4613ee32ce4354e8768c2e0ed294f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &50143652319010592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2910134741701638720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc8cfe7f5cb0fc04a9db7f034cc92ee1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToWait: 2
+  waypointFollowSpeed: 2
 --- !u!1001 &6806210194381501463
 PrefabInstance:
   m_ObjectHideFlags: 0

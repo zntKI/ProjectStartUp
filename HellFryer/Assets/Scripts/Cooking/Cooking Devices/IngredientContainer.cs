@@ -67,18 +67,29 @@ public class IngredientContainer : MonoBehaviour
     void ActivateHostileIngredient()
     {
         HostileItemController hostileItemController = ingredient.gameObject.GetComponent<HostileItemController>();
+        HostileItemController hostileItemControllerInChildren = ingredient.gameObject.GetComponentInChildren<HostileItemController>();
+
         if (hostileItemController != null)
         {
             hostileItemController.Activate();
+        }else if(hostileItemControllerInChildren != null)
+        {
+            hostileItemControllerInChildren.Activate();
         }
     }
 
     void DeactivateHostileIngredient()
     {
         HostileItemController hostileItemController = ingredient.gameObject.GetComponent<HostileItemController>();
+        HostileItemController hostileItemControllerInChildren = ingredient.gameObject.GetComponentInChildren<HostileItemController>();
+
         if (hostileItemController != null)
         {
             hostileItemController.Deactivate();
+        }
+        else if (hostileItemControllerInChildren != null)
+        {
+            hostileItemControllerInChildren.Deactivate();
         }
     }
 }
