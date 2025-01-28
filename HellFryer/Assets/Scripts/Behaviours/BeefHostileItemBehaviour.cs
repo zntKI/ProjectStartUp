@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class BeefHostileItemBehaviour : HostileItemBehaviour
@@ -19,7 +20,8 @@ public class BeefHostileItemBehaviour : HostileItemBehaviour
 
     void Start()
     {
-        waypointsToFollow = GameObject.FindGameObjectsWithTag("BeefWaypoint");
+        waypointsToFollow = GameObject.FindGameObjectsWithTag("BeefWaypoint")
+            .OrderBy(w => w.GetComponent<IDHolder>().ID).ToArray();
 
         state = BeefHostileState.None;
     }
