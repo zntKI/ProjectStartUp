@@ -9,6 +9,9 @@ public class HeldItemDisplay : MonoBehaviour
     
     public void SetItem(ItemController itemController)
     {
+        if (heldItemSlot == null)
+            return;
+
         TextMeshProUGUI itemName = heldItemSlot.transform.Find("ItemName").GetComponent<TextMeshProUGUI>();
         UnityEngine.UI.Image itemIcon = heldItemSlot.transform.Find("ItemIcon").GetComponent<UnityEngine.UI.Image>();
 
@@ -20,6 +23,9 @@ public class HeldItemDisplay : MonoBehaviour
 
     public void RemoveItem()
     {
+        if (heldItemSlot == null)
+            return;
+
         heldItemSlot.SetActive(false);
     }
 }

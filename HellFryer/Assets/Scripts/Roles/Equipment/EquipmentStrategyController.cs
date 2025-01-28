@@ -26,9 +26,23 @@ public class EquipmentStrategyController : StrategyController
         }
     }
 
-    // TODO: Implement
     public void SwitchEquipmentType()
     {
+        EquipmentStrategy otherEquipmentStrategy = GetComponents<EquipmentStrategy>().FirstOrDefault(e => !e.enabled);
+        if (otherEquipmentStrategy == null)
+        {
+            Debug.LogError("No other disabled equipment strategy");
+            return;
+        }
+        else if (otherEquipmentStrategy == currentEquipmentStrategy)
+        {
+            Debug.LogError("Other equipment strategy the same with the current one");
+            return;
+        }
+
+        currentEquipmentStrategy.enabled = false;
+        currentEquipmentStrategy = otherEquipmentStrategy;
+        currentEquipmentStrategy.enabled = true;
     }
 
     /// <summary>

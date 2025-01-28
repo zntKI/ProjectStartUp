@@ -65,6 +65,18 @@ public class PlayerHeldItemHandler : MonoBehaviour
             //Add the previous item to the inventory
             InventoryManager.instance.PickupItem(droppedItem, playerController.GetSelectedItemSlot());
         }
+
+        if (heldItem.TryGetComponent<EquipmentController>(out EquipmentController equipmentController))
+        {
+            RoleStrategy roleStrategy = GetComponent<RoleStrategyController>().CurrentRoleStrategy;
+            EquipmentStrategy equipmentStrategy = heldItem.GetComponent<EquipmentStrategyController>().CurrentEquipmentStrategy;
+
+            if ((roleStrategy is CookRoleStrategy && equipmentStrategy is EquipmentHuntStrategy)
+                || (roleStrategy is HunterRoleStrategy && equipmentStrategy is EquipmentCookStrategy))
+            {
+                equipmentController.SwitchEquipmentType();
+            }
+        }
     }
 
     public void HoldSelectedItem()
@@ -134,7 +146,7 @@ public class PlayerHeldItemHandler : MonoBehaviour
 
             if (cookingController == null)
             {
-                continue;   
+                continue;
             }
 
             float dist = Vector3.Distance(player.position, curObject.transform.position);

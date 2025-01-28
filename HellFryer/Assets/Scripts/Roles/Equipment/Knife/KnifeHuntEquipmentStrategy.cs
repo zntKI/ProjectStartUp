@@ -10,7 +10,7 @@ public enum KnifeThrowState
     Incoming,
 }
 
-public class KnifeHuntEquipmentStrategy : EquipmentStrategy
+public class KnifeHuntEquipmentStrategy : EquipmentHuntStrategy
 {
     [SerializeField]
     private float initialThrowForce = 2f;

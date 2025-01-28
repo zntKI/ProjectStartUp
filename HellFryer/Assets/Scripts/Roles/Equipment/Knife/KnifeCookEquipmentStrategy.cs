@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KnifeCookEquipmentStrategy : EquipmentStrategy
+public class KnifeCookEquipmentStrategy : EquipmentCookStrategy
 {
     float pickupRange = 1;
     CuttingBoardController cuttingBoardController;

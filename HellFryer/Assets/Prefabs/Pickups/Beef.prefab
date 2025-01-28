@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc8cfe7f5cb0fc04a9db7f034cc92ee1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToWait: 2
+  timeToWait: 10
   waypointFollowSpeed: 2
 --- !u!1001 &6806210194381501463
 PrefabInstance:
