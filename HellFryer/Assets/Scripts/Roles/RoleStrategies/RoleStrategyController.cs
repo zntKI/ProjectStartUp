@@ -26,6 +26,25 @@ public class RoleStrategyController : StrategyController
         }
     }
 
+    public void SwitchRoles()
+    {
+        RoleStrategy otherRoleStrategy = GetComponents<RoleStrategy>().FirstOrDefault(r => !r.enabled);
+        if (otherRoleStrategy == null)
+        {
+            Debug.LogError("No other disabled role strategy");
+            return;
+        }
+        else if (otherRoleStrategy == currentRoleStrategy)
+        {
+            Debug.LogError("Other role strategy the same with the current one");
+            return;
+        }
+
+        currentRoleStrategy.enabled = false;
+        currentRoleStrategy = otherRoleStrategy;
+        currentRoleStrategy.enabled = true;
+    }
+
     /// <summary>
     /// Checks new strategy when enabled
     /// </summary>

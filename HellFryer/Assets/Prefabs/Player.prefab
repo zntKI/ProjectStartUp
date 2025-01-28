@@ -149,6 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerController: {fileID: 0}
+  heldItemDisplay: {fileID: 0}
   heldItem: {fileID: 0}
   holdDistance: 1
   dropDistance: 1.2

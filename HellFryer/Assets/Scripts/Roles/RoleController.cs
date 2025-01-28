@@ -31,6 +31,17 @@ public class RoleController : MonoBehaviour
         currentRoleStrategy.UpdateEquipmentType();
     }
 
+    public void SwitchRoles()
+    {
+        if (roleStrategyController == null) // Because of spawning player before executing Start and OnTriggerEnter called in RoleSwitchAreaController
+            roleStrategyController = GetComponent<RoleStrategyController>();
+
+
+        roleStrategyController.SwitchRoles();
+
+        UpdateCurrentRoleStrategy();
+    }
+
     public void PerformTask()
     {
         currentRoleStrategy.PerformTask();
@@ -39,14 +50,6 @@ public class RoleController : MonoBehaviour
     public void OpenBook()
     {
         currentRoleStrategy.OpenBook();
-    }
-
-    /// <summary>
-    /// Enables switching between role strategies
-    /// </summary>
-    void CheckChangingRoleStrategy()
-    {
-        UpdateCurrentRoleStrategy();
     }
 
     void OnDestroy()
