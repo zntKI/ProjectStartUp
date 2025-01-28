@@ -11,6 +11,11 @@ using static UnityEngine.InputSystem.InputAction;
 [RequireComponent(typeof(RoleStrategyController))]
 public class RoleController : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject cookModel;
+    [SerializeField]
+    private GameObject hunterModel;
+
     private RoleStrategyController roleStrategyController;
 
     private RoleStrategy currentRoleStrategy;
@@ -38,8 +43,23 @@ public class RoleController : MonoBehaviour
 
 
         roleStrategyController.SwitchRoles();
-
         UpdateCurrentRoleStrategy();
+
+        SwitchModels();
+    }
+
+    private void SwitchModels()
+    {
+        if (cookModel.activeSelf)
+        {
+            hunterModel.SetActive(true);
+            cookModel.SetActive(false);
+        }
+        else if (hunterModel.activeSelf)
+        {
+            cookModel.SetActive(true);
+            hunterModel.SetActive(false);
+        }
     }
 
     public void PerformTask()
