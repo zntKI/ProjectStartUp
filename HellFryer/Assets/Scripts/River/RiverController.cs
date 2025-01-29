@@ -37,6 +37,8 @@ public class RiverController : MonoBehaviour
                     player.Value[0] = 0f;
                 }
             }
+
+            SoundManager.instance.PlayRiverSound();
         }
     }
 
@@ -56,6 +58,11 @@ public class RiverController : MonoBehaviour
         {
             if (!currentPlayers.Remove(player))
                 Debug.LogError("Player not in collection in RiverController and cant be removed!!!");
+
+            if (currentPlayers.Count == 0)
+            {
+                SoundManager.instance.StopRiverSound();
+            }
         }
     }
 }

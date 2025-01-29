@@ -35,6 +35,8 @@ public class DigAreaController : MonoBehaviour
     {
         if (other.transform.TryGetComponent<PlayerController>(out PlayerController player))
         {
+            SoundManager.instance.PlayerDiggingGrave();
+
             // Spawn item
             DigOutItem gameObjectSpawned = (DigOutItem)Random.Range((int)DigOutItem.Limbs, (int)DigOutItem.Zombie + 1);
             if (gameObjectSpawned == DigOutItem.Zombie)
@@ -47,6 +49,8 @@ public class DigAreaController : MonoBehaviour
 
                 player.DisableMovement();
                 timeCounter = 0f;
+
+                SoundManager.instance.ZombieWakingUp();
             }
             else
             {

@@ -27,6 +27,8 @@ public class PullRangeController : MonoBehaviour
                 Vector3 pullVector = (transform.position - player.transform.position).normalized * pullAmount;
                 player.ShouldPull(pullVector);
             }
+
+            SoundManager.instance.PlayRiverMonsterPullingSound();
         }
     }
 
@@ -57,6 +59,11 @@ public class PullRangeController : MonoBehaviour
 
         player.ShouldPull(Vector3.zero);
         currentPlayers.Remove(player);
+
+        if (currentPlayers.Count == 0)
+        {
+            SoundManager.instance.StopRiverMonsterPullingSound();
+        }
     }
 
     /// <summary>
@@ -69,5 +76,7 @@ public class PullRangeController : MonoBehaviour
             player.ShouldPull(Vector3.zero);
         }
         currentPlayers.Clear();
+
+        SoundManager.instance.StopRiverMonsterPullingSound();
     }
 }

@@ -34,6 +34,8 @@ public class KnifeHuntEquipmentStrategy : EquipmentHuntStrategy
     public override void StartUp()
     {
         SwitchThrowState(KnifeThrowState.Outgoing);
+
+        SoundManager.instance.KnifeOutgoing();
     }
 
     private void SwitchThrowState(KnifeThrowState newState)

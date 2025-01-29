@@ -22,12 +22,16 @@ public class BloodHostileItemBehaviour : HostileItemBehaviour
     public override void Activate()
     {
         StartCoroutine(SpawnBloodCoroutine());
+
+        SoundManager.instance.PlayBloodSound();
     }
 
     public override void Deactivate()
     {
         StopCoroutine(SpawnBloodCoroutine());
         DespawnBloodSplatters();
+
+        SoundManager.instance.StopBloodSound();
     }
 
     IEnumerator SpawnBloodCoroutine()

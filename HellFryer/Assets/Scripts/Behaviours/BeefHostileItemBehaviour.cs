@@ -38,6 +38,8 @@ public class BeefHostileItemBehaviour : HostileItemBehaviour
                 if (timeCounter > timeToWait)
                 {
                     state = BeefHostileState.Roaming;
+
+                    SoundManager.instance.PlayBeefScreaming();
                 }
 
                 break;
@@ -71,14 +73,19 @@ public class BeefHostileItemBehaviour : HostileItemBehaviour
 
     public override void Activate()
     {
-        state = BeefHostileState.WaitingStatic;
-        timeCounter = 0f;
-        currentWaypointIndex = 0;
+        if (waypointsToFollow.Length > 0) // Skip if no waypoints were found
+        {
+            state = BeefHostileState.WaitingStatic;
+            timeCounter = 0f;
+            currentWaypointIndex = 0;
+        }
     }
 
     public override void Deactivate()
     {
         state = BeefHostileState.None;
+
+        SoundManager.instance.StopBeefScreaming();
     }
 }
 

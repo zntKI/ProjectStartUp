@@ -116,6 +116,8 @@ public class WingsHostileItemBehaviour : HostileItemBehaviour
         if (other.transform.TryGetComponent<PlayerController>(out player))
         {
             currentPlayersInRange.Add(player);
+
+            SoundManager.instance.DemonWingsSlapChef();
         }
     }
 
