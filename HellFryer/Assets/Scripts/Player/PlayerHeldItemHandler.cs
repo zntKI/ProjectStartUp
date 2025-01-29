@@ -188,6 +188,11 @@ public class PlayerHeldItemHandler : MonoBehaviour
         float minDist = float.MaxValue;
         IngredientContainer closestContainer = null;
 
+        if(heldItem == null)
+        {
+            return null;
+        }
+
         if (heldItem.GetComponent<EquipmentController>()) {
             return null;
         }

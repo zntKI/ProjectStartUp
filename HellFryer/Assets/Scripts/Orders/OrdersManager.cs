@@ -69,6 +69,7 @@ public class OrdersManager : MonoBehaviour
         int randOrderDuration = Random.Range(30, 60);
 
         AddOrder(cookedFoods[randIndex], randOrderDuration);
+        SoundManager.instance.NewOrderHasArrived();
 
         currentOrderCount++;
     }

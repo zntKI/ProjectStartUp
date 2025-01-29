@@ -10,6 +10,17 @@ public class CuttingBoardCookingBehaviour : CookingBehaviour
         if (onCooked != null)
         {
             onCooked.Invoke(RecipeManager.instance.GetCookedFood(ingredients, itemType.Knife));
+            
+
+            StartCoroutine(CuttingSound());
         }
+    }
+
+    IEnumerator CuttingSound()
+    {
+        SoundManager.instance.PlayKnifeOnCuttingBoard();
+        yield return new WaitForSeconds(0.5f);
+
+        SoundManager.instance.StopKnifeOnCuttingBoard();
     }
 }

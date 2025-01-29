@@ -211,12 +211,12 @@ public class SoundManager : MonoBehaviour
 
     public void PlayKnifeOnCuttingBoard()
     {
-        SoundManager.instance.PlayLoopingSound(SoundManager.instance.knifeOnCuttingBoard);
+        SoundManager.instance.PlaySound(SoundManager.instance.knifeOnCuttingBoard);
     }
 
     public void StopKnifeOnCuttingBoard()
     {
-        SoundManager.instance.StopLoopingSound();
+        //SoundManager.instance.;
     }
 
     public void NewOrderHasArrived()
