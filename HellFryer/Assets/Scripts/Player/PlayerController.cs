@@ -134,9 +134,17 @@ public class PlayerController : MonoBehaviour
 
     public void OnOpenBook(CallbackContext context)
     {
-        if (context.performed)
+        if (!context.performed)
         {
+            return;
+        }
+
+        if(!roleController.IsBookOpen()){
             roleController.OpenBook();
+        }
+        else
+        {
+            roleController.CloseBook();
         }
     }
 

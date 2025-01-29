@@ -36,12 +36,6 @@ public class HandbookController : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        instantiatedMini1 = Instantiate(player1Mini, parentObject.transform);
-        instantiatedMini2 = Instantiate(player2Mini, parentObject.transform);
-    }
-
     //void Update()
     //{
     //    if (Input.GetKey(KeyCode.O))

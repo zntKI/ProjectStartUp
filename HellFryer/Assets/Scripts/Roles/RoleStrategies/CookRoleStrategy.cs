@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class CookRoleStrategy : RoleStrategy
 {
-    public override void OpenBook()
+    public override void OpenBook(GameObject book)
     {
-        HandbookController.instance.ToggleMenu1Visibility();
+        //HandbookController.instance.ToggleMenu1Visibility();
     }
 
     public override void UpdateEquipmentType()

@@ -49,7 +49,7 @@ GameObject:
   - component: {fileID: 3842398630031198321}
   - component: {fileID: 3817237662909922516}
   m_Layer: 5
-  m_Name: Hunter book
+  m_Name: HunterBook
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 7144143502543692358}
   - component: {fileID: 4969583690537922675}
   m_Layer: 5
-  m_Name: Cook book
+  m_Name: CookBook
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
