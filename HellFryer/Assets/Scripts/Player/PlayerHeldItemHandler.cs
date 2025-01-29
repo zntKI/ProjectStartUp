@@ -7,14 +7,20 @@ using static UnityEditor.Progress;
 
 public class PlayerHeldItemHandler : MonoBehaviour
 {
-    [SerializeField]
-    PlayerController playerController;
+    [SerializeField] PlayerController playerController;
 
-    [SerializeField] ItemController heldItem = null;
+    [SerializeField] HeldItemDisplay heldItemDisplay;
+
+    public ItemController heldItem = null;
     [SerializeField] float holdDistance = 0.8f;
     [SerializeField] float dropDistance = 1.2f;
 
     float placeIngredientRange = 1.1f;
+
+    private void Start()
+    {
+        heldItemDisplay = GetComponent<HeldItemDisplay>();
+    }
 
     public void SetPlayerController(PlayerController controller)
     {
@@ -36,6 +42,7 @@ public class PlayerHeldItemHandler : MonoBehaviour
 
             heldItem = item;
             InventoryManager.instance.Remove(heldItem);
+            heldItemDisplay.SetItem(heldItem);
         }
         else
         {
@@ -58,6 +65,18 @@ public class PlayerHeldItemHandler : MonoBehaviour
             //Add the previous item to the inventory
             InventoryManager.instance.PickupItem(droppedItem, playerController.GetSelectedItemSlot());
         }
+
+        if (heldItem.TryGetComponent<EquipmentController>(out EquipmentController equipmentController))
+        {
+            RoleStrategy roleStrategy = GetComponent<RoleStrategyController>().CurrentRoleStrategy;
+            EquipmentStrategy equipmentStrategy = heldItem.GetComponent<EquipmentStrategyController>().CurrentEquipmentStrategy;
+
+            if ((roleStrategy is CookRoleStrategy && equipmentStrategy is EquipmentHuntStrategy)
+                || (roleStrategy is HunterRoleStrategy && equipmentStrategy is EquipmentCookStrategy))
+            {
+                equipmentController.SwitchEquipmentType();
+            }
+        }
     }
 
     public void HoldSelectedItem()
@@ -66,6 +85,7 @@ public class PlayerHeldItemHandler : MonoBehaviour
         if (selectedItem != null)
         {
             HoldItem(selectedItem);
+            heldItemDisplay.SetItem(selectedItem);
         }
     }
 
@@ -80,6 +100,7 @@ public class PlayerHeldItemHandler : MonoBehaviour
             heldItem.gameObject.GetComponent<Collider>().isTrigger = false;
             heldItem.gameObject.tag = "Item";
             heldItem = null;
+            heldItemDisplay.RemoveItem();
         }
     }
 
@@ -90,11 +111,12 @@ public class PlayerHeldItemHandler : MonoBehaviour
         Collider[] hitColliders = Physics.OverlapSphere(gameObject.transform.position + gameObject.transform.forward, placeIngredientRange);
         AbstractCookingDevice cookingDevice = GetClosestCookingDevice(transform, hitColliders);
 
-        if (IsHoldingIngredient())
+        if (heldItem != null)
         {
             if (cookingDevice != null && cookingDevice.placeIngredient(heldItem) != null)
             {
                 placedIngredient = heldItem;
+                heldItemDisplay.RemoveItem();
                 heldItem = null;
             }
         }
@@ -107,11 +129,6 @@ public class PlayerHeldItemHandler : MonoBehaviour
         }
 
         return placedIngredient;
-    }
-
-    bool IsHoldingIngredient()
-    {
-        return heldItem != null && heldItem.GetComponent<EquipmentController>() == null;
     }
 
     public AbstractCookingDevice GetClosestCookingDevice(Transform player, Collider[] collidersInRange)
@@ -129,7 +146,7 @@ public class PlayerHeldItemHandler : MonoBehaviour
 
             if (cookingController == null)
             {
-                continue;   
+                continue;
             }
 
             float dist = Vector3.Distance(player.position, curObject.transform.position);

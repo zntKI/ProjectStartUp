@@ -15,6 +15,11 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
+    public void ResetInputVector()
+    {
+        inputVector = Vector3.zero;
+    }
+
     public void SetInputVector(Vector2 direction)
     {
         inputVector = direction;

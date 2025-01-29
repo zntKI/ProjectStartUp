@@ -48,6 +48,9 @@ public class PlayerPickupHandler : MonoBehaviour
             ItemController item = itemObject.GetComponent<ItemController>();
 
             InventoryManager.instance.PickupItem(item, playerController.GetSelectedItemSlot());
+
+            //ALEX
+            //SoundManager.instance.PlayPickUpSound();
         }
     }
 
@@ -60,5 +63,19 @@ public class PlayerPickupHandler : MonoBehaviour
     public void SetPlayerController(PlayerController controller)
     {
         playerController = controller;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        ItemController item = collision.gameObject.GetComponent<ItemController>();
+
+        if(item == null)
+        {
+            return;
+        }
+
+        InventoryManager.instance.PickupItem(item, playerController.GetSelectedItemSlot());
+
+        SoundManager.instance.ItemPickup();
     }
 }

@@ -8,7 +8,7 @@ public class ToggleMenuKeyboard : MonoBehaviour
     public GameObject player1Mini; // Assign your menu prefab in the Inspector
     public GameObject player1Menu; // Assign your menu prefab in the Inspector
     bool player1MenuOpened = false;
-    bool player1MiniMade = false;
+    //bool player1MiniMade = false;
     private GameObject instantiatedMenu1;
     private GameObject instantiatedMini1;
 
@@ -16,7 +16,7 @@ public class ToggleMenuKeyboard : MonoBehaviour
     public GameObject player2Mini; // Assign your menu prefab in the Inspector
     public GameObject player2Menu; // Assign your menu prefab in the Inspector
     bool player2MenuOpened = false;
-    bool player2MiniMade = false;
+    //bool player2MiniMade = false;
     private GameObject instantiatedMenu2;
     private GameObject instantiatedMini2;
 

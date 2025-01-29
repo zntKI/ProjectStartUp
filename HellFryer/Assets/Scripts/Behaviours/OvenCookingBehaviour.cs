@@ -9,17 +9,16 @@ public class OvenCookingBehaviour : CookingBehaviour
 
     public override void Cook(List<itemType> ingredients)
     {
-        StartCoroutine(CookingCoroutine(ingredients));
+        StartCoroutine(CookingCoroutine(ingredients, itemType.Gloves));
     }
 
-    IEnumerator CookingCoroutine(List<itemType> ingredients)
+    IEnumerator CookingCoroutine(List<itemType> ingredients, itemType cookingEquipment)
     {
         yield return new WaitForSeconds(cookingTime);
 
         if(onCooked != null)
         {
-            onCooked.Invoke(RecipeManager.instance.GetCookedFood(ingredients));
-
+            onCooked.Invoke(RecipeManager.instance.GetCookedFood(ingredients, cookingEquipment));
         }
     }
 }

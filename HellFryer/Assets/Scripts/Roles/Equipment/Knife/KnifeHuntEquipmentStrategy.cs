@@ -10,7 +10,7 @@ public enum KnifeThrowState
     Incoming,
 }
 
-public class KnifeHuntEquipmentStrategy : EquipmentStrategy
+public class KnifeHuntEquipmentStrategy : EquipmentHuntStrategy
 {
     [SerializeField]
     private float initialThrowForce = 2f;
@@ -34,6 +34,8 @@ public class KnifeHuntEquipmentStrategy : EquipmentStrategy
     public override void StartUp()
     {
         SwitchThrowState(KnifeThrowState.Outgoing);
+
+        SoundManager.instance.KnifeOutgoing();
     }
 
     private void SwitchThrowState(KnifeThrowState newState)

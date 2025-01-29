@@ -18,7 +18,7 @@ public class OvenController : AbstractCookingDevice
     {
         List<itemType> ingredientList = GetIngredients();
 
-        if (RecipeManager.instance.ContainsRecipe(ingredientList))
+        if (RecipeManager.instance.ContainsRecipe(ingredientList, itemType.Gloves))
         {
             cookingBehaviour.Cook(ingredientList);
             removeIngredientsFromContainers();
@@ -31,7 +31,17 @@ public class OvenController : AbstractCookingDevice
 
     public override ItemController placeIngredient(ItemController ingredient)
     {
-        if(!AreAllIngredientsPlaced() && ingredient != null)
+        if(ingredient == null)
+        {
+            return null;
+        }
+
+        if (ingredient.GetComponent<EquipmentController>())
+        {
+            return null;
+        }
+
+        if (!AreAllIngredientsPlaced() && ingredient != null)
         {
             foreach (IngredientContainer container in ingredientContainers)
             {
@@ -76,14 +86,23 @@ public class OvenController : AbstractCookingDevice
 
     void MakeCookedFood(GameObject _cookedFood)
     {
+        if (_cookedFood == null)
+        {
+            return;
+        }
+
         cookedFood = Instantiate(_cookedFood, gameObject.transform);
         cookedFood.SetActive(false);
-        ingredientContainers[1].placeIngedient(cookedFood.GetComponent<ItemController>());
+
+        if (cookedFood.GetComponent<ItemController>() != null)
+        {
+            ingredientContainers[1].placeIngedient(cookedFood.GetComponent<ItemController>());
+        }
     }
 
     public void TakeOutCookedFood()
     {
-        if(cookedFood != null)
+        if (cookedFood != null)
         {
             cookedFood.SetActive(true);
             cookedFood = null;

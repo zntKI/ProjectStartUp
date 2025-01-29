@@ -6,6 +6,11 @@ TagManager:
   tags:
   - Item
   - CookingDevice
+  - ZombieArm
+  - Projectile
+  - WingCreature
+  - WingCreatureWaypoint
+  - BeefWaypoint
   layers:
   - Default
   - TransparentFX

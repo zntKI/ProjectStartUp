@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GlovesCookEquipmentStrategy : EquipmentStrategy
+public class GlovesCookEquipmentStrategy : EquipmentCookStrategy
 {
     float pickupRange = 1;
     OvenController ovenController;
@@ -17,7 +17,6 @@ public class GlovesCookEquipmentStrategy : EquipmentStrategy
         }
 
         ovenController.TakeOutCookedFood();
-
     }
 
     OvenController GetOven()

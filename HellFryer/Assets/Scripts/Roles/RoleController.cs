@@ -11,6 +11,11 @@ using static UnityEngine.InputSystem.InputAction;
 [RequireComponent(typeof(RoleStrategyController))]
 public class RoleController : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject cookModel;
+    [SerializeField]
+    private GameObject hunterModel;
+
     private RoleStrategyController roleStrategyController;
 
     private RoleStrategy currentRoleStrategy;
@@ -31,6 +36,32 @@ public class RoleController : MonoBehaviour
         currentRoleStrategy.UpdateEquipmentType();
     }
 
+    public void SwitchRoles()
+    {
+        if (roleStrategyController == null) // Because of spawning player before executing Start and OnTriggerEnter called in RoleSwitchAreaController
+            roleStrategyController = GetComponent<RoleStrategyController>();
+
+
+        roleStrategyController.SwitchRoles();
+        UpdateCurrentRoleStrategy();
+
+        SwitchModels();
+    }
+
+    private void SwitchModels()
+    {
+        if (cookModel.activeSelf)
+        {
+            hunterModel.SetActive(true);
+            cookModel.SetActive(false);
+        }
+        else if (hunterModel.activeSelf)
+        {
+            cookModel.SetActive(true);
+            hunterModel.SetActive(false);
+        }
+    }
+
     public void PerformTask()
     {
         currentRoleStrategy.PerformTask();
@@ -41,12 +72,21 @@ public class RoleController : MonoBehaviour
         currentRoleStrategy.OpenBook();
     }
 
-    /// <summary>
-    /// Enables switching between role strategies
-    /// </summary>
-    void CheckChangingRoleStrategy()
+    public void OnPlayerWalkSound()
     {
-        UpdateCurrentRoleStrategy();
+        if (currentRoleStrategy is CookRoleStrategy)
+        {
+            SoundManager.instance.PlayCookWalk();
+        }
+        else
+        {
+            SoundManager.instance.PlayHunterWalk();
+        }
+    }
+
+    public void OnPlayerStopWalkSound()
+    {
+        SoundManager.instance.StopWalk();
     }
 
     void OnDestroy()

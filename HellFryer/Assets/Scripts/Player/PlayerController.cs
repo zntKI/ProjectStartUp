@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem.HID;
 using UnityEngine.WSA;
+using static UnityEditor.Timeline.TimelinePlaybackControls;
 using static UnityEngine.InputSystem.InputAction;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] Camera playerCamera;
+
     PlayerMovement mover;
+    bool isHeldByZombie = false;
+
     PlayerPickupHandler pickupHandler;
     PlayerHeldItemHandler heldItemHandler;
     InventorySelector inventorySelector;
@@ -26,21 +30,42 @@ public class PlayerController : MonoBehaviour
             pickupHandler.SetPlayerController(this);
         }
         heldItemHandler = GetComponent<PlayerHeldItemHandler>();
-        if(heldItemHandler != null)
+        if (heldItemHandler != null)
         {
             heldItemHandler.SetPlayerController(this);
         }
 
         inventorySelector = GetComponent<InventorySelector>();
 
-
-
         roleController = GetComponent<RoleController>();
+    }
+
+    public void DisableMovement()
+    {
+        isHeldByZombie = true;
+        mover.ResetInputVector();
+
+        SoundManager.instance.StopWalk();
+    }
+
+    public void EnableMovement()
+    {
+        isHeldByZombie = false;
     }
 
     public void OnMove(CallbackContext context)
     {
-        mover.SetInputVector(context.ReadValue<Vector2>());
+        if (!isHeldByZombie)
+        {
+            Vector2 value = context.ReadValue<Vector2>();
+
+            mover.SetInputVector(value);
+
+            if (value.x == 0 && value.y == 0)
+                SoundManager.instance.StopWalk();
+            else
+                SoundManager.instance.PlayCookWalk();
+        }
     }
 
     public void OnPickUp(CallbackContext context)
@@ -58,6 +83,8 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
+        SoundManager.instance.ItemDrop();
+
         if (heldItemHandler.PlaceIngredient() == null)
         {
             heldItemHandler.DropHeldItem();
@@ -69,15 +96,15 @@ public class PlayerController : MonoBehaviour
         if (context.performed)
         {
             heldItemHandler.HoldSelectedItem();
-        }   
+        }
     }
 
     public void OnTurn(CallbackContext context)
     {
         lookDir = context.ReadValue<Vector2>();
-        
+
         //Mouse turning
-        if(context.control.device.name == "Mouse")
+        if (context.control.device.name == "Mouse")
         {
             Ray ray = playerCamera.ScreenPointToRay(new Vector3(lookDir.x, lookDir.y, 0));
             RaycastHit hit;
@@ -114,14 +141,7 @@ public class PlayerController : MonoBehaviour
         {
             roleController.PerformTask();
 
-            Collider[] hitColliders = Physics.OverlapSphere(gameObject.transform.position + gameObject.transform.forward, 1.1f);
-            AbstractCookingDevice cookingDevice = heldItemHandler.GetClosestCookingDevice(transform, hitColliders);
-            if (cookingDevice == null)
-            {
-                return;
-            }
-
-            cookingDevice.CheckCooking();
+            InteractWithCookingDevice();
         }
     }
 
@@ -130,6 +150,22 @@ public class PlayerController : MonoBehaviour
         if (context.performed)
         {
             roleController.OpenBook();
+        }
+    }
+
+    public void OnReturnItem(CallbackContext context)
+    {
+        if (context.performed)
+        {
+
+            ItemController heldItem = heldItemHandler.heldItem;
+            if (heldItem == null)
+            {
+                return;
+            }
+
+            heldItemHandler.DropHeldItem();
+            InventoryManager.instance.PickupItem(heldItem, GetSelectedItemSlot());
         }
     }
 
@@ -143,5 +179,15 @@ public class PlayerController : MonoBehaviour
         return inventorySelector.selectedSlot;
     }
 
-    
+    void InteractWithCookingDevice()
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(gameObject.transform.position + gameObject.transform.forward, 1.1f);
+        AbstractCookingDevice cookingDevice = heldItemHandler.GetClosestCookingDevice(transform, hitColliders);
+        if (cookingDevice == null)
+        {
+            return;
+        }
+
+        cookingDevice.CheckCooking();
+    }
 }
