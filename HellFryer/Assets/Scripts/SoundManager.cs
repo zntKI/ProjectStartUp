@@ -1,15 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio; // Added for AudioMixer support
+
+
 
 public class SoundManager : MonoBehaviour
 {
-    //added
+
+    public AudioMixer audioMixer;
+
     private AudioSource audioSource;
-    //added 2
     private AudioSource loopAudioSource;
-    //added 3
-    AudioSource backgroundMusicSource;
+    private AudioSource backgroundMusicSource;
+
+    [Header("Audio Mixer Groups")]
+    public AudioMixerGroup sfxGroup;
+    public AudioMixerGroup musicGroup;
 
     [Header("Top Priority Sounds")]
     public AudioClip backgroundMusic;
@@ -72,15 +79,31 @@ public class SoundManager : MonoBehaviour
     //added
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
-        //added 2
+        audioSource = gameObject.AddComponent<AudioSource>();
         loopAudioSource = gameObject.AddComponent<AudioSource>();
-        loopAudioSource.loop = true;
-        //added 3
         backgroundMusicSource = gameObject.AddComponent<AudioSource>();
-        backgroundMusicSource.clip = backgroundMusic; 
-        backgroundMusicSource.loop = true; 
-        backgroundMusicSource.volume = 0.35f; 
+
+        // Assign AudioMixerGroups
+        if (sfxGroup != null)
+        {
+            audioSource.outputAudioMixerGroup = sfxGroup;
+            loopAudioSource.outputAudioMixerGroup = sfxGroup;
+        }
+
+        if (musicGroup != null)
+        {
+            backgroundMusicSource.outputAudioMixerGroup = musicGroup;
+        }
+
+        loopAudioSource.loop = true;
+        backgroundMusicSource.clip = backgroundMusic;
+        backgroundMusicSource.loop = true;
+        backgroundMusicSource.volume = 0.35f;
+    }
+
+    public void SetVolume(string parameter, float volume)
+    {
+        audioMixer.SetFloat(parameter, Mathf.Log10(volume) * 20); // Convert linear to logarithmic
     }
     //added
     public void PlaySound(AudioClip clip)
