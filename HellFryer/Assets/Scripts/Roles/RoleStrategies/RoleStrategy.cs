@@ -31,5 +31,5 @@ public abstract class RoleStrategy : Strategy
     /// <summary>
     /// Open either Hunter's or Cook's book
     /// </summary>
-    public abstract void OpenBook(GameObject book);
+    public abstract void OpenBook();
 }

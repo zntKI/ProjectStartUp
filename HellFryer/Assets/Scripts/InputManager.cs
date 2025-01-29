@@ -5,23 +5,9 @@ using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject playerPrefab;
-    [SerializeField]
-    private Transform player2SelectorContent;
-    [SerializeField]
-    private GameObject player2HeldItemContainer;
-
-    [SerializeField]
-    private GameObject cookBookMini;
-    [SerializeField]
-    private GameObject hunterBookMini;
-
-    [SerializeField]
-    private GameObject cookBookOpen;
-    [SerializeField]
-    private GameObject hunterBookOpen;
-
+    public GameObject playerPrefab;
+    public Transform player2SelectorContent;
+    public GameObject player2HeldItemContainer;
     private PlayerInputManager inputManager;
 
     // Start is called before the first frame update
@@ -33,12 +19,6 @@ public class InputManager : MonoBehaviour
 
             HeldItemDisplay player2HeldItemDisplay = playerPrefab.GetComponentInChildren<HeldItemDisplay>();
             player2HeldItemDisplay.heldItemSlot = player2HeldItemContainer;
-
-            RoleController player2RoleController = playerPrefab.GetComponentInChildren<RoleController>();
-            player2RoleController.cookBookMini = cookBookMini;
-            player2RoleController.hunterBookMini = hunterBookMini;
-            player2RoleController.cookBookOpen = cookBookOpen;
-            player2RoleController.hunterBookOpen = hunterBookOpen;
 
             inputManager = GetComponent<PlayerInputManager>();
             inputManager.playerPrefab = playerPrefab;
