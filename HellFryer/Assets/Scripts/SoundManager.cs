@@ -1,15 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio; // Added for AudioMixer support
+
+
 
 public class SoundManager : MonoBehaviour
 {
-    //added
+
+    public AudioMixer audioMixer;
+
     private AudioSource audioSource;
-    //added 2
     private AudioSource loopAudioSource;
-    //added 3
-    AudioSource backgroundMusicSource;
+    private AudioSource backgroundMusicSource;
+
+    [Header("Audio Mixer Groups")]
+    public AudioMixerGroup sfxGroup;
+    public AudioMixerGroup musicGroup;
 
     [Header("Top Priority Sounds")]
     public AudioClip backgroundMusic;
@@ -21,7 +28,9 @@ public class SoundManager : MonoBehaviour
     public AudioClip dishReadyForStoveAndOven;
     public AudioClip itemDrop;
     public AudioClip itemPickup;
+    public AudioClip panHittingProjectile;
     public AudioClip knifeHit;
+    public AudioClip knifeOutgoing;
     public AudioClip knifeOnCuttingBoard;
     public AudioClip newOrderHasArrived;
     public AudioClip ovenSound;
@@ -43,6 +52,7 @@ public class SoundManager : MonoBehaviour
 
     [Header("Priority 4 Sounds")]
     public AudioClip bloodSound;
+    public AudioClip beefScreaming;
     public AudioClip chefAndHunterBookClose;
     public AudioClip chefAndHunterBookOpen;
     public AudioClip demonWingsSlapChef;
@@ -55,7 +65,6 @@ public class SoundManager : MonoBehaviour
 
     public static SoundManager instance { get; private set; }
 
-    public System.Action<GameObject> onPickup;
     void Awake()
     {
         if (instance != null && instance != this)
@@ -72,15 +81,31 @@ public class SoundManager : MonoBehaviour
     //added
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
-        //added 2
+        audioSource = gameObject.AddComponent<AudioSource>();
         loopAudioSource = gameObject.AddComponent<AudioSource>();
-        loopAudioSource.loop = true;
-        //added 3
         backgroundMusicSource = gameObject.AddComponent<AudioSource>();
-        backgroundMusicSource.clip = backgroundMusic; 
-        backgroundMusicSource.loop = true; 
-        backgroundMusicSource.volume = 0.35f; 
+
+        // Assign AudioMixerGroups
+        if (sfxGroup != null)
+        {
+            audioSource.outputAudioMixerGroup = sfxGroup;
+            loopAudioSource.outputAudioMixerGroup = sfxGroup;
+        }
+
+        if (musicGroup != null)
+        {
+            backgroundMusicSource.outputAudioMixerGroup = musicGroup;
+        }
+
+        loopAudioSource.loop = true;
+        backgroundMusicSource.clip = backgroundMusic;
+        backgroundMusicSource.loop = true;
+        backgroundMusicSource.volume = 0.35f;
+    }
+
+    public void SetVolume(string parameter, float volume)
+    {
+        audioMixer.SetFloat(parameter, Mathf.Log10(volume) * 20); // Convert linear to logarithmic
     }
     //added
     public void PlaySound(AudioClip clip)
@@ -97,6 +122,7 @@ public class SoundManager : MonoBehaviour
         if (clip != null && loopAudioSource.clip != clip)
         {
             loopAudioSource.clip = clip;
+            //Debug.Log(loopAudioSource.clip);
             loopAudioSource.Play();
         }
     }
@@ -127,222 +153,232 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    void PlayMenuMusic()
+    public void PlayMenuMusic()
     {
         SoundManager.instance.PlayLoopingSound(SoundManager.instance.menuMusic);
     }
 
-    void StopMenuMusic()
+    public void StopMenuMusic()
     {
         SoundManager.instance.StopLoopingSound();
     }
 
     // Priority 2 Sounds
-    void PlayCookWalk()
+    public void PlayCookWalk()
     {
         SoundManager.instance.PlayLoopingSound(SoundManager.instance.cookWalk);
     }
 
-    void StopCookWalk()
-    {
-        SoundManager.instance.StopLoopingSound();
-    }
-
     // Hunter walking sound (looped)
-    void PlayHunterWalk()
+    public void PlayHunterWalk()
     {
         SoundManager.instance.PlayLoopingSound(SoundManager.instance.hunterWalk);
     }
 
-    void StopHunterWalk()
+    public void StopWalk()
     {
         SoundManager.instance.StopLoopingSound();
     }
 
-    void DishReadyForStoveAndOven()
+    public void DishReadyForStoveAndOven()
     {
         SoundManager.instance.PlaySound(SoundManager.instance.dishReadyForStoveAndOven);
     }
 
-    void ItemDrop()
+    public void ItemDrop()
     {
         SoundManager.instance.PlaySound(SoundManager.instance.itemDrop);
     }
 
-    void ItemPickup()
+    public void ItemPickup()
     {
         SoundManager.instance.PlaySound(SoundManager.instance.itemPickup);
     }
+    public void PanHittingProjectile()
+    {
+        SoundManager.instance.PlaySound(SoundManager.instance.panHittingProjectile);
+    }
 
-    void KnifeHit()
+    public void KnifeHit()
     {
         SoundManager.instance.PlaySound(SoundManager.instance.knifeHit);
     }
 
-    void PlayKnifeOnCuttingBoard()
+    public void KnifeOutgoing()
+    {
+        SoundManager.instance.PlaySound(SoundManager.instance.knifeOutgoing);
+    }
+
+    public void PlayKnifeOnCuttingBoard()
     {
         SoundManager.instance.PlayLoopingSound(SoundManager.instance.knifeOnCuttingBoard);
     }
 
-    void StopKnifeOnCuttingBoard()
+    public void StopKnifeOnCuttingBoard()
     {
         SoundManager.instance.StopLoopingSound();
     }
 
-    void NewOrderHasArrived()
+    public void NewOrderHasArrived()
     {
         SoundManager.instance.PlaySound(SoundManager.instance.newOrderHasArrived);
     }
 
-    void PlayOvenSound()
+    public void PlayOvenSound()
     {
         SoundManager.instance.PlayLoopingSound(SoundManager.instance.ovenSound);
     }
 
-    void StopOvenSound()
+    public void StopOvenSound()
     {
         SoundManager.instance.StopLoopingSound();
     }
 
-    void PlacingItemsOnKitchenCounter()
-    {
-        SoundManager.instance.PlaySound(SoundManager.instance.placingItemsOnKitchenCounter);
-    }
-
-    void PlayersLosingTime()
+    public void PlayersLosingTime()
     {
         SoundManager.instance.PlaySound(SoundManager.instance.playersLosingTime);
     }
 
-    void PlayStoveSound()
+    public void PlayStoveSound()
     {
         SoundManager.instance.PlayLoopingSound(SoundManager.instance.stoveSound);
     }
 
-    void StopStoveSound()
+    public void StopStoveSound()
     {
         SoundManager.instance.StopLoopingSound();
     }
 
     // Priority 3 Sounds
-    void BatDying()
+    public void BatDying()
     {
         SoundManager.instance.PlaySound(SoundManager.instance.batDying);
     }
 
-    void BatSoundWhenShooting()
+    public void BatSoundWhenShooting()
     {
         SoundManager.instance.PlaySound(SoundManager.instance.batSoundWhenShooting);
     }
 
-    void CharonRiverMonsterDeath()
+    public void CharonRiverMonsterDeath()
     {
         SoundManager.instance.PlaySound(SoundManager.instance.charonRiverMonsterDeath);
     }
 
-    void PlayHeatedPan()
+    public void PlayHeatedPan()
     {
         SoundManager.instance.PlayLoopingSound(SoundManager.instance.heatedPan);
     }
 
-    void StopHeatedPan()
+    public void StopHeatedPan()
     {
         SoundManager.instance.StopLoopingSound();
     }
 
-    void PlayerDiggingGrave()
+    public void PlayerDiggingGrave()
     {
         SoundManager.instance.PlaySound(SoundManager.instance.playerDiggingGrave);
     }
 
-    void PlayerHittingZombieWhileDigging()
+    public void PlayerHittingZombieWhileDigging()
     {
         SoundManager.instance.PlaySound(SoundManager.instance.playerHittingZombieWhileDigging);
     }
 
-    void PlayRiverMonsterPullingSound()
+    public void PlayRiverMonsterPullingSound()
     {
-        SoundManager.instance.PlayLoopingSound(SoundManager.instance.riverMonsterPullingSound);
+        if (loopAudioSource.clip != riverSound)
+            SoundManager.instance.PlayLoopingSound(SoundManager.instance.riverMonsterPullingSound);
     }
 
-    void StopRiverMonsterPullingSound()
+    public void StopRiverMonsterPullingSound()
     {
         SoundManager.instance.StopLoopingSound();
     }
 
-    void PlayRiverSound()
+    public void PlayRiverSound()
     {
         SoundManager.instance.PlayLoopingSound(SoundManager.instance.riverSound);
     }
 
-    void StopRiverSound()
+    public void StopRiverSound()
     {
         SoundManager.instance.StopLoopingSound();
     }
 
 
-    void ZombieDeath()
+    public void ZombieDeath()
     {
         SoundManager.instance.PlaySound(SoundManager.instance.zombieDeath);
     }
 
-    void ZombieWakingUp()
+    public void ZombieWakingUp()
     {
         SoundManager.instance.PlaySound(SoundManager.instance.zombieWakingUp);
     }
 
     // Priority 4 Sounds
-    void PlayBloodSound()
+    public void PlayBloodSound()
     {
         SoundManager.instance.PlayLoopingSound(SoundManager.instance.bloodSound);
     }
 
-    void StopBloodSound()
+    public void StopBloodSound()
     {
         SoundManager.instance.StopLoopingSound();
     }
 
-    void ChefAndHunterBookClose()
+    public void PlayBeefScreaming()
+    {
+        SoundManager.instance.PlayLoopingSound(SoundManager.instance.beefScreaming);
+    }
+
+    public void StopBeefScreaming()
+    {
+        SoundManager.instance.StopLoopingSound();
+    }
+
+    public void ChefAndHunterBookClose()
     {
         SoundManager.instance.PlaySound(SoundManager.instance.chefAndHunterBookClose);
     }
 
-    void ChefAndHunterBookOpen()
+    public void ChefAndHunterBookOpen()
     {
         SoundManager.instance.PlaySound(SoundManager.instance.chefAndHunterBookOpen);
     }
 
-    void DemonWingsSlapChef()
+    public void DemonWingsSlapChef()
     {
         SoundManager.instance.PlaySound(SoundManager.instance.demonWingsSlapChef);
     }
 
-    void PlayDepressedSoulsDying()
+    public void PlayDepressedSoulsDying()
     {
         SoundManager.instance.PlayLoopingSound(SoundManager.instance.depressedSoulsDying);
     }
 
-    void StopDepressedSoulsDying()
+    public void StopDepressedSoulsDying()
     {
         SoundManager.instance.StopLoopingSound();
     }
 
-    void HeartbeatStops()
+    public void HeartbeatStops()
     {
         SoundManager.instance.PlaySound(SoundManager.instance.heartbeatStops);
     }
 
-    void LimbsStealingItem()
+    public void LimbsStealingItem()
     {
         SoundManager.instance.PlaySound(SoundManager.instance.limbsStealingItem);
     }
 
-    void PlayersGettingDishOutOfOvenWithOvenMitts()
+    public void PlayersGettingDishOutOfOvenWithOvenMitts()
     {
         SoundManager.instance.PlaySound(SoundManager.instance.playersGettingDishOutOfOvenWithOvenMitts);
     }
 
-    void PlayerGettingBurnedNoOvenMitts()
+    public void PlayerGettingBurnedNoOvenMitts()
     {
         SoundManager.instance.PlaySound(SoundManager.instance.playerGettingBurnedNoOvenMitts);
     }

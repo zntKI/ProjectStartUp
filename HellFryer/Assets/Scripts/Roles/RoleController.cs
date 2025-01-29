@@ -136,6 +136,23 @@ public class RoleController : MonoBehaviour
         }
     }
 
+    public void OnPlayerWalkSound()
+    {
+        if (currentRoleStrategy is CookRoleStrategy)
+        {
+            SoundManager.instance.PlayCookWalk();
+        }
+        else
+        {
+            SoundManager.instance.PlayHunterWalk();
+        }
+    }
+
+    public void OnPlayerStopWalkSound()
+    {
+        SoundManager.instance.StopWalk();
+    }
+
     void OnDestroy()
     {
         //roleStrategyController.OnStrategyEnabled -= CheckChangingRoleStrategy;

@@ -38,6 +38,8 @@ public class WingCreatureController : MonoBehaviour
     {
         Destroy(transform.parent.gameObject); // Destroy the whole wing creature prefab
         Instantiate(beefItemPrefab, transform.position, Quaternion.identity);
+
+        SoundManager.instance.BatDying();
     }
 
     void Update()
@@ -115,6 +117,8 @@ public class WingCreatureController : MonoBehaviour
         projectile.Init(currentPlayer.gameObject, GetComponent<SphereCollider>().radius);
 
         timeCounter = 0f;
+
+        SoundManager.instance.BatSoundWhenShooting();
     }
 
     void OnDestroy()

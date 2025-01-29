@@ -17,6 +17,8 @@ public class PanHuntEquipmentStrategy : EquipmentHuntStrategy
             {
                 ProjectileController projectile = hitCollider.GetComponent<ProjectileController>();
                 projectile.SwitchMoveDir(transform.parent.forward); // Send projectile outwards from the player in his current forward dir
+
+                SoundManager.instance.PanHittingProjectile();
             }
         }
     }

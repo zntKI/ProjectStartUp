@@ -75,5 +75,7 @@ public class PlayerPickupHandler : MonoBehaviour
         }
 
         InventoryManager.instance.PickupItem(item, playerController.GetSelectedItemSlot());
+
+        SoundManager.instance.ItemPickup();
     }
 }
