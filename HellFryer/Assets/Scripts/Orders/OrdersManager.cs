@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class OrdersManager : MonoBehaviour
 {
@@ -14,7 +13,6 @@ public class OrdersManager : MonoBehaviour
     [SerializeField] Transform orderUIContent;
     [SerializeField] OrderController orderControllerPrefab;
     [SerializeField] GameObject orderUIItemPrefab;
-    [SerializeField] TextMeshProUGUI score;
 
     [Header("List of possible orders")]
     [SerializeField] List<Item> cookedFoods = new List<Item>();
@@ -24,14 +22,10 @@ public class OrdersManager : MonoBehaviour
 
     int maxOrderCount = 5;
     int currentOrderCount = 0;
-    int completedOrderCount = 0;
 
-    [SerializeField] float orderInterval = 3.0f;
+    float orderInterval = 3.0f;
 
     float totalScore = 0;
-
-    public System.Action onGameOver;
-
 
     void Awake()
     {
@@ -52,7 +46,7 @@ public class OrdersManager : MonoBehaviour
 
     public bool AreOrdersOver()
     {
-        return completedOrderCount >= maxOrderCount;
+        return currentOrderCount >= maxOrderCount;
     }
 
     void AddRandomOrder()
@@ -98,20 +92,6 @@ public class OrdersManager : MonoBehaviour
         totalScore += order.GetScore();
         order.CompleteOrder();
         orders.Remove(order);
-
-        completedOrderCount++;
-
-        if (AreOrdersOver())
-        {
-            if (score != null)
-            {
-                score.text = "Your score: " + totalScore;
-                score.gameObject.transform.parent.gameObject.SetActive(true);
-            }
-            //Change to next scene
-            //onGameOver.Invoke();
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); 
-        }
     }
 
     private void Update()
@@ -132,6 +112,7 @@ public class OrdersManager : MonoBehaviour
             {
                 RemoveOrder(order);
                 orderCounterController.removeIngredientsFromContainers();
+                Debug.Log(totalScore);
                 return;
             }
         }

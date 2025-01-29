@@ -15,7 +15,8 @@ public class MainMenuController : MonoBehaviour
     // Function for Play Button
     public void OnPlayButtonClicked()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); 
+        Debug.Log("Play button clicked!");
+        SceneManager.LoadScene(1); 
     }
 
     // Function for Controls Button

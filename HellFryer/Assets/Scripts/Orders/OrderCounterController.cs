@@ -17,7 +17,7 @@ public class OrderCounterController : AbstractCookingDevice
         {
             foreach (IngredientContainer container in ingredientContainers)
             {
-                if (container.placeIngredient(ingredient))
+                if (container.placeIngedient(ingredient))
                 {
                     return ingredient;
                 }

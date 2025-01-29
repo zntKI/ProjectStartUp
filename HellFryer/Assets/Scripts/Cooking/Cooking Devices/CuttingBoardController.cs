@@ -45,7 +45,7 @@ public class CuttingBoardController : AbstractCookingDevice
         {
             foreach (IngredientContainer container in ingredientContainers)
             {
-                if (container.placeIngredient(ingredient))
+                if (container.placeIngedient(ingredient))
                 {
                     return ingredient;
                 }
@@ -96,7 +96,7 @@ public class CuttingBoardController : AbstractCookingDevice
 
         if(cookedFood.GetComponent<ItemController>() != null)
         {
-            ingredientContainers[1].placeIngredient(cookedFood.GetComponent<ItemController>());
+            ingredientContainers[1].placeIngedient(cookedFood.GetComponent<ItemController>());
         }
     }
 

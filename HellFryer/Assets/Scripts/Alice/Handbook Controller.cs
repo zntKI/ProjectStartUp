@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class HandbookController : MonoBehaviour
+public class ToggleMenuKeyboard : MonoBehaviour
 {
-    public static HandbookController instance { get; private set; }
-
     public GameObject player1Mini; // Assign your menu prefab in the Inspector
     public GameObject player1Menu; // Assign your menu prefab in the Inspector
     bool player1MenuOpened = false;
@@ -22,62 +20,62 @@ public class HandbookController : MonoBehaviour
     private GameObject instantiatedMenu2;
     private GameObject instantiatedMini2;
 
+
+
     public GameObject parentObject;
 
-    void Awake()
+
+    private void Start()
     {
-        if (instance != null && instance != this)
+        instantiatedMini1 = Instantiate(player1Mini, parentObject.transform);
+        instantiatedMini2 = Instantiate(player2Mini, parentObject.transform);
+
+    }
+
+    void Update()
+    {
+        if (Input.GetKey(KeyCode.O))
         {
-            Destroy(this);
+            ToggleMenu1Visibility();
+        } else if (Input.GetKeyUp(KeyCode.O))
+        {
+            ToggleMenu1Invisibility();
         }
-        else
+
+        if (Input.GetKey(KeyCode.P))
         {
-            instance = this;
+            ToggleMenu2Visibility();
+        }
+        else if (Input.GetKeyUp(KeyCode.P))
+        {
+            ToggleMenu2Invisibility();
         }
     }
 
-    //void Update()
-    //{
-    //    if (Input.GetKey(KeyCode.O))
-    //    {
-    //        ToggleMenu1Visibility();
-    //    }
-    //    else if (Input.GetKeyUp(KeyCode.O))
-    //    {
-    //        ToggleMenu1Invisibility();
-    //    }
-
-    //    if (Input.GetKey(KeyCode.P))
-    //    {
-    //        ToggleMenu2Visibility();
-    //    }
-    //    else if (Input.GetKeyUp(KeyCode.P))
-    //    {
-    //        ToggleMenu2Invisibility();
-    //    }
-    //}
-
-    public void ToggleMenu1Visibility()
+    private void ToggleMenu1Visibility()
     {
        if (player1MenuOpened == false)
-       {
+        {
             //ToggleMenu2Visibility();
             instantiatedMenu1 = Instantiate(player1Menu, parentObject.transform);
             player1MenuOpened = true;
             Destroy(instantiatedMini1);
-       }
+        }
     }
 
-    public void ToggleMenu1Invisibility()
+    private void ToggleMenu1Invisibility()
     {
+  
             //ToggleMiniVisibility();
             Destroy(instantiatedMenu1);
             //instantiatedMenu = Instantiate(player2Mini, transform);
             player1MenuOpened = false;
             instantiatedMini1 = Instantiate(player1Mini, parentObject.transform);
+
+
     }
 
-    public void ToggleMenu2Visibility()
+    private void ToggleMenu2Visibility()
     {
         if (player2MenuOpened == false)
         {
@@ -89,13 +87,15 @@ public class HandbookController : MonoBehaviour
 
     }
 
-    public void ToggleMenu2Invisibility()
+    private void ToggleMenu2Invisibility()
     {
+      
             //ToggleMiniVisibility();
             Destroy(instantiatedMenu2);
             //instantiatedMenu = Instantiate(player2Mini, transform);
             player2MenuOpened = false;
-            instantiatedMini2 = Instantiate(player2Mini, parentObject.transform);
+        instantiatedMini2 = Instantiate(player2Mini, parentObject.transform);
+
     }
 
 }
