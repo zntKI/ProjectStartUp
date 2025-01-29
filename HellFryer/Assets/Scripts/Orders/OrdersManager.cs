@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class OrdersManager : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class OrdersManager : MonoBehaviour
     [SerializeField] Transform orderUIContent;
     [SerializeField] OrderController orderControllerPrefab;
     [SerializeField] GameObject orderUIItemPrefab;
+    [SerializeField] TextMeshProUGUI score;
 
     [Header("List of possible orders")]
     [SerializeField] List<Item> cookedFoods = new List<Item>();
@@ -24,9 +26,12 @@ public class OrdersManager : MonoBehaviour
     int currentOrderCount = 0;
     int completedOrderCount = 0;
 
-    float orderInterval = 3.0f;
+    [SerializeField] float orderInterval = 3.0f;
 
     float totalScore = 0;
+
+    public System.Action onGameOver;
+
 
     void Awake()
     {
@@ -95,6 +100,18 @@ public class OrdersManager : MonoBehaviour
         orders.Remove(order);
 
         completedOrderCount++;
+
+        if (AreOrdersOver())
+        {
+            if (score != null)
+            {
+                score.text = "Your score: " + totalScore;
+                score.gameObject.transform.parent.gameObject.SetActive(true);
+            }
+            //Change to next scene
+            //onGameOver.Invoke();
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); 
+        }
     }
 
     private void Update()
