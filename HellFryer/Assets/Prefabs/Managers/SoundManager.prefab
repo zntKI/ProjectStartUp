@@ -44,14 +44,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32a4fb794daa68246a6c36496ddae3bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backgroundMusic: {fileID: 8300000, guid: f291c1df0503ac4418f081b7707a5caa, type: 3}
-  menuMusic: {fileID: 8300000, guid: 7e438d9faed7e8740b49983dcd9a0bda, type: 3}
+  backgroundMusic: {fileID: 8300000, guid: 7e438d9faed7e8740b49983dcd9a0bda, type: 3}
+  menuMusic: {fileID: 8300000, guid: f291c1df0503ac4418f081b7707a5caa, type: 3}
   cookWalk: {fileID: 8300000, guid: 11e478e288e983646aaae1582a2ea1c9, type: 3}
   hunterWalk: {fileID: 8300000, guid: 81ea8480e28bc48429c3fa072a46f195, type: 3}
   dishReadyForStoveAndOven: {fileID: 8300000, guid: e137769050b46a14f84374e9a099e2b4, type: 3}
   itemDrop: {fileID: 8300000, guid: 7a4b4d6a9f144254bad12be423c18fc3, type: 3}
   itemPickup: {fileID: 8300000, guid: 306f5297ee2d8e042a0cbf7536afdbd0, type: 3}
+  panHittingProjectile: {fileID: 8300000, guid: 4d8caec4214ff79449fc92af0acceebf, type: 3}
   knifeHit: {fileID: 8300000, guid: ee578680f0cf1024bad61643f7e97f11, type: 3}
+  knifeOutgoing: {fileID: 8300000, guid: 8977136761e0bef46a7e847f6ebcedea, type: 3}
   knifeOnCuttingBoard: {fileID: 8300000, guid: d762ed22cc2206f4a9f5ec8672b17779, type: 3}
   newOrderHasArrived: {fileID: 8300000, guid: b55dd43c73ebb674dadbd764a733b838, type: 3}
   ovenSound: {fileID: 8300000, guid: 1124bfb1c2a3fda48a10dbe58322bb16, type: 3}
@@ -62,13 +64,14 @@ MonoBehaviour:
   batSoundWhenShooting: {fileID: 8300000, guid: 3d7de1d45d786ef4cb77a440bac39733, type: 3}
   charonRiverMonsterDeath: {fileID: 8300000, guid: e11443cd2b77336468e5cd1b8b965b00, type: 3}
   heatedPan: {fileID: 8300000, guid: 4a831ec6fdb4fda46b8c3e466a0bbde5, type: 3}
-  playerDiggingGrave: {fileID: 8300000, guid: 321b60ea5c0fd3f4f93e2ca111bcca2c, type: 3}
+  playerDiggingGrave: {fileID: 8300000, guid: dc45a25d15d00f34387ad398d0b84753, type: 3}
   playerHittingZombieWhileDigging: {fileID: 8300000, guid: 2146420b05daf0d45b629512c48b413c, type: 3}
   riverMonsterPullingSound: {fileID: 8300000, guid: 6e81c3aa766e2454d8bba37a20e60b32, type: 3}
   riverSound: {fileID: 8300000, guid: b80dd8afad2e25b429c3ddda89423670, type: 3}
   zombieDeath: {fileID: 8300000, guid: 92aadff6fb76c9c4b8473561d5966daf, type: 3}
-  zombieWakingUp: {fileID: 8300000, guid: 9aa0a17d9d592fe4ea4aac377277ae31, type: 3}
+  zombieWakingUp: {fileID: 8300000, guid: 02c4c6d8d904e98409016fa28893d6e0, type: 3}
   bloodSound: {fileID: 8300000, guid: e2df96f61f777c04d9705ccf35206e5f, type: 3}
+  beefScreaming: {fileID: 8300000, guid: fba3d36c2f7492146975c675d95fd20b, type: 3}
   chefAndHunterBookClose: {fileID: 8300000, guid: 6d0ca565c3cb4db4e8642f9a93856c8c, type: 3}
   chefAndHunterBookOpen: {fileID: 8300000, guid: 2025d3575e3bdfa4c84869a67c2495fc, type: 3}
   demonWingsSlapChef: {fileID: 8300000, guid: cd48d12a293b15648999dfa8f2091f8f, type: 3}

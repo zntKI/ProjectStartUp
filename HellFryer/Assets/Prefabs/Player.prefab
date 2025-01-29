@@ -153,7 +153,7 @@ MonoBehaviour:
   heldItemDisplay: {fileID: 0}
   heldItem: {fileID: 0}
   holdDistance: 1
-  dropDistance: 1.2
+  dropDistance: 1.5
 --- !u!114 &1902997579348719955
 MonoBehaviour:
   m_ObjectHideFlags: 0

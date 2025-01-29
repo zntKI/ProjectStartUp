@@ -28,7 +28,9 @@ public class SoundManager : MonoBehaviour
     public AudioClip dishReadyForStoveAndOven;
     public AudioClip itemDrop;
     public AudioClip itemPickup;
+    public AudioClip panHittingProjectile;
     public AudioClip knifeHit;
+    public AudioClip knifeOutgoing;
     public AudioClip knifeOnCuttingBoard;
     public AudioClip newOrderHasArrived;
     public AudioClip ovenSound;
@@ -50,6 +52,7 @@ public class SoundManager : MonoBehaviour
 
     [Header("Priority 4 Sounds")]
     public AudioClip bloodSound;
+    public AudioClip beefScreaming;
     public AudioClip chefAndHunterBookClose;
     public AudioClip chefAndHunterBookOpen;
     public AudioClip demonWingsSlapChef;
@@ -62,7 +65,6 @@ public class SoundManager : MonoBehaviour
 
     public static SoundManager instance { get; private set; }
 
-    public System.Action<GameObject> onPickup;
     void Awake()
     {
         if (instance != null && instance != this)
@@ -192,10 +194,19 @@ public class SoundManager : MonoBehaviour
     {
         SoundManager.instance.PlaySound(SoundManager.instance.itemPickup);
     }
+    public void PanHittingProjectile()
+    {
+        SoundManager.instance.PlaySound(SoundManager.instance.panHittingProjectile);
+    }
 
     public void KnifeHit()
     {
         SoundManager.instance.PlaySound(SoundManager.instance.knifeHit);
+    }
+
+    public void KnifeOutgoing()
+    {
+        SoundManager.instance.PlaySound(SoundManager.instance.knifeOutgoing);
     }
 
     public void PlayKnifeOnCuttingBoard()
@@ -221,11 +232,6 @@ public class SoundManager : MonoBehaviour
     public void StopOvenSound()
     {
         SoundManager.instance.StopLoopingSound();
-    }
-
-    public void PlacingItemsOnKitchenCounter()
-    {
-        SoundManager.instance.PlaySound(SoundManager.instance.placingItemsOnKitchenCounter);
     }
 
     public void PlayersLosingTime()
@@ -318,6 +324,16 @@ public class SoundManager : MonoBehaviour
     }
 
     public void StopBloodSound()
+    {
+        SoundManager.instance.StopLoopingSound();
+    }
+
+    public void PlayBeefScreaming()
+    {
+        SoundManager.instance.PlayLoopingSound(SoundManager.instance.beefScreaming);
+    }
+
+    public void StopBeefScreaming()
     {
         SoundManager.instance.StopLoopingSound();
     }

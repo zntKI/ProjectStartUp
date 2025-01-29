@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
         isHeldByZombie = true;
         mover.ResetInputVector();
 
-        roleController.OnPlayerStopWalkSound();
+        SoundManager.instance.StopWalk();
     }
 
     public void EnableMovement()
@@ -62,9 +62,9 @@ public class PlayerController : MonoBehaviour
             mover.SetInputVector(value);
 
             if (value.x == 0 && value.y == 0)
-                roleController.OnPlayerStopWalkSound();
+                SoundManager.instance.StopWalk();
             else
-                roleController.OnPlayerWalkSound();
+                SoundManager.instance.PlayCookWalk();
         }
     }
 
@@ -82,6 +82,8 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
+
+        SoundManager.instance.ItemDrop();
 
         if (heldItemHandler.PlaceIngredient() == null)
         {
