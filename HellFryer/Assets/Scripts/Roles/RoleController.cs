@@ -16,6 +16,12 @@ public class RoleController : MonoBehaviour
     [SerializeField]
     private GameObject hunterModel;
 
+    public GameObject cookBookMini;
+    public GameObject hunterBookMini;
+
+    public GameObject cookBookOpen;
+    public GameObject hunterBookOpen;
+
     private RoleStrategyController roleStrategyController;
 
     private RoleStrategy currentRoleStrategy;
@@ -46,6 +52,12 @@ public class RoleController : MonoBehaviour
         UpdateCurrentRoleStrategy();
 
         SwitchModels();
+
+        if(cookBookMini != null)
+        {
+            SwitchBooksMini();
+            SwitchBooksOpen();
+        }
     }
 
     private void SwitchModels()
@@ -62,14 +74,66 @@ public class RoleController : MonoBehaviour
         }
     }
 
+    private void SwitchBooksMini()
+    {
+        if (cookBookMini.activeSelf)
+        {
+            hunterBookMini.SetActive(true);
+            cookBookMini.SetActive(false);
+        }
+        else if (hunterBookMini.activeSelf)
+        {
+            hunterBookMini.SetActive(false);
+            cookBookMini.SetActive(true);
+        }
+    }
+
+    private void SwitchBooksOpen()
+    {
+        if (cookBookOpen.activeSelf)
+        {
+            hunterBookOpen.SetActive(true);
+            cookBookOpen.SetActive(false);
+        }
+        else if (hunterBookOpen.activeSelf)
+        {
+            hunterBookOpen.SetActive(false);
+            cookBookOpen.SetActive(true);
+        }
+    }
+
     public void PerformTask()
     {
         currentRoleStrategy.PerformTask();
     }
 
+    public bool IsBookOpen()
+    {
+        return cookBookOpen.activeSelf || hunterBookOpen.activeSelf;
+    }
+
     public void OpenBook()
     {
-        currentRoleStrategy.OpenBook();
+        if (cookBookMini.activeSelf)
+        {
+            cookBookOpen.SetActive(true);
+        }
+        else if (hunterBookMini.activeSelf)
+        {
+            hunterBookOpen.SetActive(true);
+        }
+    }
+
+    public void CloseBook()
+    {
+        if (cookBookMini.activeSelf)
+        {
+            cookBookOpen.SetActive(false);
+        }
+        else if (hunterBookMini.activeSelf)
+        {
+            hunterBookOpen.SetActive(false);
+        }
     }
 
     public void OnPlayerWalkSound()

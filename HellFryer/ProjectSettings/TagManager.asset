@@ -11,6 +11,7 @@ TagManager:
   - WingCreature
   - WingCreatureWaypoint
   - BeefWaypoint
+  - IngredientContainer
   layers:
   - Default
   - TransparentFX
