@@ -28,9 +28,11 @@ public class EquipmentController : MonoBehaviour
         currentEquipmentStrategy.StartUp();
     }
 
-    public void UpdateEquipmentType()
+    public void SwitchEquipmentType()
     {
         equipmentStrategyController.SwitchEquipmentType();
+
+        currentEquipmentStrategy = equipmentStrategyController.CurrentEquipmentStrategy;
     }
 
     /// <summary>

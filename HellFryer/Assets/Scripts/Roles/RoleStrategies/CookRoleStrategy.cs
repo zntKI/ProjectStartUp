@@ -14,7 +14,7 @@ public class CookRoleStrategy : RoleStrategy
         base.UpdateEquipmentType();
         if (equipmentController != null)
         {
-            equipmentController.UpdateEquipmentType();
+            equipmentController.SwitchEquipmentType();
         }
     }
 }

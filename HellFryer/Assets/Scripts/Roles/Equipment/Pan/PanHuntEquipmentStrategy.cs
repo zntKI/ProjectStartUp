@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PanHuntEquipmentStrategy : EquipmentStrategy
+public class PanHuntEquipmentStrategy : EquipmentHuntStrategy
 {
     [SerializeField]
     private float hitDetectRange = 3f;

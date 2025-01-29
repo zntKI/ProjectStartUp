@@ -44,3 +44,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32a4fb794daa68246a6c36496ddae3bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  backgroundMusic: {fileID: 8300000, guid: f291c1df0503ac4418f081b7707a5caa, type: 3}
+  menuMusic: {fileID: 8300000, guid: 7e438d9faed7e8740b49983dcd9a0bda, type: 3}
+  cookWalk: {fileID: 8300000, guid: 11e478e288e983646aaae1582a2ea1c9, type: 3}
+  hunterWalk: {fileID: 8300000, guid: 81ea8480e28bc48429c3fa072a46f195, type: 3}
+  dishReadyForStoveAndOven: {fileID: 8300000, guid: e137769050b46a14f84374e9a099e2b4, type: 3}
+  itemDrop: {fileID: 8300000, guid: 7a4b4d6a9f144254bad12be423c18fc3, type: 3}
+  itemPickup: {fileID: 8300000, guid: 306f5297ee2d8e042a0cbf7536afdbd0, type: 3}
+  knifeHit: {fileID: 8300000, guid: ee578680f0cf1024bad61643f7e97f11, type: 3}
+  knifeOnCuttingBoard: {fileID: 8300000, guid: d762ed22cc2206f4a9f5ec8672b17779, type: 3}
+  newOrderHasArrived: {fileID: 8300000, guid: b55dd43c73ebb674dadbd764a733b838, type: 3}
+  ovenSound: {fileID: 8300000, guid: 1124bfb1c2a3fda48a10dbe58322bb16, type: 3}
+  placingItemsOnKitchenCounter: {fileID: 8300000, guid: 32477b7cb1a1d6942a7d70b9121207df, type: 3}
+  playersLosingTime: {fileID: 8300000, guid: 8782a9006560df34c82b4b92642d36e2, type: 3}
+  stoveSound: {fileID: 8300000, guid: 5c7e0dfd2ecb3c44db25898bcded06a1, type: 3}
+  batDying: {fileID: 8300000, guid: 81f21587fe132024587d1ccb962752ac, type: 3}
+  batSoundWhenShooting: {fileID: 8300000, guid: 3d7de1d45d786ef4cb77a440bac39733, type: 3}
+  charonRiverMonsterDeath: {fileID: 8300000, guid: e11443cd2b77336468e5cd1b8b965b00, type: 3}
+  heatedPan: {fileID: 8300000, guid: 4a831ec6fdb4fda46b8c3e466a0bbde5, type: 3}
+  playerDiggingGrave: {fileID: 8300000, guid: 321b60ea5c0fd3f4f93e2ca111bcca2c, type: 3}
+  playerHittingZombieWhileDigging: {fileID: 8300000, guid: 2146420b05daf0d45b629512c48b413c, type: 3}
+  riverMonsterPullingSound: {fileID: 8300000, guid: 6e81c3aa766e2454d8bba37a20e60b32, type: 3}
+  riverSound: {fileID: 8300000, guid: b80dd8afad2e25b429c3ddda89423670, type: 3}
+  zombieDeath: {fileID: 8300000, guid: 92aadff6fb76c9c4b8473561d5966daf, type: 3}
+  zombieWakingUp: {fileID: 8300000, guid: 9aa0a17d9d592fe4ea4aac377277ae31, type: 3}
+  bloodSound: {fileID: 8300000, guid: e2df96f61f777c04d9705ccf35206e5f, type: 3}
+  chefAndHunterBookClose: {fileID: 8300000, guid: 6d0ca565c3cb4db4e8642f9a93856c8c, type: 3}
+  chefAndHunterBookOpen: {fileID: 8300000, guid: 2025d3575e3bdfa4c84869a67c2495fc, type: 3}
+  demonWingsSlapChef: {fileID: 8300000, guid: cd48d12a293b15648999dfa8f2091f8f, type: 3}
+  depressedSoulsDying: {fileID: 8300000, guid: 3514f72376b3e614db5ebcae94cfc5de, type: 3}
+  heartbeatStops: {fileID: 8300000, guid: e8692a894f189774e98236668ef19e66, type: 3}
+  limbsStealingItem: {fileID: 8300000, guid: f4bdc5d36f95a34479a5bab4d1280d5c, type: 3}
+  playersGettingDishOutOfOvenWithOvenMitts: {fileID: 8300000, guid: 403c63ea4e79fe34dbf28f0abb7f6fe7, type: 3}
+  playerGettingBurnedNoOvenMitts: {fileID: 8300000, guid: dc7f0a6d19c8faa4c97af31d7b196d2f, type: 3}
