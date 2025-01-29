@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62a367110cea096449121faa4fc4bb48, type: 3}
-  m_Name: Still Alive Steak
+  m_Name: DepressedLasagna
   m_EditorClassIdentifier: 
-  itemType: 13
-  itemName: Still Alive Steak
-  icon: {fileID: 21300000, guid: f32759cb23789cf459028fbf56e87cc9, type: 3}
+  itemType: 16
+  itemName: Depressed Lasagna
+  icon: {fileID: 21300000, guid: 7d09e460ba59f174ba240f0e753cdd4b, type: 3}
