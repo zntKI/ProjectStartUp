@@ -6,7 +6,7 @@ public class CookRoleStrategy : RoleStrategy
 {
     public override void OpenBook()
     {
-        Debug.Log("Opening book does not do anything yet!!!");
+        HandbookController.instance.ToggleMenu1Visibility();
     }
 
     public override void UpdateEquipmentType()

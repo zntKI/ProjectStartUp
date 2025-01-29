@@ -22,6 +22,7 @@ public class OrdersManager : MonoBehaviour
 
     int maxOrderCount = 5;
     int currentOrderCount = 0;
+    int completedOrderCount = 0;
 
     float orderInterval = 3.0f;
 
@@ -46,7 +47,7 @@ public class OrdersManager : MonoBehaviour
 
     public bool AreOrdersOver()
     {
-        return currentOrderCount >= maxOrderCount;
+        return completedOrderCount >= maxOrderCount;
     }
 
     void AddRandomOrder()
@@ -92,6 +93,8 @@ public class OrdersManager : MonoBehaviour
         totalScore += order.GetScore();
         order.CompleteOrder();
         orders.Remove(order);
+
+        completedOrderCount++;
     }
 
     private void Update()
@@ -112,7 +115,6 @@ public class OrdersManager : MonoBehaviour
             {
                 RemoveOrder(order);
                 orderCounterController.removeIngredientsFromContainers();
-                Debug.Log(totalScore);
                 return;
             }
         }

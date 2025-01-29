@@ -6,7 +6,7 @@ public class HunterRoleStrategy : RoleStrategy
 {
     public override void OpenBook()
     {
-        Debug.Log("Opening book does not do anything yet!!!");
+        HandbookController.instance.ToggleMenu2Visibility();
     }
 
     public override void UpdateEquipmentType()
