@@ -6,8 +6,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
-using UnityEngine.WSA;
-using static UnityEditor.Progress;
 
 public class InventoryManager : MonoBehaviour
 {

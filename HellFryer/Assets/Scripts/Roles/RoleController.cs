@@ -60,7 +60,7 @@ public class RoleController : MonoBehaviour
         roleStrategyController.SwitchRoles();
         UpdateCurrentRoleStrategy();
 
-        SwitchCameraAngle();
+        //SwitchCameraAngle();
 
         SwitchModels();
 
