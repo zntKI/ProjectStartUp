@@ -27,6 +27,7 @@ public class OrdersManager : MonoBehaviour
     int completedOrderCount = 0;
 
     [SerializeField] float orderInterval = 3.0f;
+    [SerializeField] float orderDuration = 240f;
 
     float totalScore = 0;
 
@@ -66,9 +67,8 @@ public class OrdersManager : MonoBehaviour
         if (cookedFoods.Count == 0) { return; }
 
         int randIndex = Random.Range(0, cookedFoods.Count);
-        int randOrderDuration = Random.Range(30, 60);
 
-        AddOrder(cookedFoods[randIndex], randOrderDuration);
+        AddOrder(cookedFoods[randIndex], orderDuration);
         SoundManager.instance.NewOrderHasArrived();
 
         currentOrderCount++;
@@ -107,7 +107,7 @@ public class OrdersManager : MonoBehaviour
             if (score != null)
             {
                 score.text = "Your score: " + totalScore;
-                //score.gameObject.transform.parent.gameObject.SetActive(true);
+                score.gameObject.transform.parent.gameObject.SetActive(true);
             }
             //Change to next scene
             //onGameOver.Invoke();

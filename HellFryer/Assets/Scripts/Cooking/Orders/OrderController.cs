@@ -10,7 +10,7 @@ public class OrderController : MonoBehaviour
 
     public UnityEngine.UI.Image timerUIComponent;
 
-    float totalOrderTime = 30.0f;
+    float totalOrderTime = 240f;
     float orderTimeLeft;
 
     bool hasStarted = false;
