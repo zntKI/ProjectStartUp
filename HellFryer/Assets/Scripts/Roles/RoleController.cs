@@ -11,8 +11,7 @@ using static UnityEngine.InputSystem.InputAction;
 [RequireComponent(typeof(RoleStrategyController))]
 public class RoleController : MonoBehaviour
 {
-    [SerializeField]
-    private Vector3 zoomedOutCameraPos;
+    private Vector3 zoomedOutCameraPos = new Vector3(0f, 20f, -17f);
 
     private Vector3 normalCameraPos;
     private CameraFollow cameraController;
@@ -60,7 +59,7 @@ public class RoleController : MonoBehaviour
         roleStrategyController.SwitchRoles();
         UpdateCurrentRoleStrategy();
 
-        //SwitchCameraAngle();
+        SwitchCameraAngle();
 
         SwitchModels();
 
@@ -74,7 +73,7 @@ public class RoleController : MonoBehaviour
     private void SwitchCameraAngle()
     {
         if (cameraController == null) // Because of spawning player before executing Start and OnTriggerEnter called in RoleSwitchAreaController
-            cameraController = transform.parent.GetComponentInChildren<CameraFollow>();
+            return;
 
         if (currentRoleStrategy is CookRoleStrategy)
         {

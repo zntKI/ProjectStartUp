@@ -124,6 +124,7 @@ public class WingCreatureController : MonoBehaviour
     void OnDisable()
     {
         players.Clear();
+        state = WingCreatureState.Roaming;
     }
 
     void OnDestroy()

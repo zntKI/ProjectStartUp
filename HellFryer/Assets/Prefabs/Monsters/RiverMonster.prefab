@@ -66,7 +66,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 335a6cf94acbfa6468309611f88f1e3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pullAmount: 1
+  pullAmount: 3
 --- !u!1 &3094065606669271016
 GameObject:
   m_ObjectHideFlags: 0
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amountOfOuterRange: 0.6
-  timeBetweenItemDestroy: 2
+  timeBetweenItemDestroy: 0.5
 --- !u!1 &5907158350943913213
 GameObject:
   m_ObjectHideFlags: 0
@@ -208,7 +208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shouldDraw: 1
-  radius: 15
+  radius: 10
   color: {r: 1, g: 0, b: 0, a: 1}
   segments: 50
 --- !u!114 &8121618402480636384
