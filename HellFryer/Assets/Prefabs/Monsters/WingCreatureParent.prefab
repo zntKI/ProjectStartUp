@@ -77,7 +77,7 @@ GameObject:
   - component: {fileID: 3535374012884264027}
   m_Layer: 0
   m_Name: DemonModel
-  m_TagString: Untagged
+  m_TagString: WingCreature
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

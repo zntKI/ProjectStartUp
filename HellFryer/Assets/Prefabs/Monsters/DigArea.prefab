@@ -66,6 +66,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 725af3ade6d1a444d8b3dfc08639e43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  limbsPrefab: {fileID: 2910134741701638720, guid: 46378d90b68ac524a9c84ee1aeb468f6, type: 3}
-  heartPrefab: {fileID: 6410804639392518817, guid: 2ce0796c3b38bb74d97b8f1c69e34fbc, type: 3}
+  limbsPrefab: {fileID: 2910134741701638720, guid: 47d5db43cea838d41ae2c3218a2ef4ba, type: 3}
+  heartPrefab: {fileID: 2910134741701638720, guid: 85d4f717ac3134e4f9ed44ad2792fb78, type: 3}
   zomnbiePrefab: {fileID: 2117610973991690704, guid: a37078d205be92e49a9b9718850b3f56, type: 3}
