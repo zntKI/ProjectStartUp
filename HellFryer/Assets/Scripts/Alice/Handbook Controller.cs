@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class ToggleMenuKeyboard : MonoBehaviour
 {
@@ -20,7 +21,8 @@ public class ToggleMenuKeyboard : MonoBehaviour
     private GameObject instantiatedMenu2;
     private GameObject instantiatedMini2;
 
-
+    public GameObject blurBG1;
+    public GameObject blurBG2;
 
     public GameObject parentObject;
 
@@ -56,7 +58,8 @@ public class ToggleMenuKeyboard : MonoBehaviour
     {
        if (player1MenuOpened == false)
         {
-            //ToggleMenu2Visibility();
+            SetBlur1(true);
+
             instantiatedMenu1 = Instantiate(player1Menu, parentObject.transform);
             player1MenuOpened = true;
             Destroy(instantiatedMini1);
@@ -65,7 +68,8 @@ public class ToggleMenuKeyboard : MonoBehaviour
 
     private void ToggleMenu1Invisibility()
     {
-  
+            SetBlur1(false);
+
             //ToggleMiniVisibility();
             Destroy(instantiatedMenu1);
             //instantiatedMenu = Instantiate(player2Mini, transform);
@@ -79,7 +83,7 @@ public class ToggleMenuKeyboard : MonoBehaviour
     {
         if (player2MenuOpened == false)
         {
-            //ToggleMenu2Visibility();
+            SetBlur2(true);
             instantiatedMenu2 = Instantiate(player2Menu, parentObject.transform);
             player2MenuOpened = true;
             Destroy(instantiatedMini2);
@@ -89,13 +93,29 @@ public class ToggleMenuKeyboard : MonoBehaviour
 
     private void ToggleMenu2Invisibility()
     {
-      
+            SetBlur2(false);
+
             //ToggleMiniVisibility();
             Destroy(instantiatedMenu2);
             //instantiatedMenu = Instantiate(player2Mini, transform);
             player2MenuOpened = false;
         instantiatedMini2 = Instantiate(player2Mini, parentObject.transform);
 
+    }
+    void SetBlur1(bool enable)
+    {
+        if (blurBG1 != null)
+        {
+            blurBG1.SetActive(enable);
+        }
+    }
+
+    void SetBlur2(bool enable)
+    {
+        if (blurBG2 != null)
+        {
+            blurBG2.SetActive(enable);
+        }
     }
 
 }

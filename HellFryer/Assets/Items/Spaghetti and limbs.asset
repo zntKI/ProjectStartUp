@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 7
   itemName: Spaghetti and limbs
-  icon: {fileID: 21300000, guid: 40ae807c20c495c43ba29b123ecb3e48, type: 3}
+  icon: {fileID: 21300000, guid: 6f3fc99eb360962448499c3557c215a9, type: 3}

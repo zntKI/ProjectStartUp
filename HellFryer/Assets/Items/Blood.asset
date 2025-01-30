@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 3
   itemName: Blood
-  icon: {fileID: 21300000, guid: e44113aec738f624d8de96ce55b4206e, type: 3}
+  icon: {fileID: 21300000, guid: c4fd4cfea7efea446b53f9ba9c860229, type: 3}
