@@ -65,4 +65,9 @@ public class RiverController : MonoBehaviour
             }
         }
     }
+
+    void OnDisable()
+    {
+        currentPlayers.Clear();
+    }
 }

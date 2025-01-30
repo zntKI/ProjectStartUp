@@ -79,4 +79,9 @@ public class PullRangeController : MonoBehaviour
 
         SoundManager.instance.StopRiverMonsterPullingSound();
     }
+
+    void OnDisable()
+    {
+        currentPlayers.Clear();
+    }
 }

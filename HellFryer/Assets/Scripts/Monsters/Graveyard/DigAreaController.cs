@@ -58,7 +58,8 @@ public class DigAreaController : MonoBehaviour
             }
 
             // Disable detection functionality
-            GetComponent<BoxCollider>().enabled = false;
+            //GetComponent<BoxCollider>().enabled = false;
+            gameObject.SetActive(false);
         }
     }
 

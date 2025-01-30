@@ -6,7 +6,7 @@ public class RoleSwitchAreaController : MonoBehaviour
 {
     void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent<RoleController>(out RoleController player))
+        if (other.TryGetComponent<PlayerController>(out PlayerController player))
         {
             player.SwitchRoles();
         }
@@ -14,7 +14,7 @@ public class RoleSwitchAreaController : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.TryGetComponent<RoleController>(out RoleController player))
+        if (other.TryGetComponent<PlayerController>(out PlayerController player))
         {
             player.SwitchRoles();
         }

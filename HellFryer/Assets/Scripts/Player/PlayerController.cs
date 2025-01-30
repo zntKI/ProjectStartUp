@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     InventorySelector inventorySelector;
 
     RoleController roleController;
+    AnimationHandler animationHandler;
 
     private Vector2 lookDir;
 
@@ -38,6 +39,18 @@ public class PlayerController : MonoBehaviour
         inventorySelector = GetComponent<InventorySelector>();
 
         roleController = GetComponent<RoleController>();
+        animationHandler = GetComponent<AnimationHandler>();
+    }
+
+    public void SwitchRoles()
+    {
+        if (roleController == null) // Because of spawning player before executing Start and OnTriggerEnter called in RoleSwitchAreaController
+            roleController = GetComponent<RoleController>();
+        if (animationHandler == null) // Because of spawning player before executing Start and OnTriggerEnter called in RoleSwitchAreaController
+            animationHandler = GetComponent<AnimationHandler>();
+
+        roleController.SwitchRoles();
+        animationHandler.UpdateAnimator();
     }
 
     public void DisableMovement()
@@ -46,6 +59,7 @@ public class PlayerController : MonoBehaviour
         mover.ResetInputVector();
 
         SoundManager.instance.StopWalk();
+        animationHandler.PlayIdle(heldItemHandler.heldItem);
     }
 
     public void EnableMovement()
@@ -62,9 +76,15 @@ public class PlayerController : MonoBehaviour
             mover.SetInputVector(value);
 
             if (value.x == 0 && value.y == 0)
+            {
                 SoundManager.instance.StopWalk();
+                animationHandler.PlayIdle(heldItemHandler.heldItem);
+            }
             else
+            {
                 SoundManager.instance.PlayCookWalk();
+                animationHandler.PlayRun(heldItemHandler.heldItem);
+            }
         }
     }
 
@@ -84,6 +104,7 @@ public class PlayerController : MonoBehaviour
         }
 
         SoundManager.instance.ItemDrop();
+        animationHandler.PlayOnItemDrop();
 
         if (heldItemHandler.PlaceIngredient() == null)
         {
@@ -96,6 +117,7 @@ public class PlayerController : MonoBehaviour
         if (context.performed)
         {
             heldItemHandler.HoldSelectedItem();
+            animationHandler.PlayOnItemHold();
         }
     }
 

@@ -36,7 +36,8 @@ public class WingCreatureController : MonoBehaviour
 
     public void Die()
     {
-        Destroy(transform.parent.gameObject); // Destroy the whole wing creature prefab
+        //Destroy(transform.parent.gameObject); // Destroy the whole wing creature prefab
+        transform.parent.gameObject.SetActive(false);
         Instantiate(beefItemPrefab, transform.position, Quaternion.identity);
 
         SoundManager.instance.BatDying();
@@ -119,6 +120,11 @@ public class WingCreatureController : MonoBehaviour
         timeCounter = 0f;
 
         SoundManager.instance.BatSoundWhenShooting();
+    }
+
+    void OnDisable()
+    {
+        players.Clear();
     }
 
     void OnDestroy()
