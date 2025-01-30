@@ -60,7 +60,7 @@ public class OrderController : MonoBehaviour
     {
         float timeLeftPercent = orderTimeLeft / totalOrderTime;
 
-        return timeLeftPercent * scoreCoefficient;
+        return Mathf.Clamp(timeLeftPercent * scoreCoefficient, 0, scoreCoefficient);
     }
 
     void timerEnded()

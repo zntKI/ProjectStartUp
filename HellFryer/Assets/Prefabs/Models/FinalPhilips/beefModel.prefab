@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4918571033507899871}
   - component: {fileID: 9127992299879312219}
   m_Layer: 0
-  m_Name: Steak
+  m_Name: beefModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 2925630255143515304}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -11.378937, y: 0.18, z: -1.923}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.0555571, y: 1.055557, z: 1.055557}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -61,6 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
+  - {fileID: 2100000, guid: 7c262df1b5826714787256575b7d9368, type: 2}
   - {fileID: 2100000, guid: 608436b6478b54a4a804747b72e8e86b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
