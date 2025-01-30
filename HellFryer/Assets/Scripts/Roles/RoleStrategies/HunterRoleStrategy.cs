@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class HunterRoleStrategy : RoleStrategy
 {
-    public override void OpenBook()
+    public override void OpenBook(GameObject book)
     {
-        Debug.Log("Opening book does not do anything yet!!!");
+        //HandbookController.instance.ToggleMenu2Visibility();
     }
 
     public override void UpdateEquipmentType()
@@ -14,7 +14,7 @@ public class HunterRoleStrategy : RoleStrategy
         base.UpdateEquipmentType();
         if (equipmentController != null)
         {
-            equipmentController.UpdateEquipmentType();
+            equipmentController.SwitchEquipmentType();
         }
     }
 }

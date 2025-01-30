@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PanCookEquipmentStrategy : EquipmentStrategy
+public class PanCookEquipmentStrategy : EquipmentCookStrategy
 {
     public override void StartUp()
     {

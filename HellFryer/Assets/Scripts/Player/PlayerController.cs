@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     InventorySelector inventorySelector;
 
     RoleController roleController;
+    AnimationHandler animationHandler;
 
     private Vector2 lookDir;
 
@@ -38,23 +39,53 @@ public class PlayerController : MonoBehaviour
         inventorySelector = GetComponent<InventorySelector>();
 
         roleController = GetComponent<RoleController>();
+        animationHandler = GetComponent<AnimationHandler>();
+    }
+
+    public void SwitchRoles()
+    {
+        if (roleController == null) // Because of spawning player before executing Start and OnTriggerEnter called in RoleSwitchAreaController
+            roleController = GetComponent<RoleController>();
+        if (animationHandler == null) // Because of spawning player before executing Start and OnTriggerEnter called in RoleSwitchAreaController
+            animationHandler = GetComponent<AnimationHandler>();
+
+        roleController.SwitchRoles();
+        animationHandler.UpdateAnimator();
     }
 
     public void DisableMovement()
     {
         isHeldByZombie = true;
         mover.ResetInputVector();
+
+        SoundManager.instance.StopWalk();
+        animationHandler.PlayIdle(heldItemHandler.heldItem);
     }
 
     public void EnableMovement()
-    { 
+    {
         isHeldByZombie = false;
     }
 
     public void OnMove(CallbackContext context)
     {
         if (!isHeldByZombie)
-            mover.SetInputVector(context.ReadValue<Vector2>());
+        {
+            Vector2 value = context.ReadValue<Vector2>();
+
+            mover.SetInputVector(value);
+
+            if (value.x == 0 && value.y == 0)
+            {
+                SoundManager.instance.StopWalk();
+                animationHandler.PlayIdle(heldItemHandler.heldItem);
+            }
+            else
+            {
+                SoundManager.instance.PlayCookWalk();
+                animationHandler.PlayRun(heldItemHandler.heldItem);
+            }
+        }
     }
 
     public void OnPickUp(CallbackContext context)
@@ -72,6 +103,9 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
+        SoundManager.instance.ItemDrop();
+        animationHandler.PlayOnItemDrop();
+
         if (heldItemHandler.PlaceIngredient() == null)
         {
             heldItemHandler.DropHeldItem();
@@ -83,6 +117,7 @@ public class PlayerController : MonoBehaviour
         if (context.performed)
         {
             heldItemHandler.HoldSelectedItem();
+            animationHandler.PlayOnItemHold();
         }
     }
 
@@ -134,9 +169,17 @@ public class PlayerController : MonoBehaviour
 
     public void OnOpenBook(CallbackContext context)
     {
-        if (context.performed)
+        if (!context.performed)
         {
+            return;
+        }
+
+        if(!roleController.IsBookOpen()){
             roleController.OpenBook();
+        }
+        else
+        {
+            roleController.CloseBook();
         }
     }
 
@@ -146,8 +189,9 @@ public class PlayerController : MonoBehaviour
         {
 
             ItemController heldItem = heldItemHandler.heldItem;
-            if(heldItem == null) {
-                return; 
+            if (heldItem == null)
+            {
+                return;
             }
 
             heldItemHandler.DropHeldItem();

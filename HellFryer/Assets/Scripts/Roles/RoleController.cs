@@ -11,6 +11,17 @@ using static UnityEngine.InputSystem.InputAction;
 [RequireComponent(typeof(RoleStrategyController))]
 public class RoleController : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject cookModel;
+    [SerializeField]
+    private GameObject hunterModel;
+
+    public GameObject cookBookMini;
+    public GameObject hunterBookMini;
+
+    public GameObject cookBookOpen;
+    public GameObject hunterBookOpen;
+
     private RoleStrategyController roleStrategyController;
 
     private RoleStrategy currentRoleStrategy;
@@ -31,22 +42,115 @@ public class RoleController : MonoBehaviour
         currentRoleStrategy.UpdateEquipmentType();
     }
 
+    public void SwitchRoles()
+    {
+        if (roleStrategyController == null) // Because of spawning player before executing Start and OnTriggerEnter called in RoleSwitchAreaController
+            roleStrategyController = GetComponent<RoleStrategyController>();
+
+
+        roleStrategyController.SwitchRoles();
+        UpdateCurrentRoleStrategy();
+
+        SwitchModels();
+
+        if(cookBookMini != null)
+        {
+            SwitchBooksMini();
+            SwitchBooksOpen();
+        }
+    }
+
+    private void SwitchModels()
+    {
+        if (cookModel.activeSelf)
+        {
+            hunterModel.SetActive(true);
+            cookModel.SetActive(false);
+        }
+        else if (hunterModel.activeSelf)
+        {
+            cookModel.SetActive(true);
+            hunterModel.SetActive(false);
+        }
+    }
+
+    private void SwitchBooksMini()
+    {
+        if (cookBookMini.activeSelf)
+        {
+            hunterBookMini.SetActive(true);
+            cookBookMini.SetActive(false);
+        }
+        else if (hunterBookMini.activeSelf)
+        {
+            hunterBookMini.SetActive(false);
+            cookBookMini.SetActive(true);
+        }
+    }
+
+    private void SwitchBooksOpen()
+    {
+        if (cookBookOpen.activeSelf)
+        {
+            hunterBookOpen.SetActive(true);
+            cookBookOpen.SetActive(false);
+        }
+        else if (hunterBookOpen.activeSelf)
+        {
+            hunterBookOpen.SetActive(false);
+            cookBookOpen.SetActive(true);
+        }
+    }
+
     public void PerformTask()
     {
         currentRoleStrategy.PerformTask();
     }
 
-    public void OpenBook()
+    public bool IsBookOpen()
     {
-        currentRoleStrategy.OpenBook();
+        return cookBookOpen.activeSelf || hunterBookOpen.activeSelf;
     }
 
-    /// <summary>
-    /// Enables switching between role strategies
-    /// </summary>
-    void CheckChangingRoleStrategy()
+    public void OpenBook()
     {
-        UpdateCurrentRoleStrategy();
+        if (cookBookMini.activeSelf)
+        {
+            cookBookOpen.SetActive(true);
+        }
+        else if (hunterBookMini.activeSelf)
+        {
+            hunterBookOpen.SetActive(true);
+        }
+    }
+
+    public void CloseBook()
+    {
+        if (cookBookMini.activeSelf)
+        {
+            cookBookOpen.SetActive(false);
+        }
+        else if (hunterBookMini.activeSelf)
+        {
+            hunterBookOpen.SetActive(false);
+        }
+    }
+
+    public void OnPlayerWalkSound()
+    {
+        if (currentRoleStrategy is CookRoleStrategy)
+        {
+            SoundManager.instance.PlayCookWalk();
+        }
+        else
+        {
+            SoundManager.instance.PlayHunterWalk();
+        }
+    }
+
+    public void OnPlayerStopWalkSound()
+    {
+        SoundManager.instance.StopWalk();
     }
 
     void OnDestroy()

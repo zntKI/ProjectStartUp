@@ -65,6 +65,18 @@ public class PlayerHeldItemHandler : MonoBehaviour
             //Add the previous item to the inventory
             InventoryManager.instance.PickupItem(droppedItem, playerController.GetSelectedItemSlot());
         }
+
+        if (heldItem.TryGetComponent<EquipmentController>(out EquipmentController equipmentController))
+        {
+            RoleStrategy roleStrategy = GetComponent<RoleStrategyController>().CurrentRoleStrategy;
+            EquipmentStrategy equipmentStrategy = heldItem.GetComponent<EquipmentStrategyController>().CurrentEquipmentStrategy;
+
+            if ((roleStrategy is CookRoleStrategy && equipmentStrategy is EquipmentHuntStrategy)
+                || (roleStrategy is HunterRoleStrategy && equipmentStrategy is EquipmentCookStrategy))
+            {
+                equipmentController.SwitchEquipmentType();
+            }
+        }
     }
 
     public void HoldSelectedItem()
@@ -97,11 +109,35 @@ public class PlayerHeldItemHandler : MonoBehaviour
         ItemController placedIngredient = null;
 
         Collider[] hitColliders = Physics.OverlapSphere(gameObject.transform.position + gameObject.transform.forward, placeIngredientRange);
-        AbstractCookingDevice cookingDevice = GetClosestCookingDevice(transform, hitColliders);
+        
+        IngredientContainer ingredientContainer = GetClosestIngredientContainer(transform, hitColliders);
+        if(ingredientContainer == null)
+        {
+            AbstractCookingDevice cookingDevice = GetClosestCookingDevice(transform, hitColliders);
+
+            if (heldItem != null)
+            {
+                if (cookingDevice != null && cookingDevice.placeIngredient(heldItem))
+                {
+                    placedIngredient = heldItem;
+                    heldItemDisplay.RemoveItem();
+                    heldItem = null;
+                }
+            }
+            else
+            {
+                if (cookingDevice != null)
+                {
+                    cookingDevice.placeIngredient(null);
+                }
+            }
+
+            return placedIngredient;
+        }
 
         if (heldItem != null)
         {
-            if (cookingDevice != null && cookingDevice.placeIngredient(heldItem) != null)
+            if (ingredientContainer != null && ingredientContainer.placeIngredient(heldItem))
             {
                 placedIngredient = heldItem;
                 heldItemDisplay.RemoveItem();
@@ -110,9 +146,9 @@ public class PlayerHeldItemHandler : MonoBehaviour
         }
         else
         {
-            if(cookingDevice != null)
+            if(ingredientContainer != null)
             {
-                cookingDevice.placeIngredient(null);
+                ingredientContainer.placeIngredient(null);
             }
         }
 
@@ -134,7 +170,7 @@ public class PlayerHeldItemHandler : MonoBehaviour
 
             if (cookingController == null)
             {
-                continue;   
+                continue;
             }
 
             float dist = Vector3.Distance(player.position, curObject.transform.position);
@@ -145,5 +181,49 @@ public class PlayerHeldItemHandler : MonoBehaviour
         }
 
         return closestCookingDevice;
+    }
+
+    public IngredientContainer GetClosestIngredientContainer(Transform player, Collider[] collidersInRange)
+    {
+        float minDist = float.MaxValue;
+        IngredientContainer closestContainer = null;
+
+        if(heldItem == null)
+        {
+            return null;
+        }
+
+        if (heldItem.GetComponent<EquipmentController>()) {
+            return null;
+        }
+
+        foreach (Collider collider in collidersInRange)
+        {
+            GameObject curObject = collider.gameObject;
+            if (curObject.tag != "IngredientContainer")
+            {
+                continue;
+            }
+
+            IngredientContainer ingredientContainer = curObject.GetComponent<IngredientContainer>();
+
+            if (ingredientContainer == null)
+            {
+                continue;
+            }
+
+            if (!ingredientContainer.isEmpty())
+            {
+                continue;
+            }
+
+            float dist = Vector3.Distance(player.position, curObject.transform.position);
+            if (dist < minDist)
+            {
+                closestContainer = ingredientContainer;
+            }
+        }
+
+        return closestContainer;
     }
 }

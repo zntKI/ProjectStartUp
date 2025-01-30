@@ -128,7 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   recipe: 080000000600000007000000
   cookingEquipment: 2
-  cookedFood: {fileID: 5866375949798517017, guid: bed2865876fefcb479ea0c282ad72643, type: 3}
+  cookedFood: {fileID: 5866375949798517017, guid: bd71287b6bbb6b34eb397bf3efe94e27, type: 3}
 --- !u!114 &8592382077417433480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,7 +173,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   recipe: 050000000400000009000000
   cookingEquipment: 1
-  cookedFood: {fileID: 5866375949798517017, guid: bed2865876fefcb479ea0c282ad72643, type: 3}
+  cookedFood: {fileID: 5866375949798517017, guid: d6ab6bf853b359f42974a17980529d94, type: 3}
 --- !u!114 &444210024154374470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,4 +188,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   recipe: 090000000b0000000c000000
   cookingEquipment: 0
-  cookedFood: {fileID: 5866375949798517017, guid: bed2865876fefcb479ea0c282ad72643, type: 3}
+  cookedFood: {fileID: 5866375949798517017, guid: ef4fb83bd05e69d469705a3531f4660c, type: 3}

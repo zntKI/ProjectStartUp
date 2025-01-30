@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PanHuntEquipmentStrategy : EquipmentStrategy
+public class PanHuntEquipmentStrategy : EquipmentHuntStrategy
 {
     [SerializeField]
     private float hitDetectRange = 3f;
@@ -17,6 +17,8 @@ public class PanHuntEquipmentStrategy : EquipmentStrategy
             {
                 ProjectileController projectile = hitCollider.GetComponent<ProjectileController>();
                 projectile.SwitchMoveDir(transform.parent.forward); // Send projectile outwards from the player in his current forward dir
+
+                SoundManager.instance.PanHittingProjectile();
             }
         }
     }
