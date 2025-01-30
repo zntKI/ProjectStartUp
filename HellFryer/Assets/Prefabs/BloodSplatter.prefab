@@ -77,6 +77,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7703949838996027021}
     m_Modifications:
+    - target: {fileID: 515327916898347490, guid: f1ee2ba5e61c5e040a3dd0edda7e74c0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 865ffc193c036e045a22810ea5e54881, type: 2}
     - target: {fileID: 3642739847954467781, guid: f1ee2ba5e61c5e040a3dd0edda7e74c0, type: 3}
       propertyPath: m_Name
       value: BloodSplatterModel

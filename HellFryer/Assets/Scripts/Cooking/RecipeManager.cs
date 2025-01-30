@@ -20,7 +20,6 @@ public class RecipeManager : MonoBehaviour
         {
             instance = this;
             recipes = GetComponents<IngredientRecipe>().ToList();
-            DontDestroyOnLoad(this);
         }
     }
 

@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 13
   itemName: Still Alive Steak
-  icon: {fileID: 21300000, guid: 20e861a2ccd38c3408ac20cb93f19e02, type: 3}
+  icon: {fileID: 21300000, guid: f32759cb23789cf459028fbf56e87cc9, type: 3}

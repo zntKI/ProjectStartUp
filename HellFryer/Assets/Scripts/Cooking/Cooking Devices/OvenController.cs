@@ -45,7 +45,7 @@ public class OvenController : AbstractCookingDevice
         {
             foreach (IngredientContainer container in ingredientContainers)
             {
-                if (container.placeIngedient(ingredient))
+                if (container.placeIngredient(ingredient))
                 {
                     return ingredient;
                 }
@@ -91,13 +91,17 @@ public class OvenController : AbstractCookingDevice
             return;
         }
 
-        cookedFood = Instantiate(_cookedFood, gameObject.transform);
+        Vector3 spawnPos = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 2, gameObject.transform.position.z);
+
+        cookedFood = Instantiate(_cookedFood, spawnPos, Quaternion.identity);
         cookedFood.SetActive(false);
 
-        if (cookedFood.GetComponent<ItemController>() != null)
-        {
-            ingredientContainers[1].placeIngedient(cookedFood.GetComponent<ItemController>());
-        }
+        
+
+        //if (cookedFood.GetComponent<ItemController>() != null)
+        //{
+        //    ingredientContainers[1].placeIngredient(cookedFood.GetComponent<ItemController>());
+        //}
     }
 
     public void TakeOutCookedFood()

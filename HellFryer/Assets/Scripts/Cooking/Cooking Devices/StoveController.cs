@@ -40,7 +40,7 @@ public class StoveController : AbstractCookingDevice
 
         if (ingredient.item.itemType == itemType.Pan)
         {
-            if (panContainer.placeIngedient(ingredient))
+            if (panContainer.placeIngredient(ingredient))
             {
                 return ingredient;
             }
@@ -55,7 +55,7 @@ public class StoveController : AbstractCookingDevice
         {
             foreach (IngredientContainer container in ingredientContainers)
             {
-                if (container.placeIngedient(ingredient))
+                if (container.placeIngredient(ingredient))
                 {
                     return ingredient;
                 }
@@ -115,7 +115,7 @@ public class StoveController : AbstractCookingDevice
 
         if(cookedFood.GetComponent<ItemController>() != null)
         {
-            ingredientContainers[1].placeIngedient(cookedFood.GetComponent<ItemController>());
+            ingredientContainers[1].placeIngredient(cookedFood.GetComponent<ItemController>());
         }
         cookedFood.SetActive(true);
         cookedFood = null;

@@ -6,9 +6,11 @@ public class PlayerMovement : MonoBehaviour
 {
     Rigidbody rb;
     [SerializeField] float speed = 2f;
+    [SerializeField] Vector3 startPos = new Vector3(0, -1.5f, 14f);
 
     private Vector2 inputVector = Vector2.zero;
     private Vector3 modifiableVector = Vector3.zero;
+
 
     private void Start()
     {
@@ -33,7 +35,18 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector3 finalVector = new Vector3(inputVector.x, 0f, inputVector.y) + modifiableVector;
+        
+        Vector3 finalVector = new Vector3(inputVector.x, rb.velocity.y, inputVector.y) + modifiableVector;
+     
         rb.velocity = finalVector;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        int respwanLayer = LayerMask.NameToLayer("Respawn");
+        if(other.gameObject.layer == respwanLayer)
+        {
+            gameObject.transform.position = startPos;
+        }
     }
 }
