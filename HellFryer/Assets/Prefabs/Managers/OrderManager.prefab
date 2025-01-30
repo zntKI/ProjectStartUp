@@ -48,8 +48,11 @@ MonoBehaviour:
   orderUIContent: {fileID: 0}
   orderControllerPrefab: {fileID: 174119124881058055, guid: facb2044533e3c5409d8df897ace73fd, type: 3}
   orderUIItemPrefab: {fileID: 1763472172736304176, guid: ef6acd5c21f1d214e9768aaf2e6700cb, type: 3}
+  score: {fileID: 0}
   cookedFoods:
   - {fileID: 11400000, guid: 42b486ead0a7b38449963f9089d83add, type: 2}
   - {fileID: 11400000, guid: 52089744477d2c64987affbe6a9f46fc, type: 2}
   - {fileID: 11400000, guid: 17915ff001c551b4ca7c426f80ddc50c, type: 2}
+  - {fileID: 11400000, guid: 2d61bd3e5f80c7c408a20f29cbcf5423, type: 2}
   orders: []
+  orderInterval: 3

@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5835013143908906399
 RectTransform:
   m_ObjectHideFlags: 0
@@ -34,9 +34,9 @@ RectTransform:
   - {fileID: 7009809697459756450}
   m_Father: {fileID: 3619276163728735377}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 80, y: -85}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8949242035216227352
@@ -237,15 +237,15 @@ RectTransform:
   m_GameObject: {fileID: 5141934448551958409}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.66765, y: 0.66765, z: 0.66765}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4120031914280023724}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 41}
-  m_SizeDelta: {x: 1969.5, y: 1251}
+  m_AnchoredPosition: {x: 0, y: 82}
+  m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8168780539980243939
 CanvasRenderer:
@@ -275,7 +275,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9e493fb900c047b4c96738e165b0056b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 07ca300d36df36846991176bfbfd49d8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -338,6 +338,15 @@ MonoBehaviour:
   resumeButton: {fileID: 5388417399791499791}
   mainMenuButton: {fileID: 8662063385246537097}
   inventoryPanel: {fileID: 0}
+  divider: {fileID: 0}
+  bookP1: {fileID: 0}
+  bookP2: {fileID: 0}
+  bookOpenP1: {fileID: 0}
+  bookOpenP2: {fileID: 0}
+  heldItem1: {fileID: 0}
+  heldItem2: {fileID: 0}
+  orders: {fileID: 0}
+  isPaused: 0
 --- !u!1 &5428166653759123624
 GameObject:
   m_ObjectHideFlags: 0
@@ -523,7 +532,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 0
+    m_Left: 237
     m_Right: 0
     m_Top: 0
     m_Bottom: 0

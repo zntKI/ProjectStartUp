@@ -22,6 +22,18 @@ public class PlayerPickupHandler : MonoBehaviour
                 itemsInRange.Add(hitCollider.gameObject);
             }
         }
+
+        if (GetClosestItem() == null)
+        {
+            hitColliders = Physics.OverlapSphere(transform.position, pickupRange * 1.4f);
+            foreach (Collider hitCollider in hitColliders)
+            {
+                if (hitCollider.gameObject.tag == "Item")
+                {
+                    itemsInRange.Add(hitCollider.gameObject);
+                }
+            }
+        }
     }
 
     GameObject GetClosestItem()
