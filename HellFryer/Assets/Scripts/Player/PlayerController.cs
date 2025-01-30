@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem.HID;
-using UnityEngine.WSA;
-using static UnityEditor.Timeline.TimelinePlaybackControls;
 using static UnityEngine.InputSystem.InputAction;
 
 public class PlayerController : MonoBehaviour
@@ -119,6 +117,21 @@ public class PlayerController : MonoBehaviour
             heldItemHandler.HoldSelectedItem();
             animationHandler.PlayOnItemHold();
         }
+    }
+
+    public void OnPause(CallbackContext context)
+    {
+        if (!context.performed)
+        {
+            return;
+        }
+
+        if(PauseMenuController.instance == null)
+        {
+            return;
+        }
+
+        PauseMenuController.instance.OnPause();
     }
 
     public void OnTurn(CallbackContext context)

@@ -18,9 +18,9 @@ public class CuttingBoardCookingBehaviour : CookingBehaviour
 
     IEnumerator CuttingSound()
     {
-        SoundManager.instance.PlayKnifeOnCuttingBoard();
+        //SoundManager.instance.PlayKnifeOnCuttingBoard();
         yield return new WaitForSeconds(0.5f);
 
-        SoundManager.instance.StopKnifeOnCuttingBoard();
+        //SoundManager.instance.StopKnifeOnCuttingBoard();
     }
 }

@@ -368,6 +368,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: c53ceb42-42a5-4eea-9e39-4bfce5b77e41
     m_ActionName: Player/ReturnToInventory[/Keyboard/v]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8367254804830462505}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnPause
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 9e107fd4-013e-4a57-8313-b790fb667ac6
+    m_ActionName: Player/Pause[/XInputControllerWindows/start,/Keyboard/p]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Controller
   m_DefaultActionMap: Player
@@ -422,6 +438,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33bb8a4d770dda142995dc062f49b49c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  zoomedOutCameraPos: {x: 0, y: 15, z: -15}
   cookModel: {fileID: 5745566541670255933}
   hunterModel: {fileID: 7072684225463948415}
   cookBookMini: {fileID: 0}

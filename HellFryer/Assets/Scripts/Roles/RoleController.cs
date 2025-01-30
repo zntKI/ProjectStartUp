@@ -12,6 +12,12 @@ using static UnityEngine.InputSystem.InputAction;
 public class RoleController : MonoBehaviour
 {
     [SerializeField]
+    private Vector3 zoomedOutCameraPos;
+
+    private Vector3 normalCameraPos;
+    private CameraFollow cameraController;
+
+    [SerializeField]
     private GameObject cookModel;
     [SerializeField]
     private GameObject hunterModel;
@@ -29,6 +35,9 @@ public class RoleController : MonoBehaviour
     void Start()
     {
         roleStrategyController = GetComponent<RoleStrategyController>();
+
+        cameraController = transform.parent.GetComponentInChildren<CameraFollow>();
+        normalCameraPos = cameraController.offset;
 
         //roleStrategyController.OnStrategyEnabled += CheckChangingRoleStrategy;
 
@@ -51,12 +60,29 @@ public class RoleController : MonoBehaviour
         roleStrategyController.SwitchRoles();
         UpdateCurrentRoleStrategy();
 
+        //SwitchCameraAngle();
+
         SwitchModels();
 
         if(cookBookMini != null)
         {
             SwitchBooksMini();
             SwitchBooksOpen();
+        }
+    }
+
+    private void SwitchCameraAngle()
+    {
+        if (cameraController == null) // Because of spawning player before executing Start and OnTriggerEnter called in RoleSwitchAreaController
+            cameraController = transform.parent.GetComponentInChildren<CameraFollow>();
+
+        if (currentRoleStrategy is CookRoleStrategy)
+        {
+            cameraController.offset = normalCameraPos;
+        }
+        else if (currentRoleStrategy is HunterRoleStrategy)
+        {
+            cameraController.offset = zoomedOutCameraPos;
         }
     }
 

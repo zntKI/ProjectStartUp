@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
-using UnityEngine.WSA;
-using static UnityEditor.Progress;
 
 public class PlayerHeldItemHandler : MonoBehaviour
 {

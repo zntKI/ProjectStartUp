@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bloodSplatterPrefab: {fileID: 3167316108465714254, guid: f05c406257838e846b83feca9de77263, type: 3}
-  bloodSpawnHeight: 2.3
+  bloodSpawnHeight: 1.5
   bloodSpawnRate: 0.3
   bloodSpawnRange: 2
 --- !u!1001 &3418199218396540311

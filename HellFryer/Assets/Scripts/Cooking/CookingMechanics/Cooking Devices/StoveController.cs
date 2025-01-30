@@ -111,12 +111,13 @@ public class StoveController : AbstractCookingDevice
             return;
         }
 
-        cookedFood = Instantiate(_cookedFood, gameObject.transform);
+        Vector3 spawnPos = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 1.5f, gameObject.transform.position.z);
+        cookedFood = Instantiate(_cookedFood, spawnPos, Quaternion.identity);
 
-        if(cookedFood.GetComponent<ItemController>() != null)
-        {
-            ingredientContainers[1].placeIngredient(cookedFood.GetComponent<ItemController>());
-        }
+        //if(cookedFood.GetComponent<ItemController>() != null)
+        //{
+        //    ingredientContainers[1].placeIngredient(cookedFood.GetComponent<ItemController>());
+        //}
         cookedFood.SetActive(true);
         cookedFood = null;
     }

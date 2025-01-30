@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 public class PlayerPickupHandler : MonoBehaviour
 {
@@ -20,6 +19,18 @@ public class PlayerPickupHandler : MonoBehaviour
             if (hitCollider.gameObject.tag == "Item")
             {
                 itemsInRange.Add(hitCollider.gameObject);
+            }
+        }
+
+        if (GetClosestItem() == null)
+        {
+            hitColliders = Physics.OverlapSphere(transform.position, pickupRange * 1.4f);
+            foreach (Collider hitCollider in hitColliders)
+            {
+                if (hitCollider.gameObject.tag == "Item")
+                {
+                    itemsInRange.Add(hitCollider.gameObject);
+                }
             }
         }
     }
