@@ -470,7 +470,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 20.32
+  field of view: 20
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -496,8 +496,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 270349495}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.03557318, y: 0.7062115, z: -0.03557319, w: 0.7062114}
-  m_LocalPosition: {x: -10.52, y: 1.35, z: 1.797}
+  m_LocalRotation: {x: 0.017661434, y: -0.70687395, z: 0.017660819, w: 0.7068985}
+  m_LocalPosition: {x: 1.6999998, y: 2.5, z: 0.16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -589,6 +589,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Beef
       objectReference: {fileID: 0}
+    - target: {fileID: 2910134741701638720, guid: 46378d90b68ac524a9c84ee1aeb468f6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -614,7 +618,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &313043203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1210,7 +1214,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2364946588662594056, guid: df13c676eece5ad47a75776e908aa04c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7956361181229255186, guid: df13c676eece5ad47a75776e908aa04c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1279,7 +1283,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1190267855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1769,7 +1773,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2364946588662594056, guid: df13c676eece5ad47a75776e908aa04c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7956361181229255186, guid: df13c676eece5ad47a75776e908aa04c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1836,6 +1840,10 @@ PrefabInstance:
     - target: {fileID: 3167316108465714254, guid: f05c406257838e846b83feca9de77263, type: 3}
       propertyPath: m_Name
       value: BloodSplatter
+      objectReference: {fileID: 0}
+    - target: {fileID: 3167316108465714254, guid: f05c406257838e846b83feca9de77263, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7703949838996027021, guid: f05c406257838e846b83feca9de77263, type: 3}
       propertyPath: m_LocalScale.x
