@@ -108,6 +108,15 @@ public class WingsHostileItemBehaviour : HostileItemBehaviour
     public override void Deactivate()
     {
         SwitchState(WingsHostileState.None);
+
+        if (currentPlayersInRange.Count > 0)
+        {
+            for (int i = 0; i < currentPlayersInRange.Count; i++)
+            {
+                StopPulling(currentPlayersInRange[i]);
+            }
+            currentPlayersInRange.Clear();
+        }
     }
 
     void OnTriggerEnter(Collider other)

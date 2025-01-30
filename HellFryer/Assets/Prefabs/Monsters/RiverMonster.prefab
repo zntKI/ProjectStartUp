@@ -52,7 +52,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 10
+  m_Radius: 15
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!114 &7374780264831217183
 MonoBehaviour:
@@ -133,6 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 210d4cb9237c0134b9c1fb96d25d2f58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  amountOfOuterRange: 0.6
   timeBetweenItemDestroy: 2
 --- !u!1 &5907158350943913213
 GameObject:
@@ -190,10 +191,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
+  m_Radius: 0.8
+  m_Height: 4
   m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Center: {x: 0.000000059604645, y: 0, z: -0.85}
 --- !u!114 &9061845601320805102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,7 +208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shouldDraw: 1
-  radius: 5
+  radius: 15
   color: {r: 1, g: 0, b: 0, a: 1}
   segments: 50
 --- !u!114 &8121618402480636384
@@ -258,15 +259,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5620066078234239771, guid: a0a3bb4d745115543aac2055a968b47f, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.44769
+      value: 1.0531012
       objectReference: {fileID: 0}
     - target: {fileID: 5620066078234239771, guid: a0a3bb4d745115543aac2055a968b47f, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.44769
+      value: 1.0531012
       objectReference: {fileID: 0}
     - target: {fileID: 5620066078234239771, guid: a0a3bb4d745115543aac2055a968b47f, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.44769
+      value: 1.0531012
       objectReference: {fileID: 0}
     - target: {fileID: 5620066078234239771, guid: a0a3bb4d745115543aac2055a968b47f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -274,11 +275,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5620066078234239771, guid: a0a3bb4d745115543aac2055a968b47f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.71114
       objectReference: {fileID: 0}
     - target: {fileID: 5620066078234239771, guid: a0a3bb4d745115543aac2055a968b47f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.24
+      value: -0.85257
       objectReference: {fileID: 0}
     - target: {fileID: 5620066078234239771, guid: a0a3bb4d745115543aac2055a968b47f, type: 3}
       propertyPath: m_LocalRotation.w

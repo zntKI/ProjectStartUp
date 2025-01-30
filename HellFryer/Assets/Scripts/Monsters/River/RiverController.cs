@@ -6,6 +6,9 @@ using UnityEngine;
 
 public class RiverController : MonoBehaviour
 {
+    [SerializeField, Range(0.1f, 0.9f)]
+    private float amountOfOuterRange;
+
     [SerializeField]
     private float timeBetweenItemDestroy;
 
@@ -20,7 +23,7 @@ public class RiverController : MonoBehaviour
         currentPlayers = new Dictionary<PlayerController, List<float>>();
 
         var collider = GetComponent<SphereCollider>();
-        collider.radius = transform.parent.GetComponent<PullRange>().Radius * 0.8f;
+        collider.radius = transform.parent.GetComponent<PullRange>().Radius * amountOfOuterRange;
     }
 
     // Update is called once per frame
