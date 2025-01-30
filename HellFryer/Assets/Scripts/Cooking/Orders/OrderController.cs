@@ -24,6 +24,11 @@ public class OrderController : MonoBehaviour
             return;
         }
 
+        if (PauseMenuController.instance.isPaused)
+        {
+            return;
+        }
+
         orderTimeLeft -= Time.deltaTime;
         timerUIComponent.fillAmount = orderTimeLeft / totalOrderTime;
 

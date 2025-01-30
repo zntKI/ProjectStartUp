@@ -121,6 +121,21 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void OnPause(CallbackContext context)
+    {
+        if (!context.performed)
+        {
+            return;
+        }
+
+        if(PauseMenuController.instance == null)
+        {
+            return;
+        }
+
+        PauseMenuController.instance.OnPause();
+    }
+
     public void OnTurn(CallbackContext context)
     {
         lookDir = context.ReadValue<Vector2>();
