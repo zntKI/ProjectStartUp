@@ -22,6 +22,7 @@ public class BloodSplatter : MonoBehaviour
             Rigidbody rb = curPlayer.GetComponent<Rigidbody>();
 
             Vector3 newVelocity = rb.velocity * dynamicSlipperiness;
+            newVelocity = new Vector3(newVelocity.x, 0, newVelocity.z);
             Vector3 slipperyVector = Vector3.Lerp(previousVelocity, newVelocity, staticSlipperiness);
 
             playerController.ShouldPull(slipperyVector);
