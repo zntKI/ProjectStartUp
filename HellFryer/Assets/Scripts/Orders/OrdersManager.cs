@@ -107,7 +107,7 @@ public class OrdersManager : MonoBehaviour
             if (score != null)
             {
                 score.text = "Your score: " + totalScore;
-                score.gameObject.transform.parent.gameObject.SetActive(true);
+                //score.gameObject.transform.parent.gameObject.SetActive(true);
             }
             //Change to next scene
             //onGameOver.Invoke();
@@ -137,7 +137,6 @@ public class OrdersManager : MonoBehaviour
             }
         }
 
-        Debug.Log("Wrong order");
         orderCounterController.removeIngredientsFromContainers();
     }
 
