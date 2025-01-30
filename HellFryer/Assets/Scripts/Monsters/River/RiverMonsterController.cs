@@ -17,7 +17,8 @@ public class RiverMonsterController : MonoBehaviour
         
         pullRangeController.StopPulling(); // Stop pulling the player
         
-        Destroy(gameObject);
+        //Destroy(gameObject);
+        gameObject.SetActive(false);
 
         float distance = pullRangeController.transform.GetComponent<SphereCollider>().radius;
         Vector3 spawnPos = transform.position + spawnItemDir * distance;
