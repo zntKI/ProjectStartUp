@@ -422,13 +422,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33bb8a4d770dda142995dc062f49b49c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cookModel: {fileID: 5745566541670255933}
+  hunterModel: {fileID: 7072684225463948415}
   cookBookMini: {fileID: 0}
   hunterBookMini: {fileID: 0}
   cookBookOpen: {fileID: 0}
   hunterBookOpen: {fileID: 0}
---- !u!1001 &2489126835179506788
-  cookModel: {fileID: 5745566541670255933}
-  hunterModel: {fileID: 7072684225463948415}
 --- !u!114 &1493128704538686153
 MonoBehaviour:
   m_ObjectHideFlags: 0
