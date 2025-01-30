@@ -150,7 +150,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 3
+  m_Radius: 6
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6385150706146631929
 MonoBehaviour:
@@ -178,7 +178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToWaitBetweenPushing: 2
   timeForPushing: 2
-  pushAmount: 5
+  pushAmount: 8
 --- !u!1001 &5469593121771868634
 PrefabInstance:
   m_ObjectHideFlags: 0
