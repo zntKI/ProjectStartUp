@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recipe: 050000000800000003000000
-  cookingEquipment: 5
+  cookingEquipment: 2
   cookedFood: {fileID: 5866375949798517017, guid: ed90a6100eefe6341aca7568f9048b52, type: 3}
 --- !u!114 &9081042064569694228
 MonoBehaviour:

@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amountOfOuterRange: 0.6
-  timeBetweenItemDestroy: 0.5
+  timeBetweenItemDestroy: 1
 --- !u!1 &5907158350943913213
 GameObject:
   m_ObjectHideFlags: 0

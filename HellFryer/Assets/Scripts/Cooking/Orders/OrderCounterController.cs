@@ -8,6 +8,11 @@ public class OrderCounterController : AbstractCookingDevice
 {
     public override ItemController placeIngredient(ItemController ingredient)
     {
+        if(ingredient == null)
+        {
+            return null;
+        }
+
         if(ingredient.GetComponent<EquipmentController>() != null)
         {
             return null;

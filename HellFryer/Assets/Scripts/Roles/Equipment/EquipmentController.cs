@@ -9,6 +9,8 @@ using UnityEngine;
 [RequireComponent(typeof(EquipmentStrategyController))]
 public class EquipmentController : MonoBehaviour
 {
+    Vector3 spawnPos = new Vector3(0, 4, 0);
+    
     private EquipmentStrategyController equipmentStrategyController;
 
     private EquipmentStrategy currentEquipmentStrategy;
@@ -46,5 +48,14 @@ public class EquipmentController : MonoBehaviour
     void OnDestroy()
     {
         //equipmentStrategyController.OnStrategyEnabled -= CheckChangingRoleStrategy;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        int respwanLayer = LayerMask.NameToLayer("Respawn");
+        if (other.gameObject.layer == respwanLayer)
+        {
+            gameObject.transform.position = spawnPos;
+        }
     }
 }

@@ -106,7 +106,7 @@ public class OrdersManager : MonoBehaviour
         {
             if (score != null)
             {
-                score.text = "Your score: " + totalScore;
+                score.text = "Your score: " + (int)totalScore;
                 score.gameObject.transform.parent.gameObject.SetActive(true);
             }
             //Change to next scene
