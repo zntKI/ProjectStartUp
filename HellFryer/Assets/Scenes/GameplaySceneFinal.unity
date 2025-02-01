@@ -18285,7 +18285,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 431507801404645204, guid: d72abfef033e34a4ca2ecd7a2f2177b0, type: 3}
       propertyPath: m_DefaultControlScheme
-      value: Keyboard
+      value: Controller
       objectReference: {fileID: 0}
     - target: {fileID: 431507801404645204, guid: d72abfef033e34a4ca2ecd7a2f2177b0, type: 3}
       propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Target
