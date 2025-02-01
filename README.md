@@ -17,33 +17,26 @@ A legendary hunter kills a powerful beast in a remote forest. What appears to be
 
 ### Gameplay (Engineers)
 
-- **Car AI movement:** Waypoint following tailored to the road's curves
+- **Two-player split-screen co-op mechanic:** Utilizing the new Unity Input System for handling both keyboard and controller keybindings, as well as taking care of the split-screen functionality
+- **Role-switching:** Each player can switch between being a cook and a chef, done by taking advantage of the Strategy Design Pattern
 - **Drunk AI behavior:** Different car movement behaviors depending on the current minigame
 - **Dialogue:** Dialogue throughout the whole game which the player can interact with by choosing from different dialogue options - all having an influence on the gameplay
 - **Camera movement:** Controlling the view of the player and the interactions with the dialogue
 
-### 3D Models (Artists)
+### 3D Models and VFX (Artists)
 
-- **Car model**
-- **Environment:** Houses, Terrain, Trees, Traffic light, Traffic signs
+- **Characters, Monsters, Ingredients, Dishes**
+- **Environment and VFX:** Arena, Kitchen, Particle effects
 
-### UI/UX, SFX, VFX (Designers)
+### Game Design, UI/UX, Music and SFX (Designers)
 
-- **Start screen**
-- **Dialogue voice-overs**
+- **Game HUD, Controls showcase**
 - **Sounds**
   1. Background sounds
   2. Sound effects
 
-## Events
-
-- **Swerving:** The car swerves into the left lane and the player has to correct its direction
-- **Accelerating:** The car accelerates uncontrollably and the player (passenger) has to tell the driver to slow it back down
-- **Traffic light:** The driver has no intention of stopping on the red traffic light and the player (passenger) has to tell him to do so
-- **Conscious game:** The final event in which the player (passenger) tries to reason with the driver and make him stop driving before it is too late
-
-## Art and Models
+## Models and VFX
 Done by: [Ivana Slavova](https://www.linkedin.com/in/ivana-slavova-2162442ba/), [Kristiyan Karaisaev](https://www.linkedin.com/in/kristiyan-karaisaev-979471258/)
 
-## Design and FX
-Done by: [Alexander Marchev](https://www.linkedin.com/in/alexander-marchev-75833733b/), [Martin Nguyen](https://www.linkedin.com/in/martngu/)
+## Game/UI Design and Audio
+Done by: [Alexander Marchev](https://www.linkedin.com/in/alexander-marchev-75833733b/), [Alice]
