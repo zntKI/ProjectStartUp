@@ -19,7 +19,17 @@ A legendary hunter kills a powerful beast in a remote forest. What appears to be
 
 - **Two-player split-screen co-op mechanic:** Utilizing the new Unity Input System for handling both keyboard and controller keybindings, as well as taking care of the split-screen functionality
 - **Role-switching:** Each player can switch between being a cook and a chef, done by taking advantage of the Strategy Design Pattern
-- **Drunk AI behavior:** Different car movement behaviors depending on the current minigame
+- **Cooking/Hunting Equipment (Knife, Oven Mitts, Pan):** Again, by using the Strategy Pattern, each equipment can easily swap between its cook and hunter functionality depending on the role of the player currently using it
+- **Monsters' behaviours:** Three unique monsters, each affecting the player in a different way:
+  1. River monster: tries to lure the player towards the lava river by applying gravity pull force towards it; The Player needs to throw a knife in a boomerang fashion and upon successful hit, collect the dropped ingredients; If having stayed too long in the lava river, the Player gets hurt and loses an item from his inventory
+  2. Graveyard zombies: the Player has to dig out graves to try and find necessary ingredients; However there is a chance he stumbles upon a zombie that grabs him fiercely, fow which he would have to use oven mitts to free himself; If having been grabbed for too long, again, the Player gets hurt and loses an item from his inventory
+  3. Wingless demon: a patroling creature, waiting to detect the Player to start shooting away projectiles, which closely follow the Player until they hit or get reflected with the Pan; If reflected, they fly in the direction of the Player's sight with the possibility of colliding with the demon and making it drop the corresponding ingredients; If the Player gets hit by the projectile, again, he gets hurt and loses an item from his inventory
+- **Inventory system:** The two players have a shared inventory which they both can operate and manipulate in the following ways:
+  1. Items can be picked up and put in the slots of the inventory until full
+  2. Items can be selected from the inventory and brought out in the given Player's hand to use, meaning only one Player can use a given item at a time.
+  3. Items in hand can be swapped with other items from the inventory
+  4. Ingredients in hand can be placed on cooking slots to start their preparation for cooking a given dish
+  5. Items in hand can be dropped on the floor or put back in an empty inventory slot
 - **Dialogue:** Dialogue throughout the whole game which the player can interact with by choosing from different dialogue options - all having an influence on the gameplay
 - **Camera movement:** Controlling the view of the player and the interactions with the dialogue
 
