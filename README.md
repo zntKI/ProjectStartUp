@@ -30,8 +30,12 @@ A legendary hunter kills a powerful beast in a remote forest. What appears to be
   3. Items in hand can be swapped with other items from the inventory
   4. Ingredients in hand can be placed on cooking slots to start their preparation for cooking a given dish
   5. Items in hand can be dropped on the floor or put back in an empty inventory slot
-- **Dialogue:** Dialogue throughout the whole game which the player can interact with by choosing from different dialogue options - all having an influence on the gameplay
-- **Camera movement:** Controlling the view of the player and the interactions with the dialogue
+- **Hostile item behaviours:** Evil ingredients start acting against the Player when put on cooking slots, slowing him down from cooking:
+  1. Blood: gets spilled all over the place, making it slippery for the Player and hard to control
+  2. Beef and Limbs: starts running around the kitchen, making the Player have to catch and return it to continue cooking the dish
+  3. Wings: periodically slap the Player, pushing him away from the cooking spot and making it difficult for him to cook
+- **Cooking:** There are three different cooking spots that require different equipment to cook dishes; Along with that, there are various recipes that Players need to follow strictly to successfully complete a dish
+- **Orders:** Randomised orders from clients that require the Players to cook a given dish, for a given time and recieve points for doing so, which adds up to a final score displayed after all dishes have been completed or their time ran out
 
 ### 3D Models and VFX (Artists)
 
@@ -49,4 +53,4 @@ A legendary hunter kills a powerful beast in a remote forest. What appears to be
 Done by: [Ivana Slavova](https://www.linkedin.com/in/ivana-slavova-2162442ba/), [Kristiyan Karaisaev](https://www.linkedin.com/in/kristiyan-karaisaev-979471258/)
 
 ## Game/UI Design and Audio
-Done by: [Alexander Marchev](https://www.linkedin.com/in/alexander-marchev-75833733b/), [Alice]
+Done by: [Alexander Marchev](https://www.linkedin.com/in/alexander-marchev-75833733b/), [Alice Leonard Widodo](https://www.linkedin.com/in/alice-leonard-widodo-1755b62ba/)
